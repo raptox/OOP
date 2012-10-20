@@ -10,6 +10,7 @@ public class Band {
 	private ArrayList<Gig> gigs;
 	private ArrayList<Member> members;
 	private ArrayList<Song> songs;
+	private Notification notificationList;
 	
 	private String name;
 	
@@ -18,12 +19,14 @@ public class Band {
 		this.gigs = new ArrayList<Gig>();
 		this.members = new ArrayList<Member>();
 		this.songs = new ArrayList<Song>();
+		this.notificationList = new Notification();
 		
 		this.name = name;
 	}
 	
 	public void addMember( Member m ) { 
 		this.members.add( m );
+		this.notificationList.register( m );
 	}
 	
 	public void changeGigDate() {
@@ -32,6 +35,7 @@ public class Band {
 		for ( Member m : this.members ) {
 			n.register( m );
 		}
+		
 		Announcement posponedGig = new Announcement( "Das Datum von unserem Auftritt hat sich auf Morgen verschoben!" );
 		
 		n.announce( posponedGig );
@@ -43,6 +47,13 @@ public class Band {
 	
 	public void removeMember( Member m, Date time ) {
 		m.setLeaveDate(time);
+		
+		// remove member from notification list
+		this.notificationList.unregister( m );
+	}
+	
+	public ArrayList<Member> listMembers() {
+		return this.listMembers( new Date() );
 	}
 	
 	public ArrayList<Member> listMembers( Date time ) {
@@ -84,6 +95,9 @@ public class Band {
 	}
 	
 	public void addPlay( Play p ) {
+		// save band reference to play object for later useage
+		p.setBand( this );
+		
 		if ( p instanceof Practice ) {
 			this.practiceSessions.add( (Practice) p );
 		}
@@ -96,7 +110,7 @@ public class Band {
 		ArrayList<Practice> practiceSessions = new ArrayList<Practice>();
 		
 		for ( Practice p : this.practiceSessions ) {
-			if ( p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
+			if ( p.getTimeAndDate() != null && p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
 				practiceSessions.add( p );
 			}
 		}
@@ -108,7 +122,7 @@ public class Band {
 		ArrayList<Gig> gigs = new ArrayList<Gig>();
 		
 		for ( Gig g : this.gigs ) {
-			if ( g.getTimeAndDate().compareTo( start ) >= 0 && g.getTimeAndDate().compareTo( end ) <= 0 ) {
+			if ( g.getTimeAndDate() != null && g.getTimeAndDate().compareTo( start ) >= 0 && g.getTimeAndDate().compareTo( end ) <= 0 ) {
 				gigs.add( g );
 			}
 		}
@@ -149,4 +163,7 @@ public class Band {
 		return this.getCostsGigs( start, end ) - this.getCostsPractices( start, end );
 	}
 	
+	public Notification getNotificationList() {
+		return this.notificationList;
+	}
 }

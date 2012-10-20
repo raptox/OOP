@@ -10,7 +10,11 @@ public class Gig extends Play {
     }
 
     public String toString() {
-    	return super.toString()+", Credit: "+credit;
+    	if ( this.getTimeAndDate() != null ) {
+    		return super.toString()+", Credit: "+credit;
+    	}
+    	
+    	return null;
     }
 
     public double getCredit() {

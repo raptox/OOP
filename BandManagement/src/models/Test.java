@@ -2,6 +2,10 @@ package models;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import notification.Announcement;
+import notification.Decision;
+import notification.Notification;
+
 
 public class Test {
 	public static void main( String args[] ) {
@@ -22,10 +26,7 @@ public class Test {
 			
 			System.out.println(slipknot.listMembers(sdf.parse("2012-08-23")));
 			System.out.println(slipknot.listMembers(sdf.parse("2010-08-23")));
-			System.out.println(slipknot.listMembers(sdf.parse("2014-08-23")));
-			slipknot.removeMember(coreyTailor, sdf.parse("2013-01-01"));
-			System.out.println(slipknot.listMembers(sdf.parse("2014-08-23")));
-			System.out.println(slipknot.listMembers(sdf.parse("2012-10-23")));
+
 			
 			//add some Songs
 			Song duality = new Song( "Duality", 250, sdf.parse("2012-01-01") );
@@ -60,7 +61,7 @@ public class Test {
 		slipknot.addPlay( p3 );
 		
 		// print all gigs
-		System.out.println( slipknot.listGigs( sdf.parse( "2012-11-04" ), sdf.parse( "2012-12-08" ) ) );
+		System.out.println( slipknot.listGigs( sdf.parse( "2012-09-04" ), sdf.parse( "2012-12-08" ) ) );
 		
 		// print all practice sessions
 		System.out.println( slipknot.listPractice( sdf.parse( "2012-11-04" ), sdf.parse( "2012-12-08" ) ) );
@@ -74,8 +75,28 @@ public class Test {
 		// print all rental costs for practice sessions
 		System.out.println( "Ausgaben durch Proben: " + slipknot.getCostsPractices( sdf.parse( "2012-11-04" ), sdf.parse( "2012-12-08" ) ) );
 		
-		slipknot.changeGigDate();
+		// postpone the "novarock" gig
+		Announcement postponedGig = novarock.postpone( sdf.parse("2013-09-08"), "Dieses Jahr fällt unser Auftritt am Novarock aus!" );
 		
+		// output all the decisions from the band members concerning the postponement of the novarock gig
+		for ( Decision d  : postponedGig.getDecisions() ) {
+			System.out.println( "Von: " + d.getMember().getName() + ", Entscheidung: " + d.getDecision() + ", Begründung: " + d.getReason() );
+		}
+		
+		System.out.println();
+		System.out.println( slipknot.listGigs( sdf.parse( "2013-01-04" ), sdf.parse( "2013-12-08" ) ) );
+		
+		
+		// cancel the "novarock" gig
+		Announcement canceledGig = novarock.cancel( "Leider hat uns der Verantalter von Novarock unseren Gig abgesagt!" );
+		
+		// output all the decisions from the band members concerning the postponement of the novarock gig
+		for ( Decision d  : canceledGig.getDecisions() ) {
+			System.out.println( "Von: " + d.getMember().getName() + ", Entscheidung: " + d.getDecision() + ", Begründung: " + d.getReason() );
+		}
+		
+		System.out.println( "\nList of all Gigs after canceling the novarock gig: ");
+		System.out.println( slipknot.listGigs( sdf.parse( "2011-01-04" ), sdf.parse( "2013-12-08" ) ) );
 		
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
