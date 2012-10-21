@@ -46,11 +46,11 @@ public class BandManagement {
 		return false;
 	}
 	
-	public void setActiveUser(String name, String pass) throws UserNotFound {
+	public Member setActiveUser(String name, String pass) throws UserNotFound {
 		if (name.equals("admin") && pass.equals("adminpass")) {
 			activeUser = "admin";
 			System.out.println("Active user changed to: "+activeUser);	
-			return;
+			return new Member("admin");
 		}
 		
 		/*
@@ -64,7 +64,7 @@ public class BandManagement {
 			if (help_mem != null && help_mem.getPassword().equals(pass)) {
 				activeUser = name;
 				System.out.println("Active user changed to: "+activeUser);
-				return;
+				return help_mem;
 			}
 		}
 		

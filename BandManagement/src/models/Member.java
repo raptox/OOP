@@ -18,6 +18,12 @@ public class Member implements Observer {
 		this.instrument = instrument;
 		this.joinDate = joinDate;
 		leaveDate = null;
+		this.password = "";
+	}
+	
+	// only used for admin
+	public Member( String name ) {
+		this.name = name;
 	}
 	
 	public String getPassword() {
