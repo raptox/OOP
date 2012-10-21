@@ -1,18 +1,24 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import notification.*;
 
 
-public class Band {
+public class Band implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Practice> practiceSessions;
 	private ArrayList<Gig> gigs;
 	private ArrayList<Member> members;
 	private ArrayList<Song> songs;
 	private Notification notificationList;
 	private Date bandRemoveDate; 
+	private ArrayList<Announcement> announcementList;
 	
 	private String name;
 	
@@ -22,6 +28,7 @@ public class Band {
 		this.members = new ArrayList<Member>();
 		this.songs = new ArrayList<Song>();
 		this.notificationList = new Notification();
+		this.announcementList = new ArrayList<Announcement>();
 		
 		this.name = name;
 		bandRemoveDate = null;
@@ -174,5 +181,13 @@ public class Band {
 	
 	public Notification getNotificationList() {
 		return this.notificationList;
+	}
+	
+	public void addAnnouncement( Announcement a ) {
+		this.announcementList.add( a );
+	}
+	
+	public ArrayList<Announcement> listAnnouncements() {
+		return this.announcementList;
 	}
 }

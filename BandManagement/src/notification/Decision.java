@@ -1,8 +1,14 @@
 package notification;
 
+import java.io.Serializable;
+
 import models.Member;
 
-public class Decision {
+public class Decision implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String reason;
 	private Boolean decision;
 	private Member member;

@@ -1,9 +1,14 @@
 package notification;
 
+import java.io.Serializable;
 import java.util.Vector;
 import models.Member;
 
-public class Announcement {
+public class Announcement implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String announcement;
 	private Vector<Decision> decisions;
 	
