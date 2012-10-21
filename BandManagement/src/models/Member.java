@@ -8,6 +8,7 @@ public class Member implements Observer {
 	private String name;
 	private String telNumber;
 	private String instrument;
+	private String password;
 	private Date joinDate;
 	private Date leaveDate;
 	
@@ -17,6 +18,14 @@ public class Member implements Observer {
 		this.instrument = instrument;
 		this.joinDate = joinDate;
 		leaveDate = null;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String pass) {
+		password = pass;
 	}
 	
 	public String getName() {

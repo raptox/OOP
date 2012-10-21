@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import notification.*;
 
 
@@ -11,6 +12,7 @@ public class Band {
 	private ArrayList<Member> members;
 	private ArrayList<Song> songs;
 	private Notification notificationList;
+	private Date bandRemoveDate; 
 	
 	private String name;
 	
@@ -22,6 +24,29 @@ public class Band {
 		this.notificationList = new Notification();
 		
 		this.name = name;
+		bandRemoveDate = null;
+	}
+	
+	public Member getMember(String name) {
+		Iterator<Member> it = members.iterator();
+		
+		while (it.hasNext()) {
+			Member help = it.next();
+			
+			if (help.getName().equals(name))
+				return help;
+		}
+		
+		return null;
+	}
+	
+	public void removeBand(Date remDate) {
+		if (bandRemoveDate == null)
+			bandRemoveDate = remDate;
+	}
+	
+	public String getBandName() {
+		return this.name;
 	}
 	
 	public void addMember( Member m ) { 
