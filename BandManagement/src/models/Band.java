@@ -1,7 +1,7 @@
 package models;
+
 import java.util.ArrayList;
 import java.util.Date;
-
 import notification.*;
 
 
@@ -27,22 +27,6 @@ public class Band {
 	public void addMember( Member m ) { 
 		this.members.add( m );
 		this.notificationList.register( m );
-	}
-	
-	public void changeGigDate() {
-		Notification n = new Notification();
-		
-		for ( Member m : this.members ) {
-			n.register( m );
-		}
-		
-		Announcement posponedGig = new Announcement( "Das Datum von unserem Auftritt hat sich auf Morgen verschoben!" );
-		
-		n.announce( posponedGig );
-		
-		for ( Decision d  :posponedGig.getDecisions() ) {
-			System.out.println( "Von: " + d.getMember().getName() + ", Entscheidung: " + d.getDecision() + ", Begründung: " + d.getReason() );
-		}
 	}
 	
 	public void removeMember( Member m, Date time ) {

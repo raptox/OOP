@@ -2,9 +2,8 @@ package models;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import notification.Announcement;
-import notification.Decision;
-import notification.Notification;
+import notification.*;
+
 
 
 public class Test {
