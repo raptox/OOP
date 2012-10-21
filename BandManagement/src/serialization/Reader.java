@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import models.Band;
+import management.BandManagement;
 
 public class Reader {
 	private String fileName;
@@ -13,10 +13,10 @@ public class Reader {
 		this.fileName = fileName;
 	}
 	
-	public Band read() throws IOException, ClassNotFoundException {
+	public BandManagement read() throws IOException, ClassNotFoundException {
 		FileInputStream in = new FileInputStream( this.fileName + ".ser" );
 		ObjectInputStream s = new ObjectInputStream(in);
 		
-		return (Band)s.readObject();
+		return (BandManagement)s.readObject();
 	}
 }

@@ -1,4 +1,5 @@
 package management;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Calendar;
@@ -24,7 +25,11 @@ class NoRights extends Exception {
  * This class manages all the bands and all the users who have access to them
  * 
  */
-public class BandManagement {
+public class BandManagement implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Band> bands;
 	private String activeUser;
 	

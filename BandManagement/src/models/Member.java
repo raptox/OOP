@@ -2,6 +2,7 @@ package models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Vector;
 
 import notification.*;
 
@@ -67,17 +68,35 @@ public class Member implements Observer, Serializable {
 	public void update( Announcement announcement ) {
 		// add new announcement to members announcement list
 		this.announcementList.add( announcement );
-		
-		if ( this.name.equals( "Corey Tailor" ) ) {
-			announcement.accept( "Ja find ich eh besser!", this );
-		}
-		else if ( this.name.equals( "Mick Thomson" ) ) {
-			announcement.reject( "Oh! Das passt mir gar nicht!", this );
-		}
-		System.out.println( this.name + ": " + announcement.getMessage() );
 	}
 	
-	public ArrayList<Announcement> listAnnouncements() {
+	public ArrayList<Announcement> listAllAnnouncements() {
 		return this.announcementList;
+	}
+	
+	public ArrayList<Announcement> listUnreadAnnouncements() {
+		ArrayList<Announcement> announcements = new ArrayList<Announcement>();
+		
+		for ( Announcement a : this.announcementList ) {
+			Vector<Decision> decisions = a.getDecisions();
+			
+			// if no decisions are made until now for this announcement, just add the unread announcement
+			if ( decisions.isEmpty() ) {
+				announcements.add( a );
+			}
+			else {
+				for ( Decision d : decisions ) {
+					if ( !d.getMember().equals( this ) ) {
+						announcements.add( a );
+					}
+				}
+			}
+		}
+		
+		return announcements;
+	}
+	
+	public boolean equals( Member m ) {
+		return this.name.equals( m.getName() );
 	}
 }
