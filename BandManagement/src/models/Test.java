@@ -1,16 +1,18 @@
 package models;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import notification.*;
-
+import serialization.*;
 
 
 public class Test {
 	public static void main( String args[] ) {
 		try {
-			Band slipknot = new Band( "Slipknot" );
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			/*Band slipknot = new Band( "Slipknot" );
+			
 			
 			//add some Member
 			Member coreyTailor = new Member( "Corey Tailor", "06646214689", "Gitarre", sdf.parse("2012-08-22") );
@@ -76,6 +78,7 @@ public class Test {
 		
 		// postpone the "novarock" gig
 		Announcement postponedGig = novarock.postpone( sdf.parse("2013-09-08"), "Dieses Jahr fällt unser Auftritt am Novarock aus!" );
+		slipknot.addAnnouncement( postponedGig );
 		
 		// output all the decisions from the band members concerning the postponement of the novarock gig
 		for ( Decision d  : postponedGig.getDecisions() ) {
@@ -88,6 +91,7 @@ public class Test {
 		
 		// cancel the "novarock" gig
 		Announcement canceledGig = novarock.cancel( "Leider hat uns der Verantalter von Novarock unseren Gig abgesagt!" );
+		slipknot.addAnnouncement( canceledGig );
 		
 		// output all the decisions from the band members concerning the postponement of the novarock gig
 		for ( Decision d  : canceledGig.getDecisions() ) {
@@ -97,7 +101,22 @@ public class Test {
 		System.out.println( "\nList of all Gigs after canceling the novarock gig: ");
 		System.out.println( slipknot.listGigs( sdf.parse( "2011-01-04" ), sdf.parse( "2013-12-08" ) ) );
 		
-		} catch (ParseException e) {
+		*/
+		//Writer wr = new Writer( "bernd" );
+		Reader r = new Reader( "bernd" );
+		
+		//wr.write( slipknot );
+		Band slipknotBACKUP = r.read();
+		
+		System.out.println( "\nList of Announcements: ");
+		for ( Member m : slipknotBACKUP.listMembers() ) {
+			System.out.println( m.getName() );
+			for ( Announcement a  : m.listAnnouncements() ) {
+				System.out.println( a.getMessage() );
+			}
+		}
+		
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

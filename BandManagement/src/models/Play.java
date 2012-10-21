@@ -1,13 +1,22 @@
 package models;
+import java.io.Serializable;
 import java.util.Date;
 import notification.Announcement;
 import notification.Notification;
 
-public abstract class Play {
-    private String location;
+public abstract class Play implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String location;
     private Date timeAndDate;
     private int duration;
     private Band band;
+    
+    public Play() {
+    	
+    }
     
     public Play(String location, Date timeAndDate, int duration) {
     	this.location = location;
