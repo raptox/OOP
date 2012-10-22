@@ -1,19 +1,25 @@
 package models;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-
+import java.util.Iterator;
 import notification.*;
 
 
-public class Band {
+public class Band implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Practice> practiceSessions;
 	private ArrayList<Gig> gigs;
 	private ArrayList<Member> members;
 	private ArrayList<Song> songs;
 	private ArrayList<Equipment> equipments;
-	
-	
+	private Notification notificationList;
+	private Date bandRemoveDate; 
+	private ArrayList<Announcement> announcementList;
 	
 	private String name;
 	
@@ -25,6 +31,11 @@ public class Band {
 		this.equipments = new ArrayList<Equipment>();
 		this.name = name;
 		
+		this.notificationList = new Notification();
+		this.announcementList = new ArrayList<Announcement>();
+		
+		this.name = name;
+		bandRemoveDate = null;		
 	}
 	
 	public ArrayList<Credits> getCreditsPractices(Date start, Date end){
@@ -54,27 +65,43 @@ public class Band {
 	public void addEquipment(Equipment e){
 		this.equipments.add(e);
 	}
-	public void addMember( Member m ) { 
-		this.members.add( m );
+
+	public Member getMember(String name) {
+		Iterator<Member> it = members.iterator();
+		
+		while (it.hasNext()) {
+			Member help = it.next();
+			
+			if (help.getName().equals(name))
+				return help;
+		}
+		
+		return null;
 	}
 	
-	public void changeGigDate() {
-		Notification n = new Notification();
-		
-		for ( Member m : this.members ) {
-			n.register( m );
-		}
-		Announcement posponedGig = new Announcement( "Das Datum von unserem Auftritt hat sich auf Morgen verschoben!" );
-		
-		n.announce( posponedGig );
-		
-		for ( Decision d  :posponedGig.getDecisions() ) {
-			System.out.println( "Von: " + d.getMember().getName() + ", Entscheidung: " + d.getDecision() + ", Begründung: " + d.getReason() );
-		}
+	public void removeBand(Date remDate) {
+		if (bandRemoveDate == null)
+			bandRemoveDate = remDate;
+	}
+	
+	public String getBandName() {
+		return this.name;
+	}
+	
+	public void addMember( Member m ) { 
+		this.members.add( m );
+		this.notificationList.register( m );
 	}
 	
 	public void removeMember( Member m, Date time ) {
 		m.setLeaveDate(time);
+		
+		// remove member from notification list
+		this.notificationList.unregister( m );
+	}
+	
+	public ArrayList<Member> listMembers() {
+		return this.listMembers( new Date() );
 	}
 	
 	public ArrayList<Member> listMembers( Date time ) {
@@ -116,6 +143,9 @@ public class Band {
 	}
 	
 	public void addPlay( Play p ) {
+		// save band reference to play object for later useage
+		p.setBand( this );
+		
 		if ( p instanceof Practice ) {
 			this.practiceSessions.add( (Practice) p );
 		}
@@ -126,6 +156,7 @@ public class Band {
 	
 	public ArrayList<Practice> listPractice( Date start, Date end ) {
 		ArrayList<Practice> practiceSessions = new ArrayList<Practice>();
+		
 		if(start != null && end != null){
 			for ( Practice p : this.practiceSessions ) {
 				if ( p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
@@ -184,6 +215,7 @@ public class Band {
 	}
 	public ArrayList<Gig> listGigs( Date start, Date end ) {
 		ArrayList<Gig> gigs = new ArrayList<Gig>();
+
 		if(start != null && end != null){
 			for ( Gig p : this.gigs ) {
 				if ( p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
@@ -221,4 +253,15 @@ public class Band {
 		return plays;
 	}
 	
+	public Notification getNotificationList() {
+		return this.notificationList;
+	}
+	
+	public void addAnnouncement( Announcement a ) {
+		this.announcementList.add( a );
+	}
+	
+	public ArrayList<Announcement> listAnnouncements() {
+		return this.announcementList;
+	}
 }

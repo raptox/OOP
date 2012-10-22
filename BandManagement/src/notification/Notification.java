@@ -1,9 +1,14 @@
 package notification;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 
-public class Notification implements Subject {
+public class Notification implements Subject, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vector<Observer> observers;
 	
 	public Notification() {
