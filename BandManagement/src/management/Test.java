@@ -133,6 +133,8 @@ public class Test {
 			wr.write( bands );
 			
 			/*
+			 * 
+			 * lustig
 			//add some Songs
 			Song duality = new Song( "Duality", 250, sdf.parse("2012-01-01") );
 			Song eyeless = new Song( "Eyeless", 420, sdf.parse("2012-01-01") );
