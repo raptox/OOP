@@ -1,19 +1,12 @@
 package models;
 import java.util.Date;
 
-public class Gig extends Play {
-    private double credit;
-
-    public Gig(String location, Date timeAndDate, int duration, double credit) {
-    	super(location, timeAndDate, duration);
-    	this.credit = credit;
+public class Gig extends Play implements Revenues{
+    public Gig(Location location, Date timeAndDate, int duration, double credits) {
+    	super(location, timeAndDate, duration, credits);
     }
 
     public String toString() {
-    	return super.toString()+", Credit: "+credit;
-    }
-
-    public double getCredit() {
-    	return credit;
+    	return super.toString()+", Revenues: "+this.getCredits();
     }
 }
