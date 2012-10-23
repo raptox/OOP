@@ -9,7 +9,7 @@ import notification.*;
 
 public class Band implements Serializable {
 	/**
-	 * 
+	 * hallo geil
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Practice> practiceSessions;
