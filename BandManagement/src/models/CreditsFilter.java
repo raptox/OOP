@@ -1,9 +1,15 @@
 package models;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
 
-public class CreditsFilter {
+public class CreditsFilter implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public CreditsFilter(){
 	}
 	

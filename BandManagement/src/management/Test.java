@@ -23,15 +23,13 @@ public class Test {
 			Band slipknot;
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			
-			/*boa bin ich geil
-			 * Auslesen aus Datei deaktiviert
-			 * 
+			
 			// Loading bands if data.ser file exists
 			if ( (new File( "data.ser" )).exists() ) {
 				Reader rd = new Reader( "data" );
 				bands = rd.read();
 			}
-			else {*/
+			else {
 				// Add some bands
 				bands = new BandManagement();
 				bands.setActiveUser("admin", "adminpass");
@@ -178,7 +176,7 @@ public class Test {
 				// cancel the "novarock" gig
 				Announcement canceledGig = novarock.cancel( "Leider hat uns der Verantalter von Novarock unseren Gig abgesagt!" );
 				slipknot.addAnnouncement( canceledGig );
-			//}
+			}
 			
 			// login as user "Corey Tailor"
 			Member currentMember = bands.setActiveUser("admin","adminpass");
@@ -194,8 +192,8 @@ public class Test {
 			}
 			
 			// save data to disk
-			/*Writer wr = new Writer( "data" );
-			wr.write( bands );*/
+			Writer wr = new Writer( "data" );
+			wr.write( bands );
 			
 			/*
 			 * 

@@ -1,8 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Equipment implements Costs{
+public class Equipment implements Costs, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double credits;
 	private Date buyDate;
 	private String name;
