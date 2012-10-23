@@ -141,7 +141,6 @@ public class Test {
 				String[] practicesAndGigs = {"Practices","Gigs"};
 				String[] gigsAndEquipments = {"Gigs","Equipments"};
 				
-				System.out.println(cF.getCredits(slipknot.getCreditsEquipments(null,null)));
 				
 				//print all Locations > 2000
 				System.out.println("print all locations");
