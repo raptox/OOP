@@ -1,5 +1,7 @@
 package management;
 
+
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 
@@ -59,7 +61,16 @@ public class Test {
 				slipknot.addMember( mickThomson );
 				slipknot.addMember( sidWilson );
 				
-				
+				System.out.println("print all Members(2010-08-23 -> emty band)");
+				System.out.println(slipknot.listMembers(sdf.parse("2010-08-23")));
+				System.out.println("print all Members(2014-08-23 -> list all)");
+				System.out.println(slipknot.listMembers(sdf.parse("2014-08-23")));
+				slipknot.removeMember(coreyTailor, sdf.parse("2013-01-01"));
+				System.out.println("print all Members(2014-08-23 -> list all members after Corey Tailor leaved the band)");
+				System.out.println(slipknot.listMembers(sdf.parse("2014-08-23")));
+				System.out.println("print all Members(2012-08-23 -> at this time Corey Tailor is still in the band");
+				System.out.println(slipknot.listMembers(sdf.parse("2012-10-23")));
+				System.out.println();
 				
 				
 				//add some Songs
@@ -72,6 +83,24 @@ public class Test {
 				slipknot.addSong( eyeless );
 				slipknot.addSong( surfacing );
 				slipknot.addSong( scissors );
+				
+				System.out.println("print all Songs");
+				System.out.println(slipknot.listSongs(sdf.parse("2012-11-11")));
+				slipknot.removeSong(eyeless, sdf.parse("2012-11-11"));
+				System.out.println("print all Songs after \"eyeless\" removal");
+				System.out.println(slipknot.listSongs(sdf.parse("2012-11-11")));
+				System.out.println();
+				
+				//add some Equipment
+				Equipment guitar = new Equipment("Guitar",sdf.parse("2010-01-01"),300);
+				Equipment keyboard = new Equipment("Keyboard",sdf.parse("2011-01-01"),300);
+				Equipment micro = new Equipment("Micro",sdf.parse("2011-03-01"),100);
+				Equipment box = new Equipment("Box",sdf.parse("2012-05-01"),600);
+				
+				slipknot.addEquipment(guitar);
+				slipknot.addEquipment(keyboard);
+				slipknot.addEquipment(micro);
+				slipknot.addEquipment(box);
 				
 				//Add some Locations
 				LocationManager lM = new LocationManager();
@@ -105,6 +134,43 @@ public class Test {
 				slipknot.addPlay( p1 );
 				slipknot.addPlay( p2 );
 				slipknot.addPlay( p3 );
+				
+				//add a CreditFilter
+				CreditsFilter cF = new CreditsFilter();
+				//and some String Arrays to filter by
+				String[] practicesAndGigs = {"Practices","Gigs"};
+				String[] gigsAndEquipments = {"Gigs","Equipments"};
+				
+				System.out.println(cF.getCredits(slipknot.getCreditsEquipments(null,null)));
+				
+				//print all Locations > 2000
+				System.out.println("print all locations");
+				System.out.println(lM.getLocations());
+				System.out.println("print all locations > 2000m≤");
+				System.out.println(lM.getLocations(2000));
+				System.out.println();
+				
+				// print all gigs
+				System.out.println("print all Gigs (2012-14-04  -  2012-12-08");
+				System.out.println( slipknot.listGigs( sdf.parse( "2012-11-04" ), sdf.parse( "2012-12-08" ) ) );
+				System.out.println();
+				
+				// print all practice sessions
+				System.out.println("print all practice sessions (2012-11-04  -  2012-12-08");
+				System.out.println( slipknot.listPractice( sdf.parse( "2012-11-04" ), sdf.parse( "2012-12-08" ) ) );
+				System.out.println();
+				
+				// print different Credits-specifications (null selects all)
+				System.out.println("print all Equipments: "+cF.getCredits(slipknot.getCreditsEquipments(null,null)));
+				System.out.println("print all Credits: "+cF.getCredits(cF.filter(slipknot, null, null, null)));
+				System.out.println("print all Credits from practices and gigs(big bang  -  2012-01-01): "
+						+cF.getCredits(cF.filter(slipknot,null, sdf.parse( "2012-01-01" ), practicesAndGigs)));
+				System.out.println("print all Credits (2012-01-01  - apocalypse): "
+						+cF.getCredits(cF.filter(slipknot, sdf.parse( "2012-01-01" ),null, null)));
+				System.out.println("print all Credits from gigs and equipments: "+cF.getCredits(cF.filter(slipknot, null, null, gigsAndEquipments)));
+				System.out.println("print all Credits from equipments(2010-01-01  -  2012-01-01): " +
+						cF.getCredits(slipknot.getCreditsEquipments(sdf.parse( "2010-01-01" ), sdf.parse( "2012-01-01" ))));
+				System.out.println();
 	
 				// postpone the "novarock" gig
 				Announcement postponedGig = novarock.postpone( sdf.parse("2013-09-08"), "Dieses Jahr fällt unser Auftritt am Novarock aus!" );
@@ -129,8 +195,8 @@ public class Test {
 			}
 			
 			// save data to disk
-			Writer wr = new Writer( "data" );
-			wr.write( bands );
+			/*Writer wr = new Writer( "data" );
+			wr.write( bands );*/
 			
 			/*
 			 * 
