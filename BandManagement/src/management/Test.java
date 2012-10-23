@@ -26,12 +26,14 @@ public class Test {
 			
 			// Loading bands if data.ser file exists
 			if ( (new File( "data.ser" )).exists() ) {
+				System.out.println("READ DATA FROM FILE data.ser");
 				Reader rd = new Reader( "data" );
 				bands = rd.read();
 			}
 			else {
 				// Add some bands
 				bands = new BandManagement();
+				System.out.println("<<Log in with admin so we can add bands and members>>");
 				bands.setActiveUser("admin", "adminpass");
 				
 				bands.addBand("Slipknot");
@@ -59,6 +61,10 @@ public class Test {
 				slipknot.addMember( mickThomson );
 				slipknot.addMember( sidWilson );
 				
+				System.out.println("<<Users and bands added>>");
+				
+				bands.setActiveUser("Mick Thomson", "ghi");
+				
 				System.out.println("print all Members(2010-08-23 -> emty band)");
 				System.out.println(slipknot.listMembers(sdf.parse("2010-08-23")));
 				System.out.println("print all Members(2014-08-23 -> list all)");
@@ -82,10 +88,10 @@ public class Test {
 				slipknot.addSong( surfacing );
 				slipknot.addSong( scissors );
 				
-				System.out.println("print all Songs");
+				System.out.println("<<print all Songs>>");
 				System.out.println(slipknot.listSongs(sdf.parse("2012-11-11")));
 				slipknot.removeSong(eyeless, sdf.parse("2012-11-11"));
-				System.out.println("print all Songs after \"eyeless\" removal");
+				System.out.println("<<print all Songs after \"eyeless\" removal>>");
 				System.out.println(slipknot.listSongs(sdf.parse("2012-11-11")));
 				System.out.println();
 				
@@ -141,19 +147,19 @@ public class Test {
 				
 				
 				//print all Locations > 2000
-				System.out.println("print all locations");
+				System.out.println("<<print all locations>>");
 				System.out.println(lM.getLocations());
-				System.out.println("print all locations > 2000m≤");
+				System.out.println("<<print all locations > 2000m^2>>");
 				System.out.println(lM.getLocations(2000));
 				System.out.println();
 				
 				// print all gigs
-				System.out.println("print all Gigs (2012-14-04  -  2012-12-08");
+				System.out.println("<<print all Gigs (2012-14-04  -  2012-12-08>>");
 				System.out.println( slipknot.listGigs( sdf.parse( "2012-11-04" ), sdf.parse( "2012-12-08" ) ) );
 				System.out.println();
 				
 				// print all practice sessions
-				System.out.println("print all practice sessions (2012-11-04  -  2012-12-08");
+				System.out.println("<<print all practice sessions (2012-11-04  -  2012-12-08>>");
 				System.out.println( slipknot.listPractice( sdf.parse( "2012-11-04" ), sdf.parse( "2012-12-08" ) ) );
 				System.out.println();
 				
@@ -170,7 +176,7 @@ public class Test {
 				System.out.println();
 	
 				// postpone the "novarock" gig
-				Announcement postponedGig = novarock.postpone( sdf.parse("2013-09-08"), "Dieses Jahr fällt unser Auftritt am Novarock aus!" );
+				Announcement postponedGig = novarock.postpone( sdf.parse("2013-09-08"), "Dieses Jahr faellt unser Auftritt am Novarock aus!" );
 				slipknot.addAnnouncement( postponedGig );
 	
 				// cancel the "novarock" gig
@@ -179,18 +185,28 @@ public class Test {
 			}
 			
 			// login as user "Corey Tailor"
-			Member currentMember = bands.setActiveUser("admin","adminpass");
+			Member currentMember = bands.setActiveUser("Chris Fehn","def");
 			slipknot = bands.getBand("Slipknot");
 			//System.out.println( slipknot.listGigs( sdf.parse( "2012-12-04" ), sdf.parse( "2014-12-08" ) ) );
 			
 			// login as user "Corey Tailor"
-			currentMember = bands.setActiveUser("Corey Tailor","abc");
+			System.out.println("Try to log in as Corey Tailor (user left the band)");
+			try {
+				currentMember = bands.setActiveUser("Corey Tailor","abc");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 			
+			currentMember = bands.setActiveUser("Mick Thomson", "ghi");
+			
+			
+			System.out.println("<<show announcements>>");
 			// show all unread announcements for corey tailor
 			for ( Announcement a : currentMember.listUnreadAnnouncements() ) {
 				System.out.println( a.getMessage() );
 			}
 			
+			System.out.println("WRITE DATA TO FILE data.ser");
 			// save data to disk
 			Writer wr = new Writer( "data" );
 			wr.write( bands );

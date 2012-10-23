@@ -20,6 +20,6 @@ public class Location implements Serializable {
 	}
 	
 	public String toString(){
-		return "Location:"+name+" Size:"+size+"m²"; 
+		return "Location:"+name+" Size:"+size+"m^2"; 
 	}
 }
