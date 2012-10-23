@@ -23,7 +23,7 @@ public class Test {
 			Band slipknot;
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			
-			/*
+			/*boa bin ich geil
 			 * Auslesen aus Datei deaktiviert
 			 * 
 			// Loading bands if data.ser file exists
