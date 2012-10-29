@@ -7,7 +7,7 @@ import java.util.Calendar;
 import models.*;
 
 /*
- * Exceptions classes
+ * UserNotFund ist die Exception Klasse wenn der Benutzer nicht gefunden wird
  */
 class UserNotFound extends Exception {
 	public UserNotFound() {
@@ -15,6 +15,9 @@ class UserNotFound extends Exception {
 	}
 }
 
+/*
+ * NoRights ist die Exception Klasse wenn der Benutzer keine Rechte hat
+ */
 class NoRights extends Exception {
 	public NoRights() {
 		super("ERROR: User has no rights for this band");
@@ -22,23 +25,27 @@ class NoRights extends Exception {
 }
 
 /*
- * This class manages all the bands and all the users who have access to them
- * 
+ * Diese Klasse verwaltet alle Bands und die Berechtigungen der einzelnen User
  */
-public class BandManagement implements Serializable{
-	/**
-	 * 
-	 */
+public class BandManagement implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Band> bands;
 	private String activeUser;
 	
-	
+	/*
+	 * Konstruktor
+	 */
 	public BandManagement() {
 		bands = new ArrayList<Band>();
 		activeUser = "";
 	}
 	
+	
+	/*
+	 * hasRights, ueberprueft ob activeUser Zugriff auf die Band hat
+	 * Vorb.: myband != null
+	 * Nachb.: true = Benutzer hat Rechte, false = Benutzer hat keine Rechte
+	 */
 	private boolean hasRights(Band myband) {
 		if (activeUser.equals("")) {
 			return false;
@@ -51,6 +58,10 @@ public class BandManagement implements Serializable{
 		return false;
 	}
 	
+	/*
+	 * setActiveUser, log in funktion fuer einen Benutzer, liefert eingeloggten Benutzer zurueck
+	 * Vorb.: name != null && pass != null
+	 */
 	public Member setActiveUser(String name, String pass) throws UserNotFound {
 		if (name.equals("admin") && pass.equals("adminpass")) {
 			activeUser = "admin";
@@ -77,6 +88,10 @@ public class BandManagement implements Serializable{
 		throw new UserNotFound();
 	}
 	
+	/*
+	 *  addBand, fuegt eine neue Band hinzu
+	 *  Vorb.: name != null
+	 */
 	public void addBand(String name) throws NoRights {
 		// Only admin can add new bands
 		
@@ -86,6 +101,10 @@ public class BandManagement implements Serializable{
 			throw new NoRights();
 	}
 	
+	/*
+	 * getBand, liefert eine Band zurueck, falls der User berechtigt ist
+	 * Vorb.: name != null
+	 */
 	public Band getBand(String name) throws NoRights {
 		Iterator<Band> it = bands.iterator();
 		
@@ -103,6 +122,10 @@ public class BandManagement implements Serializable{
 		return null; // didn't find band
 	}
 	
+	/*
+	 * removeBand, loescht eine Band, wenn der User berechtigt ist
+	 * Vorb.: name != null
+	 */
 	public void removeBand(String name) throws NoRights {
 		// only admin can remove bands
 		if (!activeUser.equals("admin"))
