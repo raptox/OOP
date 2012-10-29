@@ -9,13 +9,14 @@ import notification.*;
 
 public class Band implements Serializable {
 	/**
-	 * 
+	 * hallo geil
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Practice> practiceSessions;
 	private ArrayList<Gig> gigs;
 	private ArrayList<Member> members;
 	private ArrayList<Song> songs;
+	private ArrayList<Equipment> equipments;
 	private Notification notificationList;
 	private Date bandRemoveDate; 
 	private ArrayList<Announcement> announcementList;
@@ -27,13 +28,44 @@ public class Band implements Serializable {
 		this.gigs = new ArrayList<Gig>();
 		this.members = new ArrayList<Member>();
 		this.songs = new ArrayList<Song>();
+		this.equipments = new ArrayList<Equipment>();
+		this.name = name;
+		
 		this.notificationList = new Notification();
 		this.announcementList = new ArrayList<Announcement>();
 		
 		this.name = name;
-		bandRemoveDate = null;
+		bandRemoveDate = null;		
 	}
 	
+	public ArrayList<Credits> getCreditsPractices(Date start, Date end){
+		ArrayList<Credits> creditsPractice = new ArrayList<Credits>();
+		for(Practice p: listPractice(start,end)){
+			creditsPractice.add(p);
+		}
+		return creditsPractice;
+	}
+	
+	public ArrayList<Credits> getCreditsGigs(Date start, Date end){
+		ArrayList<Credits> creditsGigs = new ArrayList<Credits>();
+		for(Gig g: listGigs(start,end)){
+			creditsGigs.add(g);
+		}
+		return creditsGigs;
+	}
+	
+	public ArrayList<Credits> getCreditsEquipments(Date start,Date end){
+		ArrayList<Credits> creditsEquipment = new ArrayList<Credits>();
+		for(Equipment e: listEquipments(start,end)){
+			creditsEquipment.add(e);
+		}
+		return creditsEquipment;
+	}
+	
+	public void addEquipment(Equipment e){
+		this.equipments.add(e);
+	}
+
 	public Member getMember(String name) {
 		Iterator<Member> it = members.iterator();
 		
@@ -125,22 +157,88 @@ public class Band implements Serializable {
 	public ArrayList<Practice> listPractice( Date start, Date end ) {
 		ArrayList<Practice> practiceSessions = new ArrayList<Practice>();
 		
-		for ( Practice p : this.practiceSessions ) {
-			if ( p.getTimeAndDate() != null && p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
-				practiceSessions.add( p );
+		if(start != null && end != null){
+			for ( Practice p : this.practiceSessions ) {
+				if ( p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
+					practiceSessions.add( p );
+				}
 			}
+		}
+		else if(start == null && end != null){
+			for(Practice p: this.practiceSessions){
+				if(p.getTimeAndDate().compareTo( end ) <= 0){
+					practiceSessions.add(p);
+				}
+			}
+		}
+		else if(end == null && start != null){
+			for(Practice p: this.practiceSessions){
+				if(p.getTimeAndDate().compareTo( start ) >= 0){
+					practiceSessions.add(p);
+				}
+			}
+		}
+		else {
+			return this.practiceSessions;
 		}
 		
 		return practiceSessions;
 	}
-	
+	public ArrayList<Equipment> listEquipments(Date start,Date end){
+		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
+		if(start != null && end != null){
+			for ( Equipment e : this.equipments ) {
+				if ( e.getBuyDate().compareTo( start ) >= 0 && e.getBuyDate().compareTo( end ) <= 0 ) {
+					equipList.add( e );
+				}
+			}
+		}
+		else if(start == null && end !=null){
+			for(Equipment e: this.equipments){
+				if(e.getBuyDate().compareTo( end ) <= 0){
+					equipList.add(e);
+				}
+			}
+		}
+		else if(end == null && start !=null){
+			for(Equipment e: this.equipments){
+				if(e.getBuyDate().compareTo( start ) >= 0){
+					equipList.add(e);
+				}
+			}
+		}
+		else {
+			return this.equipments;
+		}
+		
+		return equipList;
+	}
 	public ArrayList<Gig> listGigs( Date start, Date end ) {
 		ArrayList<Gig> gigs = new ArrayList<Gig>();
-		
-		for ( Gig g : this.gigs ) {
-			if ( g.getTimeAndDate() != null && g.getTimeAndDate().compareTo( start ) >= 0 && g.getTimeAndDate().compareTo( end ) <= 0 ) {
-				gigs.add( g );
+
+		if(start != null && end != null){
+			for ( Gig p : this.gigs ) {
+				if ( p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
+					gigs.add( p );
+				}
 			}
+		}
+		else if(start == null && end != null){
+			for(Gig p: this.gigs){
+				if(p.getTimeAndDate().compareTo( end ) <= 0){
+					gigs.add(p);
+				}
+			}
+		}
+		else if(end == null && start != null){
+			for(Gig p: this.gigs){
+				if(p.getTimeAndDate().compareTo( start ) >= 0){
+					gigs.add(p);
+				}
+			}
+		}
+		else {
+			return this.gigs;
 		}
 		
 		return gigs;
@@ -153,30 +251,6 @@ public class Band implements Serializable {
 		plays.addAll( this.listGigs( start, end ) );
 		
 		return plays;
-	}
-
-	public double getCostsGigs( Date start, Date end ) {
-		double costs = 0;
-		
-		for ( Gig g : this.listGigs( start, end ) ) {
-			costs += g.getCredit();
-		}
-		
-		return costs;
-	}
-	
-	public double getCostsPractices( Date start, Date end ) {
-		double costs = 0;
-		
-		for ( Practice p : this.listPractice(start, end) ) {
-			costs += p.getRent();
-		}
-		
-		return costs;
-	}
-	
-	public double getCostsAll( Date start, Date end ) {
-		return this.getCostsGigs( start, end ) - this.getCostsPractices( start, end );
 	}
 	
 	public Notification getNotificationList() {

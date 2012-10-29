@@ -11,13 +11,13 @@ import models.*;
  */
 class UserNotFound extends Exception {
 	public UserNotFound() {
-		super("User not found!");
+		super("ERROR: User not found!");
 	}
 }
 
 class NoRights extends Exception {
 	public NoRights() {
-		super("User has no rights for this band");
+		super("ERROR: User has no rights for this band");
 	}
 }
 
@@ -54,7 +54,7 @@ public class BandManagement implements Serializable{
 	public Member setActiveUser(String name, String pass) throws UserNotFound {
 		if (name.equals("admin") && pass.equals("adminpass")) {
 			activeUser = "admin";
-			System.out.println("Active user changed to: "+activeUser);	
+			System.out.println("LOGGED IN: "+activeUser);	
 			return new Member("admin");
 		}
 		
@@ -66,9 +66,9 @@ public class BandManagement implements Serializable{
 			Band help = it.next();
 			Member help_mem = help.getMember(name);
 			
-			if (help_mem != null && help_mem.getPassword().equals(pass)) {
+			if (help_mem != null && help_mem.getPassword().equals(pass) && help_mem.getLeaveDate() == null) {
 				activeUser = name;
-				System.out.println("Active user changed to: "+activeUser);
+				System.out.println("LOGGED IN: "+activeUser);
 				return help_mem;
 			}
 		}

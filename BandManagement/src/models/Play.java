@@ -4,24 +4,32 @@ import java.util.Date;
 import notification.Announcement;
 import notification.Notification;
 
-public abstract class Play implements Serializable {
+public abstract class Play implements Serializable, Credits {
+
+    private Location location;
+    private Date timeAndDate;
+    private int duration;
+    private double credits;
+	private static final long serialVersionUID = 1L;
+    private Band band;
+
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private String location;
-    private Date timeAndDate;
-    private int duration;
-    private Band band;
     
     public Play() {
     	
     }
-    
-    public Play(String location, Date timeAndDate, int duration) {
+
+    public Play(Location location, Date timeAndDate, int duration, double credits) {
     	this.location = location;
     	this.timeAndDate = timeAndDate;
     	this.duration = duration;
+    	this.credits = credits;
+    }
+    
+    public double getCredits(){
+    	return credits;
     }
     
     public Date getTimeAndDate() {
@@ -58,10 +66,6 @@ public abstract class Play implements Serializable {
     }
     
     public String toString() {
-    	if ( this.timeAndDate != null ) {
-    		return "Loc: "+location+" Date and Time: "+timeAndDate.toString()+", Duration(min):"+duration/60; 
-    	}
-    	
-    	return null;
+    	return ""+location+" Date and Time: "+timeAndDate.toString()+", Duration(min):"+duration/60; 
     }
 }
