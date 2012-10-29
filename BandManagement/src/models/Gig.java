@@ -1,21 +1,30 @@
 package models;
 import java.util.Date;
 
+/*
+ * This class represents a gig
+ */
 public class Gig extends Play implements Revenues {
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
+	/*
+	 * leerer Konstruktor
+	 */
 	public Gig() {
 		super();
 	}
 
+	/*
+	 * Konstruktor, initialisiert gig objekt
+	 * Vorb.: location != null && timeAndDate != null && duration > 0 && credits > 0
+	 */
 	public Gig(Location location, Date timeAndDate, int duration, double credits) {
     	super(location, timeAndDate, duration, credits);
     }	
 	
-
+	/*
+	 * toString, liefert schoene Darstellung des Gigs als String
+	 */
     public String toString() {
     	return super.toString()+", Revenues: "+this.getCredits();
     }
