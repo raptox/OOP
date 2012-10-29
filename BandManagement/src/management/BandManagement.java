@@ -25,7 +25,7 @@ class NoRights extends Exception {
 }
 
 /*
- * This class manages all the bands and all the users who have access to them
+ * Diese Klasse verwaltet alle Bands und die Berechtigungen der einzelnen User
  */
 public class BandManagement implements Serializable {
 	private static final long serialVersionUID = 1L;

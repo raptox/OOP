@@ -2,7 +2,7 @@ package models;
 import java.util.Date;
 
 /*
- * This class represents a gig
+ * Klasse Gig stellt ein Konzert einer Band dar
  */
 public class Gig extends Play implements Revenues {
 	private static final long serialVersionUID = 1L;
