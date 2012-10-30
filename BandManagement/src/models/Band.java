@@ -6,11 +6,10 @@ import java.util.Date;
 import java.util.Iterator;
 import notification.*;
 
-
+/**
+ * Die Klasse Band stellt eine Musikgruppe dar, bestehend aus mehreren Mitgliedern, Songs, Gigs, Proben usw.
+ */
 public class Band implements Serializable {
-	/**
-	 * hallo geil
-	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Practice> practiceSessions;
 	private ArrayList<Gig> gigs;
@@ -23,6 +22,9 @@ public class Band implements Serializable {
 	
 	private String name;
 	
+	/**
+	 * Vorb.: name != ""
+	 */
 	public Band( String name ) {
 		this.practiceSessions = new ArrayList<Practice>();
 		this.gigs = new ArrayList<Gig>();
@@ -38,6 +40,9 @@ public class Band implements Serializable {
 		bandRemoveDate = null;		
 	}
 	
+	/**
+	 * @Todo: Jakob
+	 */
 	public ArrayList<Credits> getCreditsPractices(Date start, Date end){
 		ArrayList<Credits> creditsPractice = new ArrayList<Credits>();
 		for(Practice p: listPractice(start,end)){
@@ -46,6 +51,9 @@ public class Band implements Serializable {
 		return creditsPractice;
 	}
 	
+	/**
+	 * @Todo: Jakob
+	 */
 	public ArrayList<Credits> getCreditsGigs(Date start, Date end){
 		ArrayList<Credits> creditsGigs = new ArrayList<Credits>();
 		for(Gig g: listGigs(start,end)){
@@ -54,6 +62,9 @@ public class Band implements Serializable {
 		return creditsGigs;
 	}
 	
+	/**
+	 * @Todo: Jakob
+	 */
 	public ArrayList<Credits> getCreditsEquipments(Date start,Date end){
 		ArrayList<Credits> creditsEquipment = new ArrayList<Credits>();
 		for(Equipment e: listEquipments(start,end)){
@@ -62,10 +73,20 @@ public class Band implements Serializable {
 		return creditsEquipment;
 	}
 	
+	/*
+	 * Fügt ein neues Equipment zur Band hinzu.
+	 * 
+	 * Vorb.: e != null
+	 */
 	public void addEquipment(Equipment e){
 		this.equipments.add(e);
 	}
-
+	
+	/*
+	 * Liefert ein Bandmitglied anhand von dem übergebenen Mitgliedsnamen.
+	 * 
+	 * Vorb.: name != "" 
+	 */
 	public Member getMember(String name) {
 		Iterator<Member> it = members.iterator();
 		
@@ -79,20 +100,38 @@ public class Band implements Serializable {
 		return null;
 	}
 	
+	/*
+	 * Löscht die Band.
+	 * 
+	 * Vorb.: remDate != null
+	 */
 	public void removeBand(Date remDate) {
 		if (bandRemoveDate == null)
 			bandRemoveDate = remDate;
 	}
 	
+	/*
+	 * Liefert den Namen der Band.
+	 */
 	public String getBandName() {
 		return this.name;
 	}
 	
+	/*
+	 * Fügt einen neuen Benutzer zur Band hinzu.
+	 * 
+	 * Vorb.: m != null & m instanceof Member
+	 */
 	public void addMember( Member m ) { 
 		this.members.add( m );
 		this.notificationList.register( m );
 	}
 	
+	/*
+	 * Löscht ein Bandmitglied der Band
+	 * 
+	 * Vorb.: m != null && time != null
+	 */
 	public void removeMember( Member m, Date time ) {
 		m.setLeaveDate(time);
 		
@@ -100,10 +139,18 @@ public class Band implements Serializable {
 		this.notificationList.unregister( m );
 	}
 	
+	/*
+	 * Liefert alle aktuellen Mitglieder der Band
+	 */
 	public ArrayList<Member> listMembers() {
 		return this.listMembers( new Date() );
 	}
 	
+	/*
+	 * Liefert alle Mitglieder der Band bis zu einem gewissen Datum
+	 * 
+	 * Vorb.: time != null
+	 */
 	public ArrayList<Member> listMembers( Date time ) {
 		ArrayList<Member> members = new ArrayList<Member>();
 		
@@ -119,14 +166,29 @@ public class Band implements Serializable {
 		return members;
 	}
 	
+	/*
+	 * Fügt einen neuen Song zur Band hinzu.
+	 * 
+	 * Vorb.: s != null
+	 */
 	public void addSong( Song s ) {
 		this.songs.add( s );
 	}
 	
+	/*
+	 * Entfernt einen Song.
+	 * 
+	 * Vorb.: s != null && time != null
+	 */
 	public void removeSong( Song s, Date time ) {
 		s.setRemoveDate(time);
 	}
 	
+	/*
+	 * Liefert alle Songs bis zu einem übergebenen Datum zurück.
+	 * 
+	 * Vorb.: time != null
+	 */
 	public ArrayList<Song> listSongs( Date time ) {
 		ArrayList<Song> songs = new ArrayList<Song>();
 		
@@ -142,6 +204,11 @@ public class Band implements Serializable {
 		return songs;
 	}
 	
+	/*
+	 * Fügt einen neuen Auftritt bzw. eine neue Probe hinzu.
+	 * 
+	 * Vorb.: p != null
+	 */
 	public void addPlay( Play p ) {
 		// save band reference to play object for later useage
 		p.setBand( this );
@@ -154,6 +221,11 @@ public class Band implements Serializable {
 		}
 	}
 	
+	/*
+	 * Liefert alle Proben in einem übergebenen Zeitintervall.
+	 * 
+	 * Vorb.: start != null && end != null && end > start
+	 */
 	public ArrayList<Practice> listPractice( Date start, Date end ) {
 		ArrayList<Practice> practiceSessions = new ArrayList<Practice>();
 		
@@ -184,6 +256,12 @@ public class Band implements Serializable {
 		
 		return practiceSessions;
 	}
+	
+	/*
+	 * Liefert alle Equipments der Band in einem gegebenen Zeitintervall.
+	 * 
+	 * Vorb.: start != null && end != null && end > start
+	 */
 	public ArrayList<Equipment> listEquipments(Date start,Date end){
 		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
 		if(start != null && end != null){
@@ -213,6 +291,12 @@ public class Band implements Serializable {
 		
 		return equipList;
 	}
+	
+	/*
+	 * Liefert alle Auftritte der Band in einem gegebenen Zeitintervall.
+	 * 
+	 * Vorb.: start != null && end != null && end > start
+	 */
 	public ArrayList<Gig> listGigs( Date start, Date end ) {
 		ArrayList<Gig> gigs = new ArrayList<Gig>();
 
@@ -244,6 +328,11 @@ public class Band implements Serializable {
 		return gigs;
 	}
 	
+	/*
+	 * Liefert alle Auftritte UND Proben der Band in einem gegebenen Zeitintervall.
+	 * 
+	 * Vorb.: start != null && end != null && end > start
+	 */
 	public ArrayList<Play> listAllAppearances( Date start, Date end ) {
 		ArrayList<Play> plays = new ArrayList<Play>();
 		
@@ -253,14 +342,25 @@ public class Band implements Serializable {
 		return plays;
 	}
 	
+	/*
+	 * Liefert das Notification Objekt der Band in dem alle zu benachrichtigenden Mitglieder enthalten sind.
+	 */
 	public Notification getNotificationList() {
 		return this.notificationList;
 	}
 	
+	/*
+	 * Fügt eine neue Bekanntmachung der Band hinzu.
+	 * 
+	 * Vorb.: a != null
+	 */
 	public void addAnnouncement( Announcement a ) {
 		this.announcementList.add( a );
 	}
 	
+	/*
+	 * Liefert alle Bekanntmachungen der Band.
+	 */
 	public ArrayList<Announcement> listAnnouncements() {
 		return this.announcementList;
 	}

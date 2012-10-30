@@ -49,7 +49,8 @@ public abstract class Play implements Serializable, Credits {
     }
     
     /* 
-     * Liefert Mitteilung mit Verschiebung zurueck
+     * Verschiebt einen Gig/Practice Session und liefert die Ankündigung zurück.
+     * 
      * Vorb.: d != null && message != null
      */
     public Announcement postpone( Date d, String message ) {
@@ -64,7 +65,7 @@ public abstract class Play implements Serializable, Credits {
     }
     
     /*
-     * Liefert Mitteulung mit Absage
+     * Sagt einen Gig/Practice Session ab und liefert die Ankündigung zurück.
      * Vorb.: message != null
      */
     public Announcement cancel( String message ) {
