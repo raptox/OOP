@@ -7,6 +7,7 @@ import notification.Notification;
 /*
  * Klasse Play stellt ein Treffen der Band dar
  */
+//GUT: dynamisches Binden, Credits, es gibt nur eine Methode getCredits und zwar in Credits
 public abstract class Play implements Serializable, Credits {
 
     private Location location;
@@ -49,7 +50,7 @@ public abstract class Play implements Serializable, Credits {
     }
     
     /* 
-     * Verschiebt einen Gig/Practice Session und liefert die AnkŸndigung zurŸck.
+     * Verschiebt einen Gig/Practice Session und liefert die Ankï¿½ndigung zurï¿½ck.
      * 
      * Vorb.: d != null && message != null
      */
@@ -65,7 +66,7 @@ public abstract class Play implements Serializable, Credits {
     }
     
     /*
-     * Sagt einen Gig/Practice Session ab und liefert die AnkŸndigung zurŸck.
+     * Sagt einen Gig/Practice Session ab und liefert die Ankï¿½ndigung zurï¿½ck.
      * Vorb.: message != null
      */
     public Announcement cancel( String message ) {

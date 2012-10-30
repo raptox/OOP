@@ -72,6 +72,7 @@ public class BandManagement implements Serializable {
 		/*
 		 * Check every band until you find member
 		 */
+		// Innvariante: bands != null
 		Iterator<Band> it = bands.iterator();
 		while (it.hasNext()) {
 			Band help = it.next();
@@ -108,6 +109,7 @@ public class BandManagement implements Serializable {
 	public Band getBand(String name) throws NoRights {
 		Iterator<Band> it = bands.iterator();
 		
+		// Innvariante: bands != null
 		while (it.hasNext()) {
 			Band help = it.next();
 			if (help.getBandName().equals(name)) {
@@ -133,7 +135,8 @@ public class BandManagement implements Serializable {
 		
 		Iterator<Band> it = bands.iterator();
 		Calendar cal = Calendar.getInstance();
-				
+		
+		// Innvariante: bands != null
 		while (it.hasNext()) {
 			Band help = it.next();
 			if (help.getBandName().equals(name)) {
