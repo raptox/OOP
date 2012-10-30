@@ -13,7 +13,10 @@ public class CreditsFilter implements Serializable {
 	public CreditsFilter(){
 	}
 	
-
+	
+	/*
+	 * Liefert eine Liste von Credits-Objekten zurueck ,die die Filter-kriterien erfuellen
+	 */
 	public ArrayList<Credits> filter(Band b, Date start, Date end, String[] filterOperations){
 		ArrayList<Credits> credits = new ArrayList<Credits>();
 		HashMap<String,ArrayList<Credits>> correctInput = new HashMap<String,ArrayList<Credits>>();
@@ -26,6 +29,7 @@ public class CreditsFilter implements Serializable {
 		if(b != null){
 			if(filterOperations != null){
 				for(String s: filterOperations){
+					//Invariante: s!=null
 					if(correctInput.containsKey(s)){
 						for(Credits c:correctInput.get(s)){
 							credits.add(c);
@@ -36,6 +40,7 @@ public class CreditsFilter implements Serializable {
 			else{
 				for(String key:correctInput.keySet()){
 					for(Credits c:correctInput.get(key)){
+						//Invariante: c!=null
 						credits.add(c);
 					}
 				}
@@ -45,9 +50,14 @@ public class CreditsFilter implements Serializable {
 		return credits;
 	}
 	
+	/*
+	 * Liefer zu einer Credits Liste deren Umsatz
+	 * Vorb.: credits != null
+	 */
 	public double getCredits(ArrayList<Credits> credits){
 		double totalCredits=0;
 		for(Credits c:credits){
+			//Invariante: c!=null
 			if(c instanceof Revenues){
 				totalCredits+=c.getCredits();
 			}
