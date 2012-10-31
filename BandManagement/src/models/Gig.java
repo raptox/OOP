@@ -4,6 +4,7 @@ import java.util.Date;
 /*
  * Klasse Gig stellt ein Konzert einer Band dar
  */
+// GUT: dynamisches Binden, Revenues, es gibt nur eine Methode getCredits und zwar in Credits
 public class Gig extends Play implements Revenues {
 	private static final long serialVersionUID = 1L;
 	
