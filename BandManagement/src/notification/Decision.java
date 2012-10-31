@@ -24,6 +24,8 @@ public class Decision implements Serializable {
 	 * @param member Das Mitglied das die Entscheidung gefallen hat
 	 * 
 	 * Vorb.: decision != null, member != null
+	 * SCHLECHT: der Parameter Member verhindert dass man das ganze Package notification zur Benachrichtigung
+	 * 			 wiederverwenden kann in anderen Projekten, also hohe Klassenkopplung
 	 */
 	public Decision( Boolean decision, String reason, Member member ) {
 		this.reason = reason;

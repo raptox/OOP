@@ -208,6 +208,10 @@ public class Band implements Serializable {
 	 * Fügt einen neuen Auftritt bzw. eine neue Probe hinzu.
 	 * 
 	 * Vorb.: p != null
+	 * 
+	 * SCHLECHT: Hier könnte man auf 2 verschiedene Listen (practiceSessions & gigs) verzichten
+	 *  		 und einfach Play Objekte in einer Liste speichern und beim späteren
+	 *  		 durchiterieren einfach überprüfen, welcher Typ das Objekt wirklich ist.
 	 */
 	public void addPlay( Play p ) {
 		// save band reference to play object for later useage
