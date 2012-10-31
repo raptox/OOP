@@ -24,6 +24,9 @@ public class Announcement implements Serializable {
 	
 	/*
 	 * Damit kann eine Mitteilung als "angenommen" markiert werden mit einer Begründung
+	 * 
+	 * SCHLECHT: der Parameter Member verhindert dass man das ganze Package notification zur Benachrichtigung
+	 * 			 wiederverwenden kann in anderen Projekten, also hohe Klassenkopplung
 	 */
 	public void accept( String reason, Member member ) {
 		this.decisions.add( new Decision( true, reason, member ) );
@@ -31,6 +34,9 @@ public class Announcement implements Serializable {
 	
 	/*
 	 * Damit kann eine Mitteilung als "abgelehnt" markiert werden mit einer Begründung
+	 *
+	 * SCHLECHT: der Parameter Member verhindert dass man das ganze Package notification zur Benachrichtigung
+	 * 			 wiederverwenden kann in anderen Projekten, also hohe Klassenkopplung
 	 */
 	public void reject( String reason, Member member ) {
 		this.decisions.add( new Decision( false, reason, member ) );

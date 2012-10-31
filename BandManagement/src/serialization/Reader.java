@@ -25,6 +25,9 @@ public class Reader {
 	 * Liest aus der Datei ein BandManagement Objekt
 	 * 
 	 * Vorb.: fileName muss ein Pfad sein
+	 * 
+	 * SCHLECHT: Es wird direkt ein Bandmanagement Objekt zurückgeliefert -> hohe Klassenkopplung.
+	 * 			 Besser wäre es wenn man ein "Object" zurückliefert dass dann später erst gecastet wird.
 	 */
 	public BandManagement read() throws IOException, ClassNotFoundException {
 		FileInputStream in = new FileInputStream( this.fileName + ".ser" );
