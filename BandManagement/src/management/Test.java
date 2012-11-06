@@ -25,7 +25,7 @@ public class Test {
 			
 			
 			// Loading bands if data.ser file exists
-			if ( (new File( "data.ser" )).exists() ) {
+			if ((new File( "data.ser" )).exists() ) {
 				System.out.println("READ DATA FROM FILE data.ser");
 				Reader rd = new Reader( "data" );
 				bands = rd.read();
@@ -96,10 +96,10 @@ public class Test {
 				System.out.println();
 				
 				//add some Equipment
-				Equipment guitar = new Equipment("Guitar",sdf.parse("2010-01-01"),300);
-				Equipment keyboard = new Equipment("Keyboard",sdf.parse("2011-01-01"),300);
-				Equipment micro = new Equipment("Micro",sdf.parse("2011-03-01"),100);
-				Equipment box = new Equipment("Box",sdf.parse("2012-05-01"),600);
+				Equipment guitar = new Equipment("Guitar",sdf.parse("2010-01-01"),-300);
+				Equipment keyboard = new Equipment("Keyboard",sdf.parse("2011-01-01"),-300);
+				Equipment micro = new Equipment("Micro",sdf.parse("2011-03-01"),-100);
+				Equipment box = new Equipment("Box",sdf.parse("2012-05-01"),-600);
 				
 				slipknot.addEquipment(guitar);
 				slipknot.addEquipment(keyboard);
@@ -131,9 +131,9 @@ public class Test {
 				slipknot.addPlay( wiesen );
 	
 				// Add some practice sessions
-				Practice p1 = new Practice( smallLoc1, sdf.parse("2012-09-08"), 120*60, 500);
-				Practice p2 = new Practice( smallLoc2, sdf.parse("2012-10-25"), 170*60, 200);
-				Practice p3 = new Practice( smallLoc2, sdf.parse("2012-11-04"), 110*60, 200);
+				Practice p1 = new Practice( smallLoc1, sdf.parse("2012-09-08"), 120*60, -500);
+				Practice p2 = new Practice( smallLoc2, sdf.parse("2012-10-25"), 170*60, -200);
+				Practice p3 = new Practice( smallLoc2, sdf.parse("2012-11-04"), 110*60, -200);
 	
 				slipknot.addPlay( p1 );
 				slipknot.addPlay( p2 );

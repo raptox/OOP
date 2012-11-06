@@ -41,7 +41,7 @@ public class Band implements Serializable {
 	}
 	
 	/**
-	 * @Todo: Jakob
+	 * Liefert eine Liste von Credits-Objekten aller Practices zurueck 
 	 */
 	public ArrayList<Credits> getCreditsPractices(Date start, Date end){
 		ArrayList<Credits> creditsPractice = new ArrayList<Credits>();
@@ -52,7 +52,7 @@ public class Band implements Serializable {
 	}
 	
 	/**
-	 * @Todo: Jakob
+	 * Liefert eine Liste von Credits-Objekten aller Gigs zurueck 
 	 */
 	public ArrayList<Credits> getCreditsGigs(Date start, Date end){
 		ArrayList<Credits> creditsGigs = new ArrayList<Credits>();
@@ -63,7 +63,7 @@ public class Band implements Serializable {
 	}
 	
 	/**
-	 * @Todo: Jakob
+	 * Liefert eine Liste von Credits-Objekten aller Equipments zurueck 
 	 */
 	public ArrayList<Credits> getCreditsEquipments(Date start,Date end){
 		ArrayList<Credits> creditsEquipment = new ArrayList<Credits>();
@@ -74,7 +74,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * FŸgt ein neues Equipment zur Band hinzu.
+	 * Fï¿½gt ein neues Equipment zur Band hinzu.
 	 * 
 	 * Vorb.: e != null
 	 */
@@ -83,7 +83,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * Liefert ein Bandmitglied anhand von dem Ÿbergebenen Mitgliedsnamen.
+	 * Liefert ein Bandmitglied anhand von dem ï¿½bergebenen Mitgliedsnamen.
 	 * 
 	 * Vorb.: name != "" 
 	 */
@@ -101,7 +101,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * Lšscht die Band.
+	 * Lï¿½scht die Band.
 	 * 
 	 * Vorb.: remDate != null
 	 */
@@ -118,7 +118,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * FŸgt einen neuen Benutzer zur Band hinzu.
+	 * Fï¿½gt einen neuen Benutzer zur Band hinzu.
 	 * 
 	 * Vorb.: m != null & m instanceof Member
 	 */
@@ -128,7 +128,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * Lšscht ein Bandmitglied der Band
+	 * Lï¿½scht ein Bandmitglied der Band
 	 * 
 	 * Vorb.: m != null && time != null
 	 */
@@ -167,7 +167,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * FŸgt einen neuen Song zur Band hinzu.
+	 * Fï¿½gt einen neuen Song zur Band hinzu.
 	 * 
 	 * Vorb.: s != null
 	 */
@@ -185,7 +185,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * Liefert alle Songs bis zu einem Ÿbergebenen Datum zurŸck.
+	 * Liefert alle Songs bis zu einem ï¿½bergebenen Datum zurï¿½ck.
 	 * 
 	 * Vorb.: time != null
 	 */
@@ -205,7 +205,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * FŸgt einen neuen Auftritt bzw. eine neue Probe hinzu.
+	 * Fï¿½gt einen neuen Auftritt bzw. eine neue Probe hinzu.
 	 * 
 	 * Vorb.: p != null
 	 * 
@@ -226,15 +226,20 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * Liefert alle Proben in einem Ÿbergebenen Zeitintervall.
-	 * 
-	 * Vorb.: start != null && end != null && end > start
+	 * Liefert alle Proben in einem ï¿½bergebenen Zeitintervall.
+	 * SCHLECHT: listPractice/listEquipments/listGigs enthalten sehr aenlichen Code
+	 *           Verbesserung: Durch speichern in einer gemeinsamen Datenstruktur und durch
+	 *                         implementierung einer gemeinsamen getDate Methode die Uebersicht,
+	 *                         Wartung und Codewiederverwendung verbessern
+	 *           Warum ist das passiert?: Zu Beginn der Programmentwicklung wurden unterschiedliche
+	 *                         getDate-Methoden entwickelt und die abstraktion wurde vernachlaessigt
 	 */
 	public ArrayList<Practice> listPractice( Date start, Date end ) {
 		ArrayList<Practice> practiceSessions = new ArrayList<Practice>();
 		
 		if(start != null && end != null){
 			for ( Practice p : this.practiceSessions ) {
+				//Invariante: p!=null
 				if ( p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
 					practiceSessions.add( p );
 				}
@@ -242,6 +247,7 @@ public class Band implements Serializable {
 		}
 		else if(start == null && end != null){
 			for(Practice p: this.practiceSessions){
+				//Invariante: p!=null
 				if(p.getTimeAndDate().compareTo( end ) <= 0){
 					practiceSessions.add(p);
 				}
@@ -249,6 +255,7 @@ public class Band implements Serializable {
 		}
 		else if(end == null && start != null){
 			for(Practice p: this.practiceSessions){
+				//Invariante: p!=null
 				if(p.getTimeAndDate().compareTo( start ) >= 0){
 					practiceSessions.add(p);
 				}
@@ -264,12 +271,12 @@ public class Band implements Serializable {
 	/*
 	 * Liefert alle Equipments der Band in einem gegebenen Zeitintervall.
 	 * 
-	 * Vorb.: start != null && end != null && end > start
 	 */
 	public ArrayList<Equipment> listEquipments(Date start,Date end){
 		ArrayList<Equipment> equipList = new ArrayList<Equipment>();
 		if(start != null && end != null){
 			for ( Equipment e : this.equipments ) {
+				//Invariante: e!=null
 				if ( e.getBuyDate().compareTo( start ) >= 0 && e.getBuyDate().compareTo( end ) <= 0 ) {
 					equipList.add( e );
 				}
@@ -277,6 +284,7 @@ public class Band implements Serializable {
 		}
 		else if(start == null && end !=null){
 			for(Equipment e: this.equipments){
+				//Invariante: e!=null
 				if(e.getBuyDate().compareTo( end ) <= 0){
 					equipList.add(e);
 				}
@@ -284,6 +292,7 @@ public class Band implements Serializable {
 		}
 		else if(end == null && start !=null){
 			for(Equipment e: this.equipments){
+				//Invariante: e!=null
 				if(e.getBuyDate().compareTo( start ) >= 0){
 					equipList.add(e);
 				}
@@ -299,13 +308,13 @@ public class Band implements Serializable {
 	/*
 	 * Liefert alle Auftritte der Band in einem gegebenen Zeitintervall.
 	 * 
-	 * Vorb.: start != null && end != null && end > start
 	 */
 	public ArrayList<Gig> listGigs( Date start, Date end ) {
 		ArrayList<Gig> gigs = new ArrayList<Gig>();
 
 		if(start != null && end != null){
 			for ( Gig p : this.gigs ) {
+				//Invariante: p!=null
 				if ( p.getTimeAndDate().compareTo( start ) >= 0 && p.getTimeAndDate().compareTo( end ) <= 0 ) {
 					gigs.add( p );
 				}
@@ -313,6 +322,7 @@ public class Band implements Serializable {
 		}
 		else if(start == null && end != null){
 			for(Gig p: this.gigs){
+				//Invariante: p!=null
 				if(p.getTimeAndDate().compareTo( end ) <= 0){
 					gigs.add(p);
 				}
@@ -320,6 +330,7 @@ public class Band implements Serializable {
 		}
 		else if(end == null && start != null){
 			for(Gig p: this.gigs){
+				//Invariante: p!=null
 				if(p.getTimeAndDate().compareTo( start ) >= 0){
 					gigs.add(p);
 				}
@@ -354,7 +365,7 @@ public class Band implements Serializable {
 	}
 	
 	/*
-	 * FŸgt eine neue Bekanntmachung der Band hinzu.
+	 * Fï¿½gt eine neue Bekanntmachung der Band hinzu.
 	 * 
 	 * Vorb.: a != null
 	 */
