@@ -1,6 +1,17 @@
 package models;
 
 // GUT: Credits wird fuer alle Kosten verwenden, und vererbt die Methode getCredits weiter (also keine redundanz)
-public interface Credits {
-	public double getCredits();
+public abstract class Credits {
+	protected double credits;
+	
+	public Credits(){
+		this.credits=0;
+	}
+	
+	public Credits(double credits){
+		this.credits=credits;
+	}
+	public double getCredits(){
+		return credits;
+	}
 }

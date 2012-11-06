@@ -8,12 +8,11 @@ import notification.Notification;
  * Klasse Play stellt ein Treffen der Band dar
  */
 //GUT: dynamisches Binden, Credits, es gibt nur eine Methode getCredits und zwar in Credits
-public abstract class Play implements Serializable, Credits {
+public abstract class Play extends Credits implements Serializable{
 
     private Location location;
     private Date timeAndDate;
     private int duration;
-    private double credits;
 	private static final long serialVersionUID = 1L;
     private Band band;
 
@@ -21,7 +20,7 @@ public abstract class Play implements Serializable, Credits {
 	 * Leerer Konstruktor 
 	 */
     public Play() {
-    	
+    	super();
     }
 
     /*
@@ -29,17 +28,10 @@ public abstract class Play implements Serializable, Credits {
      * Vorb.: location != null && timeAndDate != null && duration > 0 && credits > 0
      */
     public Play(Location location, Date timeAndDate, int duration, double credits) {
+    	super(credits);
     	this.location = location;
     	this.timeAndDate = timeAndDate;
     	this.duration = duration;
-    	this.credits = credits;
-    }
-    
-    /*
-     * getter fuer credits
-     */
-    public double getCredits(){
-    	return credits;
     }
     
     /*

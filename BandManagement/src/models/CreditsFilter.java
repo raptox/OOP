@@ -58,12 +58,7 @@ public class CreditsFilter implements Serializable {
 		double totalCredits=0;
 		for(Credits c:credits){
 			//Invariante: c!=null
-			if(c instanceof Revenues){
-				totalCredits+=c.getCredits();
-			}
-			else if(c instanceof Costs){
-				totalCredits-=c.getCredits();
-			}
+			totalCredits+=c.getCredits();
 		}
 		return totalCredits;
 	}

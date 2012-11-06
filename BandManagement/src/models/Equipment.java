@@ -3,12 +3,11 @@ package models;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Equipment implements Costs, Serializable{
+public class Equipment extends Credits implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private double credits;
 	private Date buyDate;
 	private String name;
 	
@@ -17,15 +16,9 @@ public class Equipment implements Costs, Serializable{
 	 * Vorb.:name!=null, buyDate!=null, credits!=null
 	 */
 	public Equipment(String name,Date buyDate,double credits){
+		super(credits);
 		this.name=name;
-		this.credits=credits;
 		this.buyDate = buyDate;
-	}
-	/*
-	 * Liefert credits zurueck
-	 */
-	public double getCredits(){
-		return credits;
 	}
 	/*
 	 * Liefert das buyDate zurueck
