@@ -4,22 +4,22 @@ import java.io.Serializable;
 import java.util.Vector;
 
 /*
- * Diese Klasse ist auf dem Prizip von Publisher/Abonnent aufgebaut und ist für die Verwaltung
+ * Diese Klasse ist auf dem Prizip von Publisher/Abonnent aufgebaut und ist fuer die Verwaltung
  * der Abonnenten von Benachrichtigungen verantwortlich.
  */
-public class Notification implements Subject, Serializable {
+public class Notification extends Subject implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Vector<Observer> observers;
 	
 	/*
-	 * Konstruktor für eine Notification
+	 * Konstruktor fuer eine Notification
 	 */
 	public Notification() {
 		this.observers = new Vector<Observer>();
 	}
 	
 	/*
-	 * Fügt einen neuen Subscriber/Abbonnent zu der Benachrichtigung hinzu um später
+	 * F Subjectgt einen neuen Subscriber/Abbonnent zu der Benachrichtigung hinzu um spaeter
 	 * auch bei neuen Mitteilungen benachrichtigt zu werden.
 	 */
 	@Override
@@ -28,7 +28,7 @@ public class Notification implements Subject, Serializable {
 	}
 
 	/*
-	 * Löscht einen Abbonent aus der Liste der zu Benachrichtigenden Mitglieder.
+	 * Loescht einen Abbonent aus der Liste der zu Benachrichtigenden Mitglieder.
 	 */
 	@Override
 	public void unregister(Observer o) {

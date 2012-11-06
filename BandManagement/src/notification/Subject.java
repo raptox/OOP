@@ -1,21 +1,24 @@
 package notification;
 
 /*
- * Das Interface Subject stellt die Methoden zur Verfügung um Benachtichtigungen an Abonnenten zu versenden.
+ * Das Interface Subject stellt die Methoden zur Verfuegung um Benachtichtigungen an Abonnenten zu versenden.
  */
-public interface Subject {
+public abstract class Subject {
 	/*
-	 * Fügt einen neuen Subscriber/Abonnent hinzu.
+	 * Fuegt einen neuen Subscriber/Abonnent hinzu.
 	 */
-	public void register( Observer o );
+	public void register( Observer o ) {
+	}
 	
 	/*
-	 * Löscht einen bestehenden Subscriber/Abonnent.
+	 * Loescht einen bestehenden Subscriber/Abonnent.
 	 */
-	public void unregister( Observer o );
+	public void unregister( Observer o ) {
+	}
 	
 	/*
 	 * Benachrichtigt alle Subscriber/Abonnenten.
 	 */
-	public void announce( Announcement announcement );
+	public void announce( Announcement announcement ) {
+	}
 }

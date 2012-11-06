@@ -7,7 +7,7 @@ import java.util.Vector;
 import notification.*;
 
 
-public class Member implements Observer, Serializable {
+public class Member extends Observer implements Serializable {
 	/**
 	 * 
 	 */
