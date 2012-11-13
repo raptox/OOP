@@ -38,8 +38,8 @@ public class Freebox implements Pict {
 	 * scale veraendert nur die gespeicherte Breite und Hoehe 
 	 */
 	public void scale(double factor) {
-		this.width = Math.ceil(width*factor);
-		this.height = Math.ceil(height*factor);
+		this.width = width*factor;
+		this.height = height*factor;
 	}
 	
 	/*
@@ -52,8 +52,8 @@ public class Freebox implements Pict {
 		int boxWidth = getWidth();
 		int boxHeight = getHeight();
 		
-		for(int j = 0;j<this.height;j++){
-			for(int i = 0;i<this.width;i++){
+		for(int j = 0;j<Math.ceil(height);j++){
+			for(int i = 0;i<Math.ceil(width);i++){
 				ret+=lineBox.charAt(((j%boxHeight)*boxWidth)+i%boxWidth);
 			}
 			ret+='\n';
