@@ -72,6 +72,7 @@ public class Freebox implements Pict {
 			}
 		}
 		return lineBox;
+
 	}
 
 }

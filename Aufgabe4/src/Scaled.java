@@ -1,4 +1,4 @@
-public class Scaled<P extends Pict> implements Pict {
+public class Scaled<P extends Pict> extends AbstractToString {
 	private P[][] elements;
 	
 	public Scaled( P[][] elements ) {
@@ -9,5 +9,4 @@ public class Scaled<P extends Pict> implements Pict {
 	public void scale(double factor) {
 		
 	}
-
 }

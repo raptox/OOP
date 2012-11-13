@@ -1,3 +1,6 @@
+/*
+ * Klasse Box besteht aus zwei Zeichen für den Rand und für den Inhalt. Diese beiden zu verwendenden Zeichen werden im Konstruktor gesetzt und bleiben danach unverändert.
+ */
 public class Box extends AbstractBox {
 	private char borderCharacter;
 	private char innerCharacter;

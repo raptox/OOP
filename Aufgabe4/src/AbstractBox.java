@@ -1,3 +1,4 @@
+// Abstrakte Klasse die aus zwei Zeichen für den Rand und für den Inhalt besteht. Diese werden im Konstruktor gesetzt und können nicht mehr verändert werden.
 public abstract class AbstractBox implements Pict {
 	private double height;
 	private double width;
@@ -8,7 +9,11 @@ public abstract class AbstractBox implements Pict {
 	public AbstractBox( char borderCharacter, char innerCharacter, double height, double width ) {
 		this.height = height;
 		this.width  = width;
-		this.borderCharacter = borderCharacter;
+		
+		if ( borderCharacter != ' ' ) {
+			this.borderCharacter = borderCharacter;
+		}
+		
 		this.innerCharacter = innerCharacter;
 	}
 	
