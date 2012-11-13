@@ -1,12 +1,11 @@
-public class Repeated<P> {
+public class Repeated<P> extends AbstractToString {
 	private P[][] elements;
 	
 	public Repeated( P[][] elements ) {
 		this.elements = elements;
 	}
 	
-	public String toString() {
-		return "";
+	public void scale( double factor ) {
 		
 	}
 }
