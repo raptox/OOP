@@ -1,9 +1,14 @@
+/*
+ * Wird verwendet um Information ueber String Objekte zu speichern
+ */
+
 public class Zeilen {
 	private String zeilen; // hier sind alle Zeilen gespeichert
 	private int zeilenLaenge; // laenge der Zeilen
 	private int zeilenAnz; // Anzahl der Zeilen
 	private int nextLine; // aktuelle Zeile
 
+	// zeilen != null
 	public Zeilen(String zeilen) {
 		this.zeilen = zeilen;
 		this.zeilenLaenge = countZeile();
@@ -11,6 +16,7 @@ public class Zeilen {
 		this.nextLine = 0;
 	}
 
+	// gibt Anzahl der Zeilen zurueck
 	private int countZeilenAnzahl() {
 		int counter = 0;
 		
@@ -26,6 +32,7 @@ public class Zeilen {
 		return zeilenAnz;
 	}
 	
+	// gibt naechste Zeile zurueck
 	public String getNextLine() {
 		String line="";
 		int lineCounter=0;
@@ -48,6 +55,7 @@ public class Zeilen {
 		return line;
 	}
 	
+	// zaehlt alle Zeilen
 	private int countZeile() {
 		// berechnet Zeilenlaenge (alle Zeilen sind gleich lang)
 
