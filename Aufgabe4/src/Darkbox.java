@@ -1,3 +1,6 @@
+/*
+ * Klasse DarkBox besteht aus einem Zeichen dass im Konstruktor gesetzt wird. Dieses kann später wieder verändert werden.
+ */
 public class Darkbox extends AbstractBox {
 	private char character;
 	
@@ -12,7 +15,7 @@ public class Darkbox extends AbstractBox {
 	}
 	
 	/*
-	 * Liefert einen Rechteckigen String bestehend aus 1 Zeichen. 
+	 * Liefert einen Rechteckigen String bestehend aus 1 Zeichen. Die Zeichen können sich jedesmal verändern bei jedem aufruf.
 	 */
 	@Override
 	public String toString() {

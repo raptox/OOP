@@ -28,7 +28,7 @@ public class Freebox implements Pict {
 	 */
 	@Override
 	public String toString() {
-		return "Freebox";
+		return this.box;
 	}
 
 }
