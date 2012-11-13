@@ -4,12 +4,14 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Scaled<Pict> fr = new Scaled<Pict>();
+		
 		
 		Clearbox c = new Clearbox(5, 3);
 		Box b = new Box('+', '-', 5, 3);
 		Darkbox d = new Darkbox( '#', 5, 5 );
-		Freebox f = new Freebox( "asdf" );
+		Freebox f = new Freebox("geil\nhomo\nnega");
+		f.scale(1.5);
+		System.out.println(f);
 		
 		
 		System.out.println( d );
