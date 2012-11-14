@@ -1,3 +1,7 @@
+/*
+ * Scaled gibt Objekte vom Typ Pict oder deren Untertypen nebeneinander bzw. untereinander aus.
+ * Bei der Skalierung wird jedes einzelne Objekt skaliert.
+ */
 public class Scaled<P extends Pict> extends Repeated implements Pict {
 	
 	// elements != null

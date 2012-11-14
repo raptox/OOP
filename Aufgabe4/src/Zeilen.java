@@ -18,14 +18,16 @@ public class Zeilen {
 
 	// gibt Anzahl der Zeilen zurueck
 	private int countZeilenAnzahl() {
-		int counter = 0;
+		int counter = 1;
+		//StringBuffer sb = new StringBuffer( new StringReader( this.zeilen ) );
 		
 		for (int i=0; i<zeilen.length(); i++) {
-			if (zeilen.charAt(i) == '\n')
+			if ( (i+1) < zeilen.length() && zeilen.charAt(i) == '\n') {
 				counter++;
+			}
 		}
 		
-		return counter;
+		return counter > 1 ? counter : 1;
 	}
 	
 	public int getAnzZeilen() {
@@ -51,7 +53,9 @@ public class Zeilen {
 				line = line.concat(zeilen.charAt(i)+"");
 			}
 		}
-	
+		
+		nextLine++;
+		
 		return line;
 	}
 	

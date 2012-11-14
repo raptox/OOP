@@ -69,7 +69,7 @@ public class Test {
 		
 		
 		Pict [][] dfg = new Pict[2][3];
-		dfg[0][0] = new Clearbox(2,2);
+		dfg[0][0] = new Clearbox(2,4);
 		dfg[0][1] = new Freebox("hallo\nblabl\nfffff");
 		dfg[0][2] = new Clearbox(3,3);
 
@@ -92,22 +92,45 @@ public class Test {
 		jjj.scale(2);
 		System.out.println("After scaled 2: \n"+jjj.toString());
 		
-		/*Object [][] foo = new Object[2][3];
-		foo[0][0] = new String("asdlkfjasd");
+		
+		// Verwendung von Repeated mit gemischten Objekten (Integer, String, Box)
+		
+		System.out.println("Repeated Tests (mixed objects):\n#############\n");
+		
+		Object [][] foo = new Object[2][3];
+		foo[0][0] = new String("seppi");
 		foo[0][1] = new Freebox("hallo\nblabl\nfffff");
-		foo[0][2] = new Integer(2);
+		foo[0][2] = new Integer(12345678);
 
-		foo[1][0] = new Clearbox(4,4);
-		foo[1][1] = new Darkbox('a', 5, 5);
+		foo[1][0] = new Clearbox(3,3);
+		foo[1][1] = new Darkbox('a', 3, 5);
 		foo[1][2] = new Box('s','t',3,3);
 		
-		System.out.println("Repeated Tests (diffrent objects):\n#############\n");
 		Repeated<Object> bar = new Repeated<Object>(foo);
 		
 		System.out.println("Before scaled: \n"+bar.toString());
-		abc.scale(1.5);
-		System.out.println("After scaled 1.5: \n"+bar.toString());*/
+		bar.scale(1.5);
+		System.out.println("After scaled with factor 1.5: \n"+bar.toString());
 		
+		
+		// Verwendung von Repeated mit gemischten Objekten (Integer, String, Box)
+		
+		System.out.println("Repeated Tests (Integer objects):\n#############\n");
+		
+		Integer [][] intArr = new Integer[2][3];
+		intArr[0][0] = new Integer(111);
+		intArr[0][1] = new Integer(222);
+		intArr[0][2] = new Integer(333);
+
+		intArr[1][0] = new Integer(444);
+		intArr[1][1] = new Integer(555);
+		intArr[1][2] = new Integer(666);
+		
+		Repeated<Integer> repeatedInteger = new Repeated<Integer>(intArr);
+		
+		System.out.println("Before scaled: \n"+repeatedInteger.toString());
+		repeatedInteger.scale(1.5);
+		System.out.println("After scaled with factor 1.5: \n"+repeatedInteger.toString());
 	}
 
 }

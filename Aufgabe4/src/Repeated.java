@@ -47,7 +47,7 @@ public class Repeated<P> implements Pict {
 		// und laengste Zeile suchen, damit wir wissen wie viel wir auffuellen
 		for (int i=0; i<iswidth; i++) {
 			for (int y=0; y<isheight; y++) {
-				helper[i][y] = new Zeilen(newElements[i][y].toString());
+				helper[i][y] = new Zeilen(newElements[i][y].toString()) ;
 				
 				// laengste Zeile ausfindig machen
 				if (helper[i][y].getZeilenLaenge() > maxWidth)
@@ -65,7 +65,6 @@ public class Repeated<P> implements Pict {
 				for (int y=0; y<isheight; y++) {
 					String nextLine = helper[i][y].getNextLine();
 					returnString = returnString.concat(nextLine);
-					//System.out.println("i: "+i+" y: "+y+" nextLine: "+nextLine);
 
 					int lineLength = helper[i][y].getZeilenLaenge();
 					int stringHeight = helper[i][y].getAnzZeilen();

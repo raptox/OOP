@@ -47,7 +47,7 @@ public abstract class AbstractBox implements Pict {
 		for ( int y = 0; y < roundedHeight; y++ ) {
 			for ( int x = 0; x <  roundedWidth; x++ ) {
 				// oberer und unterer Rand
-				if ( y == 0 || y == roundedHeight - 1 ) {
+				if ( y == 0 || ( this.height > 1 && y == roundedHeight - 1 ) ) {
 					sb.append( this.borderCharacter );
 				}
 				// seitlicher Rand
