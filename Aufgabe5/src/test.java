@@ -12,14 +12,18 @@ public class test {
 	public static void main(String[] args) {
 		Set<String> s = new Set<String>();
 		
-		OrderedSet<ElapsedTime> os = new OrderedSet<ElapsedTime>();
-		os.insert( new ElapsedTime( 10l ) );
-		os.insert( new ElapsedTime( 15l ) );
-		os.insert( new ElapsedTime( 20l ) );
 		
-		Iterator<ElapsedTime> it = os.iterator();
+		
+		OrderedSet<Description> od = new OrderedSet<Description>();
+		od.insert( new Description( "aa" ) );
+		od.insert( new Description( "aa" ) );
+		od.insert( new Description( "aab" ) );
+		od.insert( new Description( "a" ) );
+		od.insert( new Description( "aabaa" ) );
+		
+		Iterator<Description> it = od.iterator();
 		while ( it.hasNext() ) {
-			System.out.println( it.next().getTime() );
+			System.out.println( it.next().getText() );
 		}
 		
 		/*String h = "seas";

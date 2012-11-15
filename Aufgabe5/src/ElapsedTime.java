@@ -1,20 +1,10 @@
-public class ElapsedTime implements Shorter<ElapsedTime> {
-	private long time;
-	
-	public ElapsedTime( long time ) {
-		this.time = time;
-	}
+public abstract class ElapsedTime implements Shorter<ElapsedTime> {
+	protected int count;
 	
 	@Override
-	public boolean shorter(ElapsedTime arg) {
-		if ( this.time < arg.time ) {
-			return true;
-		}
-		
-		return false;
-	}
+	public abstract boolean shorter(ElapsedTime arg);
 	
-	public long getTime() {
-		return this.time;
+	public int count() {
+		return this.count;
 	}
 }

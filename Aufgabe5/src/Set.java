@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
 
 
 public class Set<P> implements java.lang.Iterable {
-	private LinkedList<P> list;
+	protected LinkedList<P> list;
 	
 	public Set() {
 		this.list = new LinkedList<P>();
@@ -14,12 +14,12 @@ public class Set<P> implements java.lang.Iterable {
 	}
 	
 	public String toString() {
-		Item<P> c = this.list.root;
+		Item<P> c = this.list.getRoot();
 		String output = "";
 		
 		while( c != null ) {
-			output += c.value + "\n";
-			c = c.next;
+			output += c.getValue() + "\n";
+			c = c.getNext();
 		}
 		
 		return output;
@@ -33,7 +33,7 @@ public class Set<P> implements java.lang.Iterable {
 			
 			public LinkedIterator( LinkedList list ) {
 				this.list    = list;
-				this.current = this.list.root;
+				this.current = this.list.getRoot();
 			}
 			
 			@Override
@@ -47,38 +47,38 @@ public class Set<P> implements java.lang.Iterable {
 
 			@Override
 			public P next() {
-				P value = this.current.value;
+				P value = this.current.getValue();
 				
 				if ( this.current == null ) { 
 					throw new NoSuchElementException();
 				}
-				this.current = this.current.next;
+				this.current = this.current.getNext();
 				
 				return value;
 			}
 
 			@Override
 			public void remove() {
-				Item<P> hCurrent = this.list.root;
+				Item<P> hCurrent = this.list.getRoot();
 				Item<P> itemBefore = hCurrent;
 				
 				while( hCurrent != null ) {
 					// aktuelles Element gefunden
 					if ( hCurrent == this.current ) {
-						if ( hCurrent == this.list.root ) {
-							this.list.root = null;
+						if ( hCurrent == this.list.getRoot() ) {
+							this.list.setRoot( null );
 							this.current = null;
 						}
 						// akutelles Element wird aus Liste rausgehängt
-						itemBefore.next = hCurrent.next;
+						itemBefore.setNext( hCurrent.getNext() );
 					}
 					
 					// voriges Element zwischenspeichern
 					itemBefore = hCurrent;
 					// Zeiger auf nächstes Element verschieben
-					hCurrent = hCurrent.next;
+					hCurrent = hCurrent.getNext();
 					
-					this.current = itemBefore.next;
+					this.current = itemBefore.getNext();
 				}
 			}
 			
@@ -86,80 +86,4 @@ public class Set<P> implements java.lang.Iterable {
 		
 		return new LinkedIterator<P>( this.list );
 	}
-	
-	
-	
-	private class LinkedList<P> {
-		private Item<P> root;
-		
-		public LinkedList() {
-			this.root = null;
-		}
-		
-		public boolean add( P element ) {
-			Item<P> current = this.root;
-			
-			if ( this.root == null ) {
-				this.root = new Item<P>( element );
-			}
-			else {
-				while ( current.next != null ) {
-					if ( current.value == element ) {
-						return false;
-					}
-					current = current.next;
-				}
-				if ( current.value == element ) {
-					return false;
-				}
-				
-				current.next = new Item<P>( element );
-			}
-			
-			return true;
-		}
-		
-		public P get( P value ) {
-			Item<P> current = root;
-			
-			if ( current.value.equals( value ) ) {
-				return current.value;
-			}
-			
-			while( ( current = current.next ) != null ) {
-				if ( current.value.equals( value ) ) {
-					return current.value;
-				}
-			}
-			
-			return null;
-		}
-	}
-	
-	private class Item<P> {
-		private P value;
-		private Item next;
-		
-		public Item( P value ) {
-			this.value = value;
-			this.next  = null;
-		}
-		
-		public void setValue( P value ) {
-			this.value = value;
-		}
-		
-		public P getValue() {
-			return this.value;
-		}
-		
-		public void setNext( Item next ) {
-			this.next = next;
-		}
-		
-		public Item getNext() {
-			return this.next;
-		}
-	}
-	
 }
