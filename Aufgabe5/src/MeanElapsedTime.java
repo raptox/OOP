@@ -1,3 +1,4 @@
+
 import java.util.Iterator;
 
 public class MeanElapsedTime extends ElapsedTime<MeanElapsedTime> {
@@ -26,5 +27,6 @@ public class MeanElapsedTime extends ElapsedTime<MeanElapsedTime> {
 		}
 		return average/this.count;
 	}
-
+	
+	
 }
