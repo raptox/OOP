@@ -1,4 +1,4 @@
-public class MeanElapsedTime extends ElapsedTime {
+public class MeanElapsedTime extends ElapsedTime<MeanElapsedTime> {
 	private Set<Double> times;
 	
 	public MeanElapsedTime() {
@@ -10,8 +10,12 @@ public class MeanElapsedTime extends ElapsedTime {
 	}
 	
 	@Override
-	public boolean shorter(ElapsedTime arg) {
+	public boolean shorter(MeanElapsedTime arg) {
 		return true;
 	}
-
+	
+	private double average() {
+		return 1.2;
+	}
+	
 }
