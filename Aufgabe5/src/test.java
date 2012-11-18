@@ -1,6 +1,6 @@
-import java.util.HashSet;
+
 import java.util.Iterator;
-import java.util.SortedSet;
+
 
 
 
@@ -26,6 +26,8 @@ public class test {
 			System.out.println( it.next().getText() );
 		}
 		
+		
+		
 		/*String h = "seas";
 		System.out.println( s.insert( h ) );
 		System.out.println( s.insert( "seas" ) );
@@ -40,7 +42,20 @@ public class test {
 		
 		while ( it.hasNext() ) {
 			System.out.println( it.next() );
-		}*/
+		}
+		
+		*
+		*
+		*
+		
+		
+		
+		OrderedMap<MeanElapsedTime, CompositeTime> om = new OrderedMap<MeanElapsedTime, CompositeTime>();
+		
+		om.insert( new MeanElapsedTime(), new CompositeTime( [ 1.1, 1.4, 1.3 ] ) )
+	
+	
+		*/
 		
 	}
 

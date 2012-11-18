@@ -13,9 +13,4 @@ public class MeanElapsedTime extends ElapsedTime<MeanElapsedTime> {
 	public boolean shorter(MeanElapsedTime arg) {
 		return true;
 	}
-	
-	private double average() {
-		return 1.2;
-	}
-	
 }
