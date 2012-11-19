@@ -1,8 +1,8 @@
-public class MapNode<P extends Shorter<P>, Q extends Shorter<Q>> implements Shorter<MapNode<P, Q>>{
+public class MapNode<P extends Shorter<P>, Q> implements Shorter<MapNode<P, Q>>{
 	private P key;
-	private OrderedSet<Q> values;
+	private Set<Q> values;
 	
-	public MapNode( P key, OrderedSet<Q> values ) {
+	public MapNode( P key, Set<Q> values ) {
 		this.key = key;
 		this.values = values;
 	}

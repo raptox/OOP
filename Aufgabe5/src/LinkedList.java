@@ -34,22 +34,6 @@ class LinkedList<P> {
 		return true;
 	}
 	
-	public P get( P value ) {
-		Item<P> current = root;
-		
-		if ( current.getValue().equals( value ) ) {
-			return current.getValue();
-		}
-		
-		while( ( current = current.getNext() ) != null ) {
-			if ( current.getValue().equals( value ) ) {
-				return current.getValue();
-			}
-		}
-		
-		return null;
-	}
-	
 	public Item<P> getRoot() {
 		return this.root;
 	}
