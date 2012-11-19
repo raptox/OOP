@@ -1,7 +1,4 @@
-import java.util.Iterator;
-
-
-public class OrderedSet<P extends Shorter> extends Set<P> {
+public class OrderedSet<P extends Shorter<P>> extends Set<P> {
 	public OrderedSet() {
 		this.list = new SortedLinkedList<P>();
 	}
