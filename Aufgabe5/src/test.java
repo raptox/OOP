@@ -10,7 +10,7 @@ public class test {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args){
 
 		
 		
@@ -54,7 +54,7 @@ public class test {
 		}
 		else System.out.println("passt nicht");
 		
-		Description a = new Description("hallo\nich programmiere\na");
+		Description a = new Description("hallo\nich programmiere");
 		System.out.println(a.countLines());
 		
 		Iterator<Description> it = od.iterator();

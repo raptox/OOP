@@ -1,8 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
-
-
 public class Description implements Shorter<Description> {
 	private String text;
 	
@@ -23,16 +18,8 @@ public class Description implements Shorter<Description> {
 		return this.text;
 	}
 	
-	// http://www.java-forum.org/java-basics-anfaenger-themen/27610-zeilenanzahl-strings-erkennen.html
-	public int countLines() throws IOException{
-		BufferedReader br = new BufferedReader(new StringReader(this.text));
-		int counter = 0;
-		
-		while(br.readLine()!=null){
-			counter++;
-		}
-		
-		return counter;
+	public int countLines(){
+		return this.text.split("\n").length;
 	}
 	
 	@Override
