@@ -10,7 +10,7 @@ public class test {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args){
 
 		// Testfall 1
 		System.out.println("Testfall 1:\n###########");

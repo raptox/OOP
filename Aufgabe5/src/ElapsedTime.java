@@ -1,4 +1,4 @@
-public abstract class ElapsedTime<P> implements Shorter<P> {
+public abstract class ElapsedTime<P extends Shorter<P>> implements Shorter<P> {
 	protected int count;
 	
 	@Override
