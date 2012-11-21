@@ -1,14 +1,9 @@
-public class CompositeTime extends ElapsedTime<CompositeTime>{
+public class CompositeTime extends ElapsedTime{
 	private double[] times;
 	
 	public CompositeTime(double[] times){
 		this.times = times;
 		this.count = times.length;
-	}
-
-	@Override
-	public boolean shorter(CompositeTime arg) {
-		return this.summary()<arg.summary();
 	}
 	
 	// liefert den kürzesten Messwert
@@ -30,6 +25,11 @@ public class CompositeTime extends ElapsedTime<CompositeTime>{
 			summary += this.times[i];
 		}
 		return summary;
+	}
+
+	@Override
+	protected Double comparableValue() {
+		return this.summary();
 	}
 
 }

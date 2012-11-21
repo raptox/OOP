@@ -1,7 +1,7 @@
 
 import java.util.Iterator;
 
-public class MeanElapsedTime extends ElapsedTime<MeanElapsedTime> {
+public class MeanElapsedTime extends ElapsedTime {
 	private Set<Double> times;
 	
 	public MeanElapsedTime() {
@@ -12,11 +12,6 @@ public class MeanElapsedTime extends ElapsedTime<MeanElapsedTime> {
 	public void addTime( Double time ) {
 		this.times.insert( time );
 		this.count++;
-	}
-	
-	@Override
-	public boolean shorter(MeanElapsedTime arg) {
-		return this.average()<arg.average();
 	}
 	
 	// liefert den längsten Messwert
@@ -45,5 +40,10 @@ public class MeanElapsedTime extends ElapsedTime<MeanElapsedTime> {
 		}
 		
 		return average/this.count;
+	}
+
+	@Override
+	protected Double comparableValue() {
+		return this.average();
 	}
 }

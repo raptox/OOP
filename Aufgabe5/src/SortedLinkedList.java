@@ -1,4 +1,4 @@
-class SortedLinkedList<P extends Shorter<?>> extends LinkedList<P> {
+class SortedLinkedList<P extends Shorter<? super P>> extends LinkedList<P> {
 	// Fuegt ein neues Element hinzu
 	public boolean add( P element ) {
 		Item<P> current = this.root;

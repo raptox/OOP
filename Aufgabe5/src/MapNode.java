@@ -1,4 +1,4 @@
-public class MapNode<P extends Shorter<P>, Q> implements Shorter<MapNode<P, Q>>{
+public class MapNode<P extends Shorter<? super P>, Q> implements Shorter<MapNode<P, Q>>{
 	private P key;
 	private Set<Q> values;
 	

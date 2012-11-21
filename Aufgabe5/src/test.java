@@ -61,7 +61,13 @@ public class test {
 		while ( it.hasNext() ) {
 			System.out.println( it.next().getText() );
 		}
-		OrderedSet<ElapsedTime<?>> odset = new OrderedSet<ElapsedTime<?>>();
+		
+		/* Testfall 4 anfang */
+		OrderedSet<ElapsedTime> odset = new OrderedSet<ElapsedTime>();
+		odset.insert(me);
+		odset.insert(ct);
+		
+		
 		
 		// erstellen von OrderedSet von CompositeTime Objekten
 		OrderedSet<CompositeTime> orderedCompositeTimes = new OrderedSet<CompositeTime>();

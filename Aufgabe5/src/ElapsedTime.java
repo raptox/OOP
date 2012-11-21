@@ -1,8 +1,11 @@
-public abstract class ElapsedTime<P extends Shorter<P>> implements Shorter<P> {
+public abstract class ElapsedTime implements Shorter<ElapsedTime> {
 	protected int count;
 	
-	@Override
-	public abstract boolean shorter(P arg);
+	public boolean shorter(ElapsedTime arg) {
+		return this.comparableValue() < arg.comparableValue();
+	}
+	
+	abstract protected Double comparableValue();
 	
 	public int count() {
 		return this.count;

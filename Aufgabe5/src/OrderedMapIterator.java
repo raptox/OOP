@@ -1,7 +1,7 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-class OrderedMapIterator<Q extends Shorter<Q>, P> implements Iterator<MapNode<Q, P>> {
+class OrderedMapIterator<Q extends Shorter<? super Q>, P> implements Iterator<MapNode<Q, P>> {
 	private Item<MapNode<Q, P>> current;
 	private Item<MapNode<Q, P>> hBefore;
 	private LinkedList<MapNode<Q, P>> list;
