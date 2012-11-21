@@ -31,11 +31,13 @@ public class Set<P> implements java.lang.Iterable<P> {
 	
 	private class SetIterator implements Iterator<P> {
 		private Item<P> current;
+		private Item<P> lastValue;
 		private LinkedList<P> list;
 		
 		public SetIterator( LinkedList<P> list ) {
 			this.list    = list;
 			this.current = this.list.getRoot();
+			this.lastValue = null;
 		}
 		
 		@Override
@@ -54,6 +56,7 @@ public class Set<P> implements java.lang.Iterable<P> {
 			if ( this.current == null ) { 
 				throw new NoSuchElementException();
 			}
+			this.lastValue = this.current;
 			this.current = this.current.getNext();
 			
 			return value;
@@ -61,26 +64,25 @@ public class Set<P> implements java.lang.Iterable<P> {
 
 		@Override
 		public void remove() {
-			Item<P> hCurrent = this.list.getRoot();
-			Item<P> itemBefore = hCurrent;
+			Item<P> help = this.list.getRoot();
+			Item<P> before = help;
 			
-			while( hCurrent != null ) {
-				// aktuelles Element gefunden
-				if ( hCurrent == this.current ) {
-					if ( hCurrent == this.list.getRoot() ) {
-						this.list.setRoot( null );
-						this.current = null;
+			while (help != null) {
+				if (help == this.lastValue) {
+					if (help == before) {
+						// Element am Listenanfang
+						this.list.setRoot(help.getNext());
+						help = null; // aus Schleife raus
+					} else {
+						before.setNext(help.getNext());
+						help = null; // aus Schleife raus
 					}
-					// akutelles Element wird aus Liste rausgehängt
-					itemBefore.setNext( hCurrent.getNext() );
 				}
 				
-				// voriges Element zwischenspeichern
-				itemBefore = hCurrent;
-				// Zeiger auf nächstes Element verschieben
-				hCurrent = hCurrent.getNext();
-				
-				this.current = itemBefore.getNext();
+				if (help != null) {
+					before = help;
+					help = help.getNext();
+				}
 			}
 		}
 	}
