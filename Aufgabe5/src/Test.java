@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 
 
-public class test {
+public class Test {
 
 	/**
 	 * @param args
@@ -113,11 +113,13 @@ public class test {
 
 		}
 
+		System.out.println("<<ct shorter als ct2>>");
 		if(ct.shorter(ct2)){
 			System.out.println("passt");
 		}
 		else System.out.println("passt nicht");
 
+		System.out.println("<<me shorter als me2>>");
 		if(me.shorter(me2)){
 			System.out.println("passt");
 		}
@@ -134,8 +136,23 @@ public class test {
 		System.out.println("\nTestfall 4:\n###########");
 
 		OrderedSet<ElapsedTime> odset = new OrderedSet<ElapsedTime>();
-		odset.insert(me);
+		/*odset.insert(me);
+		odset.insert(me2);
 		odset.insert(ct);
+		odset.insert(ct2);
+		odset.insert(ct3);
+		odset.insert(ct4);
+		odset.insert(ct5);
+		odset.insert(ct6);*/
+		
+		OrderedMapIterator<MeanElapsedTime, CompositeTime> foo = om.iterator();
+		while (foo.hasNext()) {
+			MapNode<MeanElapsedTime, CompositeTime> asdf = foo.next();
+			Iterator<CompositeTime> bar = asdf.getValues().iterator();
+			while (bar.hasNext()) {
+				odset.insert(bar.next());	
+			}
+		}
 		
 		Iterator<ElapsedTime> it_e = odset.iterator();
 		while (it_e.hasNext()) {
