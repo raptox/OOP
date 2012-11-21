@@ -136,6 +136,12 @@ public class test {
 		OrderedSet<ElapsedTime> odset = new OrderedSet<ElapsedTime>();
 		odset.insert(me);
 		odset.insert(ct);
+		
+		Iterator<ElapsedTime> it_e = odset.iterator();
+		while (it_e.hasNext()) {
+			ElapsedTime help_e = it_e.next();
+			System.out.println("Elemente in "+help_e+": "+help_e.count());
+		}
 	}
 
 }
