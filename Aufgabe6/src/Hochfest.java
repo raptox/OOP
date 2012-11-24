@@ -1,9 +1,10 @@
 
-public class Gepanzert extends AbstractSkin {
-	public Gepanzert() {
-		this.beschreibung = "Gepanzerter Skin installiert!";
-	}
+public class Hochfest extends AbstractSkin {
 
+	public Hochfest() {
+		this.beschreibung = "Hochfester Skin installiert!";
+	}
+		
 	@Override
 	public AbstractSkin setHilfskraftSkin(Hilfskraft hilfskraft) {
 		// TODO Auto-generated method stub
@@ -54,6 +55,6 @@ public class Gepanzert extends AbstractSkin {
 		return null;
 	}
 
-
 	
+
 }
