@@ -1,59 +1,55 @@
 
 public class Gepanzert extends AbstractSkin {
 	public Gepanzert() {
+		super();
 		this.beschreibung = "Gepanzerter Skin installiert!";
 	}
 
 	@Override
-	public AbstractSkin setHilfskraftSkin(Hilfskraft hilfskraft) {
+	public AbstractSkin setSkin(Hilfskraft hilfskraft) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AbstractSkin setGesellschafterSkin(Gesellschafter gesellschafter) {
+	public AbstractSkin setSkin(Gesellschafter gesellschafter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AbstractSkin setBauarbeiterSkin(Bauarbeiter bauarbeiter) {
+	public AbstractSkin setSkin(Bauarbeiter bauarbeiter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AbstractSkin setServiceTechnikerSkin(
-			ServiceTechniker serviceTechniker) {
+	public AbstractSkin setSkin(ServiceTechniker serviceTechniker) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AbstractSkin setTransportarbeiterSkin(
-			Transportarbeiter transportarbeiter) {
+	public AbstractSkin setSkin(Transportarbeiter transportarbeiter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public AbstractSkin setObjektbewacherSkin(Objektbewacher objektbewacher) {
+	public AbstractSkin setSkin(Objektbewacher objektbewacher) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Gepanzert();
 	}
 
 	@Override
-	public AbstractSkin setLeibwaechterSkin(Leibwaechter leibwaechter) {
+	public AbstractSkin setSkin(Leibwaechter leibwaechter) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Gepanzert();
 	}
 
 	@Override
-	public AbstractSkin setKaempferSkin(Kaempfer kaempfer) {
+	public AbstractSkin setSkin(Kaempfer kaempfer) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Gepanzert();
 	}
-
-
-	
 }

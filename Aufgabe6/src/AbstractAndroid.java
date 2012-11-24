@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public abstract class AbstractAndroid {
-	private int seriennummer;
+	protected final int seriennummer;
 	protected AbstractSoftware software;
 	protected AbstractSkin skin;
 	protected ArrayList<AbstractSensor> sensoren;
@@ -13,6 +13,8 @@ public abstract class AbstractAndroid {
 		this.sensoren = null;
 	}
 
+	/* === GETTER === */
+	
 	// Seriennummer hat nur getter, darf nicht veraendert werden
 	public int getSeriennummer() {
 		return seriennummer;
@@ -21,11 +23,7 @@ public abstract class AbstractAndroid {
 	public AbstractSoftware getSoftware() {
 		return software;
 	}
-
-	public void setSoftware(AbstractSoftware software) {
-		this.software = software;
-	}
-
+	
 	public AbstractSkin getSkin() {
 		return skin;
 	}
@@ -34,7 +32,14 @@ public abstract class AbstractAndroid {
 		return sensoren;
 	}
 
-	public void setSensoren(ArrayList<AbstractSensor> sensoren) {
-		this.sensoren = sensoren;
-	}
+	/* === SETTER === */
+	
+	//public abstract void setSoftware(AbstractSoftware software, AbstractSecurity sec);
+
+	public abstract void setSkin(AbstractSkin skin);
+	
+	public abstract void setSensoren(ArrayList<AbstractSensor> sensoren);
+	
+	/* === other methods === */
+	
 }

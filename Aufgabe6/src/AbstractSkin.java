@@ -1,13 +1,26 @@
 
 public abstract class AbstractSkin {
 	protected String beschreibung;
+	protected int seriennummer;
 	
-	public abstract AbstractSkin setHilfskraftSkin (Hilfskraft hilfskraft);
-	public abstract AbstractSkin setGesellschafterSkin (Gesellschafter gesellschafter);
-	public abstract AbstractSkin setBauarbeiterSkin (Bauarbeiter bauarbeiter);
-	public abstract AbstractSkin setServiceTechnikerSkin (ServiceTechniker serviceTechniker);
-	public abstract AbstractSkin setTransportarbeiterSkin (Transportarbeiter transportarbeiter);
-	public abstract AbstractSkin setObjektbewacherSkin (Objektbewacher objektbewacher);
-	public abstract AbstractSkin setLeibwaechterSkin (Leibwaechter leibwaechter);
-	public abstract AbstractSkin setKaempferSkin (Kaempfer kaempfer);
+	public AbstractSkin() {
+		this.beschreibung = "";
+	}
+	
+	public void setSN(int seriennummer) {
+		this.seriennummer = seriennummer;
+	}
+	
+	public String getBeschreibung() {
+		return beschreibung;
+	}
+	
+	public abstract AbstractSkin setSkin (Hilfskraft hilfskraft);
+	public abstract AbstractSkin setSkin (Gesellschafter gesellschafter);
+	public abstract AbstractSkin setSkin (Bauarbeiter bauarbeiter);
+	public abstract AbstractSkin setSkin (ServiceTechniker serviceTechniker);
+	public abstract AbstractSkin setSkin (Transportarbeiter transportarbeiter);
+	public abstract AbstractSkin setSkin (Objektbewacher objektbewacher);
+	public abstract AbstractSkin setSkin (Leibwaechter leibwaechter);
+	public abstract AbstractSkin setSkin (Kaempfer kaempfer);
 }
