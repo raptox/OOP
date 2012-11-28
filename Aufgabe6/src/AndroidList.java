@@ -9,17 +9,23 @@ public class AndroidList {
 		this.androids = new HashMap<Integer, AbstractAndroid>();
 	}
 	
-	public void insert( AbstractAndroid android ) {
+	public boolean insert( AbstractAndroid android ) {
+		if(android.getSkin() == null || android.getSoftware() == null || android.getKit() == null){
+			return false;
+		}
 		AbstractAndroid foundAndroid = this.androids.get( android.getSeriennummer() );
 		
 		// Android bereits in Liste -> Aenderung
 		if ( foundAndroid != null ) {
 			foundAndroid.skin = android.getSkin();
+			foundAndroid.software = android.getSoftware();
+			foundAndroid.kit = android.getKit();
 		}
 		// Neuen Android einfügen
 		else {
 			this.androids.put( android.getSeriennummer(), android );
 		}
+		return true;
 	}
 	
 	public Iterator<AbstractAndroid> iterator() {

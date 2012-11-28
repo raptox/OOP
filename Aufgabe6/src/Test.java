@@ -58,12 +58,16 @@ public class Test {
 		  +getSoftwareInstallationMessage(b2.getSoftware()) );
 		
 		
-		androids.insert( b1 );
-		androids.insert( h2 );
-		androids.insert( h1 );
-		androids.insert( bArbeiter );
+
+		System.out.println("Android b1 konnte hinzugefuegt werden = "+androids.insert( b1 ));
+		System.out.println("Android h2 konnte hinzugefuegt werden = "+androids.insert( h2 ));
+		System.out.println("Android h1 konnte hinzugefuegt werden = "+androids.insert( h1 ));
+		System.out.println("Android bArbeiter konnte hinzugefuegt werden = "+androids.insert( bArbeiter ));
+
+		System.out.println( "\n" + androids.find( 3 ) );
 		
-		System.out.println( androids.find( 3 ) );
+		// bArbeiter Androiden veraendern
+		bArbeiter.setKit(kitHilfskraft, new Security4());
 	}
 	
 	public static String getSkinInstallationMessage( AbstractSkin skin ) {
