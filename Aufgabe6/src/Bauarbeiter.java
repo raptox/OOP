@@ -49,9 +49,28 @@ public class Bauarbeiter extends AbstractSchwerarbeiter {
 		this.skin = skin.setSkin(this);
 	}
 
-	@Override
-	public void setSensoren(ArrayList<AbstractSensor> sensoren) {
+	public void setKit(AbstractKit kit, Security1 security) {
 		// TODO Auto-generated method stub
-		
+		this.kit = kit.setKit(this, security);
+	}
+	
+	public void setKit(AbstractKit kit, Security2 security) {
+		// TODO Auto-generated method stub
+		this.kit = kit.setKit(this, security);
+	}
+	
+	public void setKit(AbstractKit kit, Security3 security) {
+		// TODO Auto-generated method stub
+		this.kit = kit.setKit(this, security);
+	}
+	
+	public void setKit(AbstractKit kit, Security4 security) {
+		// TODO Auto-generated method stub
+		this.kit = kit.setKit(this, security);
+	}
+	
+	public void setKit(AbstractKit kit, Security5 security) {
+		// TODO Auto-generated method stub
+		this.kit = kit.setKit(this, security);
 	}
 }
