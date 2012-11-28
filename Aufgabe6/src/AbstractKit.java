@@ -20,6 +20,12 @@ public abstract class AbstractKit {
 		this.sensors = sensors;
 	}
 	
+	/*
+	 * VB: uebergebener Android und Security darf nicht null sein
+	 * NB: es wird das this Objekt des jeweiligen Untertyps zurueckgeliefert, 
+	 *     wenn die Androidenverordnung nicht verletzt wird;ansonsten null
+	 */
+	
 	// Hilfskraftsoftware
 	public abstract AbstractKit setKit(Hilfskraft hilfskraft, Security1 sec);
 	public abstract AbstractKit setKit(Hilfskraft hilfskraft, Security2 sec);
