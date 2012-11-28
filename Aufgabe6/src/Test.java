@@ -58,9 +58,9 @@ public class Test {
 		  +getSoftwareInstallationMessage(b2.getSoftware()) );
 		
 		
-		androids.insert( b1 );
-		androids.insert( b2 );
-		androids.insert( h2 );
+		System.out.println("Android b1 konnte hinzugefuegt werden = "+androids.insert( b1 ));
+		System.out.println("Android b2 konnte hinzugefuegt werden = "+androids.insert( b2 ));
+		System.out.println("Android h2 konnte hinzugefuegt werden = "+androids.insert( h2 ));
 		Iterator<AbstractAndroid> it = androids.iterator();
 		AbstractAndroid andi;
 		
