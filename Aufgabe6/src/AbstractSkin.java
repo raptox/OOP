@@ -15,6 +15,11 @@ public abstract class AbstractSkin {
 		return beschreibung;
 	}
 	
+	/*
+	 * VB: der uebergebene Android darf nicht null sein
+	 * NB: wenn die Androidenverordnung nicht verletzt wird so wird eine neue Skin zurueckgegeben
+	 *     ansonsten wird null zurueckgeliefert
+	*/
 	public abstract AbstractSkin setSkin (Hilfskraft hilfskraft);
 	public abstract AbstractSkin setSkin (Gesellschafter gesellschafter);
 	public abstract AbstractSkin setSkin (Bauarbeiter bauarbeiter);
