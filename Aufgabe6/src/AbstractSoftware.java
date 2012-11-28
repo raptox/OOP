@@ -15,6 +15,8 @@ public abstract class AbstractSoftware {
 		return beschreibung;
 	}
 	
+	// Vorbedingung: bei setSoftware darf nicht null uebergeben werden
+	// Nachbedingung: passende Software wird zurueckgeliefert wenn Androidenverordnung nicht verletzt wird
 	// Hilfskraftsoftware
 	public abstract AbstractSoftware setSoftware(Hilfskraft hilfskraft, Security1 sec);
 	public abstract AbstractSoftware setSoftware(Hilfskraft hilfskraft, Security2 sec);
