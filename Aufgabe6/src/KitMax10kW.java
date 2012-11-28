@@ -243,4 +243,8 @@ public class KitMax10kW extends AbstractKit {
 		// TODO Auto-generated method stub
 		return this;
 	}
+	
+	public String toString() {
+		return "Kit mit max. 10kW";
+	}
 }

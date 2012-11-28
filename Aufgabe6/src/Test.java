@@ -59,15 +59,11 @@ public class Test {
 		
 		
 		androids.insert( b1 );
-		androids.insert( b2 );
 		androids.insert( h2 );
-		Iterator<AbstractAndroid> it = androids.iterator();
-		AbstractAndroid andi;
+		androids.insert( h1 );
+		androids.insert( bArbeiter );
 		
-		while( it.hasNext() ) {
-			andi = it.next();
-			System.out.println( andi.getSeriennummer() );
-		}
+		System.out.println( androids.find( 3 ) );
 	}
 	
 	public static String getSkinInstallationMessage( AbstractSkin skin ) {

@@ -243,4 +243,8 @@ public class KitUnlimitedkW extends AbstractKit {
 		// TODO Auto-generated method stub
 		return this;
 	}
+	
+	public String toString() {
+		return "Kit mit unbegrenzt kW";
+	}
 }
