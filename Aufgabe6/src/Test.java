@@ -17,7 +17,7 @@ public class Test {
 		// Hilfskraft Android wird angelegt mit Beruehrungssensitiven Skin, Hilfskraftsoftware Level 1 einem Kit mit max. 1kW
 		Hilfskraft h2 = new Hilfskraft(2);
 		h2.setSkin(new Beruehrungssensitiv());
-		h2.setSoftware(new HilfskraftSoftware(),new Security1());
+		h2.setSoftware(null,new Security1());
 		
 		KitMax1kW kitHilfskraft = new KitMax1kW();
 		kitHilfskraft.setSensors( null );  // konkrete Sensoren Klassen muessen bei Gebrauch implementiert werden, zu Testzwecken sind keine notwendig
