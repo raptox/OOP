@@ -38,7 +38,9 @@ public class AndroidList {
 		
 		if ( android != null ) {
 			beschreibung += "Seriennummer: " + android.getSeriennummer() + "\n";
-			beschreibung += "Skin: " + android.getSkin();
+			beschreibung += "Skin: " + android.getSkin() + "\n";
+			beschreibung += "Software: " + android.getSoftware() + "\n";
+			beschreibung += "Kit: " + android.getKit();
 			
 			return beschreibung;
 		}

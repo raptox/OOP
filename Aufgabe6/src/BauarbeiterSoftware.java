@@ -263,6 +263,4 @@ class BauarbeiterSoftware extends AbstractSoftware {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 }

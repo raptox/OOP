@@ -52,4 +52,8 @@ public class Gepanzert extends AbstractSkin {
 		// TODO Auto-generated method stub
 		return new Gepanzert();
 	}
+	
+	public String toString() {
+		return "Gepanzerter Skin";
+	}
 }

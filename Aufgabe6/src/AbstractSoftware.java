@@ -70,4 +70,8 @@ public abstract class AbstractSoftware {
 	public abstract AbstractSoftware setSoftware(Kaempfer kaempfer, Security3 sec);
 	public abstract AbstractSoftware setSoftware(Kaempfer kaempfer, Security4 sec);
 	public abstract AbstractSoftware setSoftware(Kaempfer kaempfer, Security5 sec);
+	
+	public String toString() {
+		return beschreibung;
+	}
 }

@@ -54,6 +54,7 @@ public class Hochfest extends AbstractSkin {
 		return new Hochfest();
 	}
 
-	
-
+	public String toString() {
+		return "Hochfester Skin";
+	}
 }
