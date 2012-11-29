@@ -1,7 +1,7 @@
 
 public class BeweglichesAuto extends AbstractAuto {
-	public BeweglichesAuto( long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
-		super( geschwindigkeit, richtung, strategie );
+	public BeweglichesAuto( String name, long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
+		super( name, geschwindigkeit, richtung, strategie );
 	}
 	
 	public void run() {System.out.println( "Bewegliches" );
@@ -14,5 +14,9 @@ public class BeweglichesAuto extends AbstractAuto {
 			}
 			this.fahre();
 		}
+	}
+	
+	public String toString() {
+		return this.name;
 	}
 }

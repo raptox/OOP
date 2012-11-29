@@ -54,15 +54,9 @@ public class Fahrbahn {
 		auto.setFeld( feldNeu );
 	}
 	
-	// wenn sich auch andere autos auf dem feld befinden -> crash
-	protected static boolean crash( AbstractAuto taeterAuto ) {
-		return taeterAuto.getFeld().getAutos().size() > 1;
-	}
-	
 	public void start() {
 		Set<AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;
-		AbstractAuto current;
 		
 		// alle felder und deren Autos durchlaufen -> starten
 		for ( int x = 0; x < felder.length; x++ ) {

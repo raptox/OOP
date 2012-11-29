@@ -1,7 +1,7 @@
 
 public class SchnellesAuto extends AbstractAuto {
-	public SchnellesAuto( long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
-		super( geschwindigkeit, richtung, strategie );
+	public SchnellesAuto( String name, long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
+		super( name, geschwindigkeit, richtung, strategie );
 	}
 	
 	public void run() {System.out.println( "Schnelles" );
@@ -14,5 +14,9 @@ public class SchnellesAuto extends AbstractAuto {
 			}
 			this.fahre();
 		}
+	}
+	
+	public String toString() {
+		return this.name;
 	}
 }

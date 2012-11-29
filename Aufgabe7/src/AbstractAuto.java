@@ -9,14 +9,16 @@ public abstract class AbstractAuto implements Runnable {
 	protected long geschwindigkeit;
 	private AbstractStrategie strategie;
 	private Richtung richtung;
+	protected String name;
 	
 	private Feld feld;
 	
-	public AbstractAuto( long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
+	public AbstractAuto( String name, long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
 		this.geschwindigkeit = geschwindigkeit;
 		this.richtung = richtung;
 		this.strategie = strategie;
 		this.punkte = 0;
+		this.name = name;
 	}
 	
 	protected void erhoehePunkte() {
@@ -55,23 +57,37 @@ public abstract class AbstractAuto implements Runnable {
 		// das Auto wird auf die neue Position gesetzt
 		Fahrbahn.setPosition( this, position );	
 		
-		System.out.println( (this instanceof SchnellesAuto == true ? "Schnelles" : "Bewegliches") + " Auto fährt nach (" + position.x + "/" + position.y + ")" );
+		/* NUR TESTING */
+		System.out.println( this + " Auto fährt nach (" + position.x + "/" + position.y + ")" );
+		System.out.println( "Autos auf Feld: " );
+		autos = this.feld.getAutos();
 		
-		if ( Fahrbahn.crash( this ) ) {
+		iteratorAuto = autos.iterator();
+		
+		// iteriere alle Autos durch
+		while( iteratorAuto.hasNext() ) {
+			System.out.println( iteratorAuto.next() );
+		}
+		
+		/* ENDE */
+		
+		// wenn sich auch andere autos auf dem feld befinden -> crash
+		if ( ( autos = this.feld.getAutos() ).size() > 1 ) {
 			// hohl alle autos die auf dem selben Feld stehen
-			autos = this.feld.getAutos();
 			iteratorAuto = autos.iterator();
 			
 			// iteriere alle Autos durch
 			while( iteratorAuto.hasNext() ) {
 				current = iteratorAuto.next();
-				
+
 				// wenn current nicht das Taeter Auto ist; Taeter Auto BEKOMMT Punkte falls er vorne hineinfaehrt
 				if ( current != this && current.getRichtung().getGegengesetzteRichtung() == this.getRichtung() ) {
 					this.erhoehePunkte();
 					current.verringerePunkte();
 					
-					System.out.println( "Crash - x: " + position.x + ", y: " + position.y + ", Punkte Täter: " + this.getPunkte() + ", Punkte Opfer: " + current.getPunkte() );
+					System.out.println( "UNFALL! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
+					System.out.println( "Punkte von " + this + ": " + this.getPunkte() );
+					System.out.println( "Punkte von " + current + ": " + current.getPunkte() );
 				}
 				
 				
