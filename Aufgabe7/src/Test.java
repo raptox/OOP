@@ -4,14 +4,14 @@ import java.awt.Point;
 
 public class Test {
 	public static void main(String[] args) {
-		Fahrbahn fahrbahn = new Fahrbahn( 100, 20 );
+		Fahrbahn fahrbahn = new Fahrbahn( 10, 2 );
 		
 		// Autos erstellen
-		SchnellesAuto s1 = new SchnellesAuto( "Speedy", 200l, Richtung.OSTEN, new KreisStrategie( 100, 20 ) );
+		SchnellesAuto s1 = new SchnellesAuto( "Speedy", 200l, Richtung.OSTEN, new KreisStrategie( 10, 2 ) );
 		//SchnellesAuto s2 = new SchnellesAuto( 200, Richtung.NORDEN, new KreisStrategie( 100, 20 ) );
 		
-		BeweglichesAuto b1 = new BeweglichesAuto( "Schnecki", 1000, Richtung.WESTEN, new ZufallStrategie( 100, 20 ) );
-		BeweglichesAuto b2 = new BeweglichesAuto( "Gary", 1000l, Richtung.WESTEN, new ZufallStrategie( 100, 20 ) );
+		BeweglichesAuto b1 = new BeweglichesAuto( "AntonSchnecki", 1000l, Richtung.WESTEN, new ZufallStrategie( 10, 2 ) );
+		BeweglichesAuto b2 = new BeweglichesAuto( "Gary", 1000l, Richtung.WESTEN, new ZufallStrategie( 10, 2 ) );
 		
 		
 		// Autos zur Simulation hinzufügen

@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import sun.tools.tree.ThisExpression;
 
@@ -55,7 +56,7 @@ public class Fahrbahn {
 	}
 	
 	public void start() {
-		Set<AbstractAuto> autos;
+		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;
 		
 		// alle felder und deren Autos durchlaufen -> starten
@@ -64,7 +65,7 @@ public class Fahrbahn {
 				autos = felder[ x ][ y ].getAutos();
 				
 				if ( autos.size() > 0 ) {
-					iteratorAuto = autos.iterator();
+					iteratorAuto = autos.values().iterator();
 					
 					while( iteratorAuto.hasNext() ) {
 						new Thread( iteratorAuto.next() ).start();
@@ -72,5 +73,35 @@ public class Fahrbahn {
 				}
 			}
 		}
+	}
+	
+	public static String output() {
+		String output = "";
+		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
+		Iterator<AbstractAuto> iteratorAuto;
+		
+		for ( int y = 0; y < felder[ 0 ].length; y++ ) {
+			output += "|";
+			for ( int x = 0; x < felder.length; x++ ) {
+				if ( felder[ x ][ y ].getAutos().size() < 1 ) {
+					output += "_|";
+				}
+				else if ( felder[ x ][ y ].getAutos().size() >= 1 ) {
+					autos = felder[ x ][ y ].getAutos();
+					iteratorAuto = autos.values().iterator();
+
+					while( iteratorAuto.hasNext() ) {
+						output += iteratorAuto.next().toString().substring(0, 1);
+					}
+					output += "|";
+				}
+				
+				if ( x == felder.length - 1 ) {
+					output += "\n";
+				}
+			}
+		}
+		
+		return output;
 	}
 }

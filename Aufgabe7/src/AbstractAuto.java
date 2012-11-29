@@ -2,6 +2,7 @@
 import java.awt.Point;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public abstract class AbstractAuto implements Runnable {
@@ -47,7 +48,7 @@ public abstract class AbstractAuto implements Runnable {
 	
 	protected void fahre() {
 		Point position = Fahrbahn.getPosition( this );
-		Set<AbstractAuto> autos;
+		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;
 		AbstractAuto current;
 		
@@ -58,23 +59,23 @@ public abstract class AbstractAuto implements Runnable {
 		Fahrbahn.setPosition( this, position );	
 		
 		/* NUR TESTING */
-		System.out.println( this + " Auto fährt nach (" + position.x + "/" + position.y + ")" );
-		System.out.println( "Autos auf Feld: " );
+		//System.out.println( this + " Auto fährt nach (" + position.x + "/" + position.y + ")" );
+		/*System.out.println( "Autos auf Feld: " );
 		autos = this.feld.getAutos();
 		
-		iteratorAuto = autos.iterator();
+		iteratorAuto = autos.values().iterator();
 		
 		// iteriere alle Autos durch
 		while( iteratorAuto.hasNext() ) {
 			System.out.println( iteratorAuto.next() );
-		}
-		
+		}System.out.println();
+		*/
 		/* ENDE */
-		
+		System.out.println( Fahrbahn.output() );
 		// wenn sich auch andere autos auf dem feld befinden -> crash
 		if ( ( autos = this.feld.getAutos() ).size() > 1 ) {
 			// hohl alle autos die auf dem selben Feld stehen
-			iteratorAuto = autos.iterator();
+			iteratorAuto = autos.values().iterator();
 			
 			// iteriere alle Autos durch
 			while( iteratorAuto.hasNext() ) {
@@ -88,6 +89,9 @@ public abstract class AbstractAuto implements Runnable {
 					System.out.println( "UNFALL! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
 					System.out.println( "Punkte von " + this + ": " + this.getPunkte() );
 					System.out.println( "Punkte von " + current + ": " + current.getPunkte() );
+				}
+				else if ( current != this ){
+					//System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
 				}
 				
 				
