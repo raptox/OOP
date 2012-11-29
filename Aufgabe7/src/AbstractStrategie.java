@@ -1,6 +1,5 @@
 import java.awt.Point;
 
-
 public abstract class AbstractStrategie {
 	protected int breite;
 	protected int hoehe;

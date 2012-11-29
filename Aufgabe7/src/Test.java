@@ -6,16 +6,17 @@ public class Test {
 		Fahrbahn fahrbahn = new Fahrbahn( 100, 20 );
 		
 		// Autos erstellen
-		SchnellesAuto s1 = new SchnellesAuto( 100, Richtung.OSTEN, new KreisStrategie( 100, 20 ) );
+		SchnellesAuto s1 = new SchnellesAuto( 200l, Richtung.OSTEN, new KreisStrategie( 100, 20 ) );
 		//SchnellesAuto s2 = new SchnellesAuto( 200, Richtung.NORDEN, new KreisStrategie( 100, 20 ) );
 		
 		//BeweglichesAuto b1 = new BeweglichesAuto( 500, Richtung.OSTEN, new KreisStrategie( 100, 20 ) );
-		BeweglichesAuto b2 = new BeweglichesAuto( 500, Richtung.OSTEN, new KreisStrategie( 100, 20 ) );
+		BeweglichesAuto b2 = new BeweglichesAuto( 1000l, Richtung.WESTEN, new ZufallStrategie( 100, 20 ) );
 		
 		
 		// Autos zur Simulation hinzufügen
-		fahrbahn.addAuto( s1, new Point(0, 0) );
+		
 		fahrbahn.addAuto( b2, new Point(9, 0) );
+		fahrbahn.addAuto( s1, new Point(0, 0) );
 		//fahrbahn.addAuto( b1, new Point(10, 0) );
 		//fahrbahn.addAuto( b2, new Point(20, 0) );
 		

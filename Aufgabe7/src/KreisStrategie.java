@@ -8,13 +8,7 @@ public class KreisStrategie extends AbstractStrategie {
 	
 	@Override
 	public Point next( Point derzeitigePosition ) {
-		// gehe nach rechts
-		if ( derzeitigePosition.x + 1 < this.breite ) {
-			return new Point( derzeitigePosition.x + 1, derzeitigePosition.y );
-		}
-		
-		
-		return null;
+		return new Point( derzeitigePosition.x + 1, derzeitigePosition.y );
 	}
 
 }
