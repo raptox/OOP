@@ -1,3 +1,4 @@
+
 import java.awt.Point;
 import java.util.Iterator;
 import java.util.Set;
@@ -34,7 +35,7 @@ public abstract class AbstractAuto implements Runnable {
 		return this.richtung;
 	}
 	
-	public void setFeld( Feld feld ) {
+	protected void setFeld( Feld feld ) {
 		this.feld = feld;
 	}
 	
@@ -42,7 +43,7 @@ public abstract class AbstractAuto implements Runnable {
 		return this.feld;
 	}
 	
-	public void fahre() {
+	protected void fahre() {
 		Point position = Fahrbahn.getPosition( this );
 		Set<AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;

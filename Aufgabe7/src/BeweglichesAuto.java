@@ -1,3 +1,4 @@
+
 public class BeweglichesAuto extends AbstractAuto {
 	public BeweglichesAuto( long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
 		super( geschwindigkeit, richtung, strategie );

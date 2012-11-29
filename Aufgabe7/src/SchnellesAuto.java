@@ -1,3 +1,4 @@
+
 public class SchnellesAuto extends AbstractAuto {
 	public SchnellesAuto( long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
 		super( geschwindigkeit, richtung, strategie );
