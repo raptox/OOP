@@ -1,5 +1,7 @@
 
 import java.awt.Point;
+import java.io.Console;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -46,6 +48,18 @@ public abstract class AbstractAuto implements Runnable {
 		return this.feld;
 	}
 	
+	public void run() {
+		for( int i = 0; i < 5; i++ ) {
+			try {
+				Thread.sleep( this.geschwindigkeit );
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.fahre();
+		}
+	}
+	
 	protected void fahre() {
 		Point position = Fahrbahn.getPosition( this );
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
@@ -71,6 +85,7 @@ public abstract class AbstractAuto implements Runnable {
 		}System.out.println();
 		*/
 		/* ENDE */
+		
 		System.out.println( Fahrbahn.output() );
 		// wenn sich auch andere autos auf dem feld befinden -> crash
 		if ( ( autos = this.feld.getAutos() ).size() > 1 ) {
@@ -91,13 +106,9 @@ public abstract class AbstractAuto implements Runnable {
 					System.out.println( "Punkte von " + current + ": " + current.getPunkte() );
 				}
 				else if ( current != this ){
-					//System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
+					System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
 				}
-				
-				
 			}
-
-			
 		}
 		
 	}
