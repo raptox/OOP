@@ -10,5 +10,6 @@ public abstract class AbstractStrategie {
 		this.hoehe = hoehe;
 	}
 	
-	public abstract Point next( Point derzeitigePosition );
+	public abstract Point next( SchnellesAuto auto, Point derzeitigePosition );
+	public abstract Point next( BeweglichesAuto auto, Point derzeitigePosition );
 }

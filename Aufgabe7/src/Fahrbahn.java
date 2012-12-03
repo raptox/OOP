@@ -1,5 +1,6 @@
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
@@ -13,10 +14,13 @@ public class Fahrbahn {
 	private int hoehe;
 	
 	private static Feld[][] felder;
+	private ArrayList<Thread> threads;
 	
 	public Fahrbahn( int breite, int hoehe ) {
 		this.breite = breite;
 		this.hoehe = hoehe;
+		
+		this.threads = new ArrayList<Thread>();
 		
 		felder = new Feld[ this.breite ][ this.hoehe ];
 		
@@ -28,7 +32,7 @@ public class Fahrbahn {
 		}
 	}
 	
-	public void addAuto( AbstractAuto auto, Point position ) {
+	public synchronized void addAuto( AbstractAuto auto, Point position ) {
 		// auto zu feld hinzufuegen
 		felder[ position.x ][ position.y ].addAuto( auto );
 		
@@ -36,12 +40,12 @@ public class Fahrbahn {
 		auto.setFeld( felder[ position.x ][ position.y ] );
 	}
 	
-	protected static Point getPosition( AbstractAuto auto ) {
+	protected static synchronized Point getPosition( AbstractAuto auto ) {
 		return auto.getFeld().getPosition();
 	}
 	
 	// setzt ein Auto vom alten Feld auf ein neues Feld mit der uebergebenen Position
-	protected static void setPosition( AbstractAuto auto, Point position ) {
+	protected static synchronized void setPosition( AbstractAuto auto, Point position ) {
 		Feld feldVorher = auto.getFeld();
 		Feld feldNeu    = felder[ position.x ][ position.y ];
 		
@@ -55,7 +59,11 @@ public class Fahrbahn {
 		auto.setFeld( feldNeu );
 	}
 	
-	public void start() {
+	private static void stopAuto( AbstractAuto auto ) {
+		auto.requestStop();
+	}
+	
+	public static void stop() {
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;
 		
@@ -68,7 +76,29 @@ public class Fahrbahn {
 					iteratorAuto = autos.values().iterator();
 					
 					while( iteratorAuto.hasNext() ) {
-						new Thread( iteratorAuto.next() ).start();
+						stopAuto( iteratorAuto.next() );
+					}
+				}
+			}
+		}
+	}
+	
+	public void start() {
+		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
+		Iterator<AbstractAuto> iteratorAuto;
+		Thread t;
+		
+		// alle felder und deren Autos durchlaufen -> starten
+		for ( int x = 0; x < felder.length; x++ ) {
+			for ( int y = 0; y < felder[ 0 ].length; y++ ) {
+				autos = felder[ x ][ y ].getAutos();
+				
+				if ( autos.size() > 0 ) {
+					iteratorAuto = autos.values().iterator();
+					
+					while( iteratorAuto.hasNext() ) {
+						t = new Thread( iteratorAuto.next() );
+						t.start();
 					}
 				}
 			}

@@ -10,19 +10,29 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class AbstractAuto implements Runnable {
 	private int punkte;
 	protected long geschwindigkeit;
-	private AbstractStrategie strategie;
+	protected AbstractStrategie strategie;
 	private Richtung richtung;
 	protected String name;
+	private int feldwechsel;
 	
 	private Feld feld;
+	
+	private volatile boolean stop = false;
+	
+	private final int MAXPUNKTE = 3;
+	private final int MAXFELDWECHSEL = 200;
 	
 	public AbstractAuto( String name, long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
 		this.geschwindigkeit = geschwindigkeit;
 		this.richtung = richtung;
 		this.strategie = strategie;
 		this.punkte = 0;
+		this.feldwechsel = 0;
 		this.name = name;
 	}
+	
+	// multi methoden (Visitor Pattern) fuer Strategien verwendet
+	protected abstract Point getNextPosition( Point derzeitigePosition );
 	
 	protected void erhoehePunkte() {
 		this.punkte++;
@@ -40,6 +50,10 @@ public abstract class AbstractAuto implements Runnable {
 		return this.richtung;
 	}
 	
+	protected void setRichtung( Richtung richtung ) {
+		this.richtung = richtung;
+	}
+	
 	protected void setFeld( Feld feld ) {
 		this.feld = feld;
 	}
@@ -49,7 +63,8 @@ public abstract class AbstractAuto implements Runnable {
 	}
 	
 	public void run() {
-		for( int i = 0; i < 5; i++ ) {
+		// solange das auto noch nicht 10 punkte hat, lass es weiterfahren
+		while( !stop && this.punkte < this.MAXPUNKTE && this.feldwechsel < this.MAXFELDWECHSEL ) {
 			try {
 				Thread.sleep( this.geschwindigkeit );
 			} catch (InterruptedException e) {
@@ -58,6 +73,19 @@ public abstract class AbstractAuto implements Runnable {
 			}
 			this.fahre();
 		}
+		
+		if ( this.punkte >= this.MAXPUNKTE ) {
+			Fahrbahn.stop();
+		}
+		
+		System.out.println( this + " Auto gestoppt, Punkte: " + this.punkte + ", Anzahl Feldwechsel: " + this.feldwechsel );
+
+		// wenn auto 10 punkte erreicht hat, beende simulation
+		
+	}
+	
+	protected void requestStop() {
+		stop = true;
 	}
 	
 	protected void fahre() {
@@ -67,13 +95,16 @@ public abstract class AbstractAuto implements Runnable {
 		AbstractAuto current;
 		
 		// bestimme die naechste Position fuer das Auto anhand der Strategie
-		position = strategie.next( position );
+		position = this.getNextPosition( position );
 		
 		// das Auto wird auf die neue Position gesetzt
 		Fahrbahn.setPosition( this, position );	
 		
+		this.feldwechsel++;
+			
+		
 		/* NUR TESTING */
-		//System.out.println( this + " Auto fährt nach (" + position.x + "/" + position.y + ")" );
+		//System.out.println( this + " Auto fährt nach (" + position.x + "/" + position.y + ") in Richtung " + this.getRichtung() );
 		/*System.out.println( "Autos auf Feld: " );
 		autos = this.feld.getAutos();
 		
@@ -86,7 +117,7 @@ public abstract class AbstractAuto implements Runnable {
 		*/
 		/* ENDE */
 		
-		System.out.println( Fahrbahn.output() );
+		//System.out.println( Fahrbahn.output() );
 		// wenn sich auch andere autos auf dem feld befinden -> crash
 		if ( ( autos = this.feld.getAutos() ).size() > 1 ) {
 			// hohl alle autos die auf dem selben Feld stehen
@@ -106,10 +137,9 @@ public abstract class AbstractAuto implements Runnable {
 					System.out.println( "Punkte von " + current + ": " + current.getPunkte() );
 				}
 				else if ( current != this ){
-					System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
+					//System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
 				}
 			}
 		}
-		
 	}
 }
