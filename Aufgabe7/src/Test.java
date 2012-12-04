@@ -20,7 +20,7 @@ public class Test {
 		BeweglichesAuto b2 = new BeweglichesAuto( "Gary", 200l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );
 		
 		
-		// Autos zur Simulation hinzufügen
+		// Autos zur Simulation hinzufuegen
 		
 		//fahrbahn.addAuto( b1, new Point(9, 0) );
 		fahrbahn.addAuto( s1, new Point(0, 0) );

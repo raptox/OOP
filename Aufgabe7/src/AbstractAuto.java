@@ -6,18 +6,19 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class AbstractAuto implements Runnable {
 	private int punkte;
-	protected long geschwindigkeit;
-	protected AbstractStrategie strategie;
+	private long geschwindigkeit;
 	private Richtung richtung;
-	protected String name;
 	private int feldwechsel;
-	
 	private Feld feld;
 	
 	private volatile boolean stop = false;
 	
 	private final int MAXPUNKTE = 10;
 	private final int MAXFELDWECHSEL = 800;
+	
+	// Attribute die vererbt werden
+	protected AbstractStrategie strategie;
+	protected String name;
 	
 	public AbstractAuto( String name, long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
 		this.geschwindigkeit = geschwindigkeit;

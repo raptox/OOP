@@ -174,7 +174,7 @@ public class ZufallStrategie extends AbstractStrategie {
 
 	@Override
 	public Point next(BeweglichesAuto auto, Point derzeitigePosition) {
-		System.out.println( "Zufall für Bewegliches Auto" );
+		System.out.println( "Zufall fuer Bewegliches Auto" );
 		// TODO Auto-generated method stub
 		return new Point( derzeitigePosition.x - 1, derzeitigePosition.y );
 	}
