@@ -86,7 +86,7 @@ public abstract class AbstractAuto implements Runnable {
 		stop = true;
 	}
 	
-	protected void fahre() {
+	private void fahre() {
 		Point position = Fahrbahn.getPosition( this );
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;

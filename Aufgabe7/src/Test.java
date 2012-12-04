@@ -34,7 +34,7 @@ public class Test {
 		fahrbahn.addAuto( s8, new Point(5, 1) );
 		//fahrbahn.addAuto( b1, new Point(10, 0) );
 		//fahrbahn.addAuto( b2, new Point(20, 0) );
-		
+				
 		// Simulation starten
 		fahrbahn.start();
 		
