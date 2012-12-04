@@ -16,8 +16,8 @@ public class Test {
 		SchnellesAuto s7 = new SchnellesAuto( "G", 40l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
 		SchnellesAuto s8 = new SchnellesAuto( "H", 50l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
 		
-		BeweglichesAuto b1 = new BeweglichesAuto( "AntonSchnecki", 200l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );
-		BeweglichesAuto b2 = new BeweglichesAuto( "Gary", 200l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );
+		BeweglichesAuto b1 = new BeweglichesAuto( "X", 200l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );
+		BeweglichesAuto b2 = new BeweglichesAuto( "Y", 200l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );
 		
 		
 		// Autos zur Simulation hinzufuegen
@@ -32,8 +32,8 @@ public class Test {
 		fahrbahn.addAuto( s6, new Point(2, 1) );
 		fahrbahn.addAuto( s7, new Point(3, 1) );
 		fahrbahn.addAuto( s8, new Point(5, 1) );
-		//fahrbahn.addAuto( b1, new Point(10, 0) );
-		//fahrbahn.addAuto( b2, new Point(20, 0) );
+		fahrbahn.addAuto( b1, new Point(9, 9) );
+		fahrbahn.addAuto( b2, new Point(5, 5) );
 				
 		// Simulation starten
 		fahrbahn.start();
