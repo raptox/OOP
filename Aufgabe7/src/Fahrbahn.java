@@ -16,7 +16,7 @@ public class Fahrbahn {
 		
 		felder = new Feld[ this.breite ][ this.hoehe ];
 		
-		// felder hinzufügen
+		// felder hinzufuegen
 		for ( int x = 0; x < felder.length; x++ ) {
 			for ( int y = 0; y < felder[ 0 ].length; y++ ) {
 				felder[ x ][ y ] = new Feld( new Point( x, y ) );
