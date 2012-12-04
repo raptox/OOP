@@ -9,7 +9,7 @@ public class Test {
 		long zstNachher;
 		zstVorher = System.currentTimeMillis();
 
-		/*System.out.println("Testfall 1 - 10 Autos, Zufallsstrategie+Schlangenlinienstrategie");
+		System.out.println("\n\nTestfall 1 - 10 Autos, Zufallsstrategie+Schlangenlinienstrategie\n\n");
 		Fahrbahn fahrbahn = new Fahrbahn( 10, 10 );
 
 		// Autos erstellen
@@ -39,9 +39,16 @@ public class Test {
 		fahrbahn.addAuto( b2, new Point(5, 5) );
 
 		// Simulation starten
-		fahrbahn.start();*/
+		fahrbahn.start();
 
-		System.out.println("Testfall 2 - Schlangenlinien, 4 Autos");
+		try {
+			Thread.sleep(1000*3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+		System.out.println("\n\nTestfall 2 - Schlangenlinien, ZufallsStrategie, 4 Autos\n\n");
 		Fahrbahn game = new Fahrbahn(5,5);
 		SchnellesAuto ss1 = new SchnellesAuto( "ss1 SL", 5l, Richtung.OSTEN, new SchlangenLinieStrategie(5,5) );
 		SchnellesAuto ss2 = new SchnellesAuto( "ss2 ZS", 3l, Richtung.SUEDEN, new ZufallStrategie(5,5) );		
@@ -54,7 +61,22 @@ public class Test {
 		game.start();
 
 		try {
-			Thread.sleep(1000*9);
+			Thread.sleep(1000*3);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("\n\nTestfall 3 - Schlangenlinien, ZufallsStrategie 2 Autos\n\n");
+		Fahrbahn game2 = new Fahrbahn(5,5);
+		SchnellesAuto sss2 = new SchnellesAuto( "ss2 ZS", 3l, Richtung.SUEDEN, new ZufallStrategie(5,5) );		
+		BeweglichesAuto bbb1 = new BeweglichesAuto( "bb1 SL", 12l, Richtung.WESTEN, new SchlangenLinieStrategie(5,5) );
+		game2.addAuto(sss2, new Point(0,0));
+		game2.addAuto(bbb1, new Point(0,4));
+		game2.start();
+
+		try {
+			Thread.sleep(1000*3);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
