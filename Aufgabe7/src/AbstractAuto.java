@@ -101,7 +101,7 @@ public abstract class AbstractAuto implements Runnable {
 		// Anzahl der Feldwechsel erhoehen
 		this.feldwechsel++;
 		
-		//System.out.println( Fahrbahn.output() );
+		System.out.println( Fahrbahn.output() );
 		// wenn sich auch andere autos auf dem feld befinden -> crash
 		if ( ( autos = this.feld.getAutos() ).size() > 1 ) {
 			// hohl alle autos die auf dem selben Feld stehen
@@ -119,8 +119,8 @@ public abstract class AbstractAuto implements Runnable {
 					current.verringerePunkte();
 					
 					System.out.println( "UNFALL! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
-					System.out.println( "Punkte von " + this + ": " + this.getPunkte() );
-					System.out.println( "Punkte von " + current + ": " + current.getPunkte() );
+					//System.out.println( "Punkte von " + this + ": " + this.getPunkte() );
+					//System.out.println( "Punkte von " + current + ": " + current.getPunkte() );
 				}
 				// wenn current nicht das Taeter Auto ist; Taeter Auto BEKOMMT einen Punkt und Opfer verliert einen Punkt
 				else if ( current != this ){
