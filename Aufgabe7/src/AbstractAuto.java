@@ -128,6 +128,7 @@ public abstract class AbstractAuto implements Runnable {
 				// wenn current nicht das Taeter Auto ist; Taeter Auto BEKOMMT Punkte falls er vorne hineinfaehrt
 				if ( current != this && current.getRichtung().getGegengesetzteRichtung() == this.getRichtung() ) {
 					this.erhoehePunkte();
+					this.erhoehePunkte();
 					current.verringerePunkte();
 					
 					System.out.println( "UNFALL! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
@@ -136,6 +137,8 @@ public abstract class AbstractAuto implements Runnable {
 				}
 				else if ( current != this ){
 					//System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
+					this.erhoehePunkte();
+					current.verringerePunkte();
 				}
 			}
 		}
