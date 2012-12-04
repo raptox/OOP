@@ -76,7 +76,7 @@ public abstract class AbstractAuto implements Runnable {
 			Fahrbahn.stop();
 		}
 		
-		System.out.println( this + " Auto gestoppt, Punkte: " + this.punkte + ", Anzahl Feldwechsel: " + this.feldwechsel );
+		System.out.println( "Auto " + this + " gestoppt, Punkte: " + this.punkte + ", Anzahl Feldwechsel: " + this.feldwechsel );
 
 		// wenn auto 10 punkte erreicht hat, beende simulation
 		
@@ -101,7 +101,7 @@ public abstract class AbstractAuto implements Runnable {
 		// Anzahl der Feldwechsel erhoehen
 		this.feldwechsel++;
 		
-		System.out.println( Fahrbahn.output() );
+		//System.out.println( Fahrbahn.output() );
 		// wenn sich auch andere autos auf dem feld befinden -> crash
 		if ( ( autos = this.feld.getAutos() ).size() > 1 ) {
 			// hohl alle autos die auf dem selben Feld stehen
