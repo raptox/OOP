@@ -86,8 +86,8 @@ public abstract class AbstractAuto implements Runnable {
 		stop = true;
 	}
 	
-	private void fahre() {
-		Point position = Fahrbahn.getPosition( this );
+	protected void fahre() {
+		Point position = this.feld.getPosition();
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;
 		AbstractAuto current;
@@ -98,22 +98,8 @@ public abstract class AbstractAuto implements Runnable {
 		// das Auto wird auf die neue Position gesetzt
 		Fahrbahn.setPosition( this, position );	
 		
+		// Anzahl der Feldwechsel erhoehen
 		this.feldwechsel++;
-			
-		
-		/* NUR TESTING */
-		//System.out.println( this + " Auto fährt nach (" + position.x + "/" + position.y + ") in Richtung " + this.getRichtung() );
-		/*System.out.println( "Autos auf Feld: " );
-		autos = this.feld.getAutos();
-		
-		iteratorAuto = autos.values().iterator();
-		
-		// iteriere alle Autos durch
-		while( iteratorAuto.hasNext() ) {
-			System.out.println( iteratorAuto.next() );
-		}System.out.println();
-		*/
-		/* ENDE */
 		
 		//System.out.println( Fahrbahn.output() );
 		// wenn sich auch andere autos auf dem feld befinden -> crash
@@ -125,7 +111,8 @@ public abstract class AbstractAuto implements Runnable {
 			while( iteratorAuto.hasNext() ) {
 				current = iteratorAuto.next();
 
-				// wenn current nicht das Taeter Auto ist; Taeter Auto BEKOMMT Punkte falls er vorne hineinfaehrt
+				// wenn current nicht das Taeter Auto ist; Taeter Auto BEKOMMT Bonuspunkt, also ingesammt 2 Punkte, falls er vorne hineinfaehrt
+				// Opfer verliert einen Punkt
 				if ( current != this && current.getRichtung().getGegengesetzteRichtung() == this.getRichtung() ) {
 					this.erhoehePunkte();
 					this.erhoehePunkte();
@@ -135,8 +122,9 @@ public abstract class AbstractAuto implements Runnable {
 					System.out.println( "Punkte von " + this + ": " + this.getPunkte() );
 					System.out.println( "Punkte von " + current + ": " + current.getPunkte() );
 				}
+				// wenn current nicht das Taeter Auto ist; Taeter Auto BEKOMMT einen Punkt und Opfer verliert einen Punkt
 				else if ( current != this ){
-					//System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
+					System.out.println( "UNFALL SEITLICH! " + this + " crasht in " + current + ", Position: (" + position.x + "/" + position.y + ")" );
 					this.erhoehePunkte();
 					current.verringerePunkte();
 				}

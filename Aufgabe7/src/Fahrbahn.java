@@ -24,7 +24,7 @@ public class Fahrbahn {
 		}
 	}
 	
-	public synchronized void addAuto( AbstractAuto auto, Point position ) {
+	public void addAuto( AbstractAuto auto, Point position ) {
 		// auto zu feld hinzufuegen
 		felder[ position.x ][ position.y ].addAuto( auto );
 		
@@ -32,23 +32,23 @@ public class Fahrbahn {
 		auto.setFeld( felder[ position.x ][ position.y ] );
 	}
 	
-	protected static synchronized Point getPosition( AbstractAuto auto ) {
-		return auto.getFeld().getPosition();
-	}
-	
 	// setzt ein Auto vom alten Feld auf ein neues Feld mit der uebergebenen Position
-	protected static synchronized void setPosition( AbstractAuto auto, Point position ) {
+	protected static void setPosition( AbstractAuto auto, Point position ) {
 		Feld feldVorher = auto.getFeld();
 		Feld feldNeu    = felder[ position.x ][ position.y ];
 		
-		// auto von alten Feld entfernen
-		feldVorher.removeAuto( auto );
+		synchronized ( feldVorher ) {
+			// auto von alten Feld entfernen
+			feldVorher.removeAuto( auto );
+		}
 		
-		// auto auf neues Feld setzen
-		feldNeu.addAuto( auto );
-		
-		// dem auto das neue Feld auch zuweisen
-		auto.setFeld( feldNeu );
+		synchronized ( feldNeu ) {
+			// auto auf neues Feld setzen
+			feldNeu.addAuto( auto );
+			
+			// dem auto das neue Feld auch zuweisen
+			auto.setFeld( feldNeu );
+		}
 	}
 	
 	private static void stopAuto( AbstractAuto auto ) {
