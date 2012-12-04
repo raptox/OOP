@@ -1,9 +1,6 @@
 
 import java.awt.Point;
-import java.io.Console;
-import java.io.IOException;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 
@@ -19,8 +16,8 @@ public abstract class AbstractAuto implements Runnable {
 	
 	private volatile boolean stop = false;
 	
-	private final int MAXPUNKTE = 3;
-	private final int MAXFELDWECHSEL = 200;
+	private final int MAXPUNKTE = 10;
+	private final int MAXFELDWECHSEL = 800;
 	
 	public AbstractAuto( String name, long geschwindigkeit, Richtung richtung, AbstractStrategie strategie ) {
 		this.geschwindigkeit = geschwindigkeit;

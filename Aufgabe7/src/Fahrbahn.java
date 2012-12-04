@@ -1,12 +1,7 @@
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-
-import sun.tools.tree.ThisExpression;
 
 
 public class Fahrbahn {
@@ -14,13 +9,10 @@ public class Fahrbahn {
 	private int hoehe;
 	
 	private static Feld[][] felder;
-	private ArrayList<Thread> threads;
 	
 	public Fahrbahn( int breite, int hoehe ) {
 		this.breite = breite;
 		this.hoehe = hoehe;
-		
-		this.threads = new ArrayList<Thread>();
 		
 		felder = new Feld[ this.breite ][ this.hoehe ];
 		

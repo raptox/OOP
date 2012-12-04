@@ -7,14 +7,14 @@ public class Test {
 		Fahrbahn fahrbahn = new Fahrbahn( 10, 10 );
 		
 		// Autos erstellen
-		SchnellesAuto s1 = new SchnellesAuto( "A", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
-		SchnellesAuto s2 = new SchnellesAuto( "B", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
-		SchnellesAuto s3 = new SchnellesAuto( "C", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
-		SchnellesAuto s4 = new SchnellesAuto( "D", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
-		SchnellesAuto s5 = new SchnellesAuto( "E", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
-		SchnellesAuto s6 = new SchnellesAuto( "F", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
-		SchnellesAuto s7 = new SchnellesAuto( "G", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
-		SchnellesAuto s8 = new SchnellesAuto( "H", 200l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s1 = new SchnellesAuto( "A", 20l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s2 = new SchnellesAuto( "B", 30l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s3 = new SchnellesAuto( "C", 10l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s4 = new SchnellesAuto( "D", 15l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s5 = new SchnellesAuto( "E", 20l, Richtung.SUEDEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s6 = new SchnellesAuto( "F", 30l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s7 = new SchnellesAuto( "G", 40l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
+		SchnellesAuto s8 = new SchnellesAuto( "H", 50l, Richtung.OSTEN, new ZufallStrategie( 10, 10 ) );
 		
 		BeweglichesAuto b1 = new BeweglichesAuto( "AntonSchnecki", 200l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );
 		BeweglichesAuto b2 = new BeweglichesAuto( "Gary", 200l, Richtung.WESTEN, new ZufallStrategie( 10, 10 ) );

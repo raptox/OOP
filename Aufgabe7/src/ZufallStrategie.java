@@ -1,6 +1,5 @@
 
 import java.awt.Point;
-import java.util.Random;
 
 
 public class ZufallStrategie extends AbstractStrategie {
