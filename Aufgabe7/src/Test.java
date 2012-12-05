@@ -22,18 +22,18 @@ public class Test {
 		
 		// Autos zur Simulation hinzufuegen
 		
-		//fahrbahn.addAuto( b1, new Point(9, 0) );
-		fahrbahn.addAuto( s1, new Point(0, 0) );
+		fahrbahn.addAuto( b1, new Point(9, 0) );
+		//fahrbahn.addAuto( s1, new Point(0, 0) );
 		//fahrbahn.addAuto( b2, new Point(8, 0) );
-		fahrbahn.addAuto( s2, new Point(0, 1) );
-		fahrbahn.addAuto( s3, new Point(4, 0) );
-		fahrbahn.addAuto( s4, new Point(3, 6) );
-		fahrbahn.addAuto( s5, new Point(1, 1) );
-		fahrbahn.addAuto( s6, new Point(2, 1) );
-		fahrbahn.addAuto( s7, new Point(3, 1) );
-		fahrbahn.addAuto( s8, new Point(5, 1) );
-		fahrbahn.addAuto( b1, new Point(9, 9) );
-		fahrbahn.addAuto( b2, new Point(5, 5) );
+		//fahrbahn.addAuto( s2, new Point(0, 1) );
+		//fahrbahn.addAuto( s3, new Point(4, 0) );
+		//fahrbahn.addAuto( s4, new Point(3, 6) );
+		//fahrbahn.addAuto( s5, new Point(1, 1) );
+		//fahrbahn.addAuto( s6, new Point(2, 1) );
+		//fahrbahn.addAuto( s7, new Point(3, 1) );
+		//fahrbahn.addAuto( s8, new Point(5, 1) );
+		//fahrbahn.addAuto( b1, new Point(9, 9) );
+		//fahrbahn.addAuto( b2, new Point(5, 5) );
 				
 		// Simulation starten
 		fahrbahn.start();
