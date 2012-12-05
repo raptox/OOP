@@ -1,6 +1,9 @@
 
 import java.awt.Point;
 
+/*
+ * Untertyp SchlangenLinieStrategie, dynamisches binden mit Autos
+ */
 // SchlangenLinieStrategie berechnet die naechste Position von einem Auto innerhalb des Spielfelds. Diese Strategie
 // laesst das Auto in Schlangenlinien fahren.
 public class SchlangenLinieStrategie extends AbstractStrategie {

@@ -1,6 +1,9 @@
 
 import java.awt.Point;
 
+/*
+ * Untertyp ZufallStrategie, dynamisches binden mit Autos
+ */
 // ZufallStrategie berechnet die naechste Position (zufaellig) von einem Auto innerhalb des Spielfelds.
 public class ZufallStrategie extends AbstractStrategie {
 	public ZufallStrategie( int breite, int hoehe ) {

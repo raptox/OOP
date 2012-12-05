@@ -1,6 +1,9 @@
 
 import java.awt.Point;
 
+/*
+ * Obertyp Strategie, Bewegungsmuster fuer Autos
+ */
 // Berechnet die naechste Position von einem Auto innerhalb des Spielfelds.
 public abstract class AbstractStrategie {
 	protected int breite;

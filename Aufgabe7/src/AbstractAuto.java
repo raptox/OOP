@@ -3,7 +3,10 @@ import java.awt.Point;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-
+/*
+ * Obertyp Auto, enthaelt Punkte, Richtung, Geschwindigkeit
+ * ist ein Thread
+ */
 public abstract class AbstractAuto implements Runnable {
 	private int punkte;
 	private long geschwindigkeit;
@@ -32,11 +35,11 @@ public abstract class AbstractAuto implements Runnable {
 	// multi methoden (Visitor Pattern) fuer Strategien verwendet
 	protected abstract Point getNextPosition( Point derzeitigePosition );
 	
-	protected void erhoehePunkte() {
+	private void erhoehePunkte() {
 		this.punkte++;
 	}
 	
-	protected void verringerePunkte() {
+	private void verringerePunkte() {
 		this.punkte--;
 	}
 	
@@ -48,12 +51,12 @@ public abstract class AbstractAuto implements Runnable {
 		return this.richtung;
 	}
 	
-	protected void setRichtung( Richtung richtung ) {
+	public void setRichtung( Richtung richtung ) {
 		this.richtung = richtung;
 	}
 	
 	// Vorb.: feld != null
-	protected void setFeld( Feld feld ) {
+	public void setFeld( Feld feld ) {
 		this.feld = feld;
 	}
 	
@@ -81,12 +84,12 @@ public abstract class AbstractAuto implements Runnable {
 	}
 	
 	// Auto stoppen
-	protected void requestStop() {
+	public void requestStop() {
 		stop = true;
 	}
 	
 	// laesst ein Auto auf das naechste Feld fahren anhand seiner Strategie
-	protected void fahre() {
+	private void fahre() {
 		Point position = this.feld.getPosition();
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;

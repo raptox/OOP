@@ -3,7 +3,10 @@ import java.awt.Point;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-
+/*
+ * Fahrbahn, ist das Spielfeld und enthaelt alle Autos auf dem Feld
+ * startet alle Threads(Autos)
+ */
 public class Fahrbahn {
 	private int breite;
 	private int hoehe;
@@ -37,7 +40,7 @@ public class Fahrbahn {
 	
 	// setzt ein Auto vom alten Feld auf ein neues Feld mit der uebergebenen Position
 	// Vorb.: auto != null, position innerhalb der Fahrbahn Dimensionen
-	protected static void setPosition( AbstractAuto auto, Point position ) {
+	public static void setPosition( AbstractAuto auto, Point position ) {
 		Feld feldVorher = auto.getFeld();
 		Feld feldNeu    = felder[ position.x ][ position.y ];
 		
