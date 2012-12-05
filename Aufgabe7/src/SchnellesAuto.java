@@ -6,10 +6,6 @@ public class SchnellesAuto extends AbstractAuto {
 		super( name, geschwindigkeit, richtung, strategie );
 	}
 	
-	public String toString() {
-		return this.name;
-	}
-	
 	@Override
 	protected Point getNextPosition( Point derzeitigePosition ) {
 		return this.strategie.next( this, derzeitigePosition );

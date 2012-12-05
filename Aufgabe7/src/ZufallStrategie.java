@@ -1,12 +1,16 @@
 
 import java.awt.Point;
 
-
+// ZufallStrategie berechnet die naechste Position (zufaellig) von einem Auto innerhalb des Spielfelds.
 public class ZufallStrategie extends AbstractStrategie {
 	public ZufallStrategie( int breite, int hoehe ) {
 		super( breite, hoehe );
 	}
-
+	
+	/*
+	 * Vorb.: auto darf nicht null sein und derzeitigePosition muss einer gueltigen Position innerhalb des Spielfelds darstellen
+	 * Nachb.: Liefert die naechste Position auf dem Spielfeld fuer das uebergebene Auto
+	 */
 	@Override
 	public Point next( SchnellesAuto auto, Point derzeitigePosition ) {
 		double randomVal;
@@ -171,7 +175,11 @@ public class ZufallStrategie extends AbstractStrategie {
 
 		return new Point( x, y );
 	}
-
+	
+	/*
+	 * Vorb.: auto darf nicht null sein und derzeitigePosition muss einer gueltigen Position innerhalb des Spielfelds darstellen
+	 * Nachb.: Liefert die naechste Position auf dem Spielfeld fuer das uebergebene Auto
+	 */
 	@Override
 	public Point next(BeweglichesAuto auto, Point derzeitigePosition) {
 		double randomVal;

@@ -10,13 +10,14 @@ public class Fahrbahn {
 	
 	private static Feld[][] felder;
 	
+	// Vorb.: breite > 0 && hoehe > 0
 	public Fahrbahn( int breite, int hoehe ) {
 		this.breite = breite;
 		this.hoehe = hoehe;
 		
 		felder = new Feld[ this.breite ][ this.hoehe ];
 		
-		// felder hinzufügen
+		// felder hinzufuegen
 		for ( int x = 0; x < felder.length; x++ ) {
 			for ( int y = 0; y < felder[ 0 ].length; y++ ) {
 				felder[ x ][ y ] = new Feld( new Point( x, y ) );
@@ -24,6 +25,8 @@ public class Fahrbahn {
 		}
 	}
 	
+	// Setzt ein Auto auf eine Position innerhalb der Fahrbahn
+	// Vorb.: auto != null, position innerhalb der Fahrbahn Dimensionen
 	public void addAuto( AbstractAuto auto, Point position ) {
 		// auto zu feld hinzufuegen
 		felder[ position.x ][ position.y ].addAuto( auto );
@@ -33,6 +36,7 @@ public class Fahrbahn {
 	}
 	
 	// setzt ein Auto vom alten Feld auf ein neues Feld mit der uebergebenen Position
+	// Vorb.: auto != null, position innerhalb der Fahrbahn Dimensionen
 	protected static void setPosition( AbstractAuto auto, Point position ) {
 		Feld feldVorher = auto.getFeld();
 		Feld feldNeu    = felder[ position.x ][ position.y ];
@@ -51,10 +55,13 @@ public class Fahrbahn {
 		}
 	}
 	
+	// Stoppt ein einzelnes Auto
+	// Vorb.: auto != null
 	private static void stopAuto( AbstractAuto auto ) {
 		auto.requestStop();
 	}
 	
+	// Stoppt alle Autos der Fahrbahn
 	public static void stop() {
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;
@@ -75,6 +82,7 @@ public class Fahrbahn {
 		}
 	}
 	
+	// Startet alle Autos auf der Fahrbahn
 	public void start() {
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
 		Iterator<AbstractAuto> iteratorAuto;
@@ -97,6 +105,7 @@ public class Fahrbahn {
 		}
 	}
 	
+	// Gibt die gesamte Fahrbahn inkl. Autos in einer uebersichtlichen Form als String zurueck
 	public static String output() {
 		String output = "";
 		ConcurrentHashMap<AbstractAuto, AbstractAuto> autos;
