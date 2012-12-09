@@ -42,7 +42,7 @@ public class Test {
 		
 		System.out.println("Iterator Test:");
 		// ITerator Test
-		Iterator<AbsCollection> it = col.iterator(); 
+		Iterator<CollectionItem> it = col.iterator(); 
 		while (it.hasNext()) {
 			System.out.println(it.next());
 			

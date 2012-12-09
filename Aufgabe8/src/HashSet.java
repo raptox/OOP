@@ -11,7 +11,7 @@ public class HashSet implements java.lang.Iterable {
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public boolean insert( String key, AbsCollection element ) {
+	public boolean insert( String key, CollectionItem element ) {
 		return this.list.add( key, element );
 	}
 	
@@ -49,7 +49,7 @@ public class HashSet implements java.lang.Iterable {
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	private class SetIterator implements Iterator<AbsCollection> {
+	private class SetIterator implements Iterator<CollectionItem> {
 		private Item current;
 		private Item lastValue;
 		private LinkedList list;
@@ -73,8 +73,8 @@ public class HashSet implements java.lang.Iterable {
 
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")
-		public AbsCollection next() {
-			AbsCollection value = this.current.getValue();
+		public CollectionItem next() {
+			CollectionItem value = this.current.getValue();
 			
 			if ( this.current == null ) { 
 				throw new NoSuchElementException();

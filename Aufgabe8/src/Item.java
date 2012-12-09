@@ -2,7 +2,7 @@
 @Programmierer(autoren="Alexander Tornoreanu")
 class Item {
 	private String key;
-	private AbsCollection value;
+	private CollectionItem value;
 	private Item next;
 	
 	/**
@@ -10,7 +10,7 @@ class Item {
 	 * @param value 
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public Item( String key, AbsCollection value ) {
+	public Item( String key, CollectionItem value ) {
 		this.key = key;
 		this.value = value;
 		this.next  = null;
@@ -31,7 +31,7 @@ class Item {
 	 * @param value 
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public void setValue( AbsCollection value ) {
+	public void setValue( CollectionItem value ) {
 		this.value = value;
 	}
 	
@@ -40,7 +40,7 @@ class Item {
 	 * @param value 
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public AbsCollection getValue() {
+	public CollectionItem getValue() {
 		return this.value;
 	}
 	
