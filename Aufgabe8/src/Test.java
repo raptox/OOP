@@ -1,5 +1,6 @@
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.util.Iterator;
 
 public class Test {
 
@@ -30,6 +31,26 @@ public class Test {
 		}
 		
 		System.out.print( dieselT.getRolle().getValue() );
+		
+		
+		// Collections Test
+		System.out.println("\nCollections Test: \n");
+		HashSet<AbsCollection> col = new HashSet<AbsCollection>();
+		
+		col.insert("b1", bHof);
+		col.insert("t1", dieselT);
+		
+		System.out.println("Iterator Test:");
+		// ITerator Test
+		Iterator<AbsCollection> it = col.iterator(); 
+		while (it.hasNext()) {
+			System.out.println(it.next());
+			
+		}
+		
+		System.out.println("hasKey Test:");
+		System.out.println("hasKey(b1) = "+col.hasKey("b1"));
+		System.out.println("hasKey(xxxyyy) = "+col.hasKey("xxxyyy"));
 		
 		
 		/*Annotation[] as = Bauernhof.class.getAnnotations(); // all

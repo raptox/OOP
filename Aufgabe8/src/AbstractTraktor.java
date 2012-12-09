@@ -1,4 +1,4 @@
-public abstract class AbstractTraktor {
+public abstract class AbstractTraktor implements AbsCollection {
 	private int nummer;
 	private double betriebsstunden;
 	
