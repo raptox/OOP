@@ -15,7 +15,7 @@ public class Duengerstreuer implements Rolle {
 	 * 
 	 * @return saeschare
 	 */
-	public double getKapazitaet() {
+	public double getValue() {
 		return this.kapazitaet;
 	}
 	

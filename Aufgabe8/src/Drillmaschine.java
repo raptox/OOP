@@ -15,7 +15,7 @@ public class Drillmaschine implements Rolle {
 	 * 
 	 * @return saeschare
 	 */
-	public int getSaeschare() {
+	public double getValue() {
 		return this.saeschare;
 	}
 	

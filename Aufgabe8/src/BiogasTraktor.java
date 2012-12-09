@@ -41,6 +41,7 @@ public class BiogasTraktor extends AbstractTraktor {
 	 * 
 	 * @return Motor Enum Wert
 	 */
+	@Override
 	public Motor getMotor() {
 		return Motor.BIOGASTRAKTOR;
 	}

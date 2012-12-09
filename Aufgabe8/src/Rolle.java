@@ -8,4 +8,5 @@ public interface Rolle {
 	 * @return Einsatzzweck des Traktors
 	 */
 	public Einsatzzweck getEinsatzzweck();
+	public double getValue();
 }

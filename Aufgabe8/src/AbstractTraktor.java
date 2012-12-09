@@ -2,7 +2,7 @@ public abstract class AbstractTraktor {
 	private int nummer;
 	private double betriebsstunden;
 	
-	private Rolle einsatzzweck;
+	private Rolle rolle;
 	
 	/**
 	 * Konstruktor von AbstractTraktor setzt die eindeutige Nummer, anfaengliche Betriebsstunden und den Einsatzzweck
@@ -11,10 +11,10 @@ public abstract class AbstractTraktor {
 	 * @param betriebsstunden Anfaengliche Betriebsstunden des Traktors >= 0
 	 * @param einsatzzweck Einsatzzweck des Traktors
 	 */
-	public AbstractTraktor( int nummer, double betriebsstunden, Rolle einsatzzweck ) {
+	public AbstractTraktor( int nummer, double betriebsstunden, Rolle rolle ) {
 		this.nummer = nummer;
 		this.betriebsstunden = betriebsstunden;
-		this.einsatzzweck = einsatzzweck;
+		this.rolle = rolle;
 	}
 	
 	/**
@@ -51,8 +51,8 @@ public abstract class AbstractTraktor {
 	 * 
 	 * @return einsatzzweck
 	 */
-	public Rolle getEinsatzzweck() {
-		return this.einsatzzweck;
+	public Rolle getRolle() {
+		return this.rolle;
 	}
 	
 	/**
@@ -60,8 +60,8 @@ public abstract class AbstractTraktor {
 	 * 
 	 * @param einsatzzweck Neuer Einsatzzweck des Traktors
 	 */
-	public void setEinsatzzweck( Rolle einsatzzweck ) {
-		this.einsatzzweck = einsatzzweck;
+	public void setRolle( Rolle rolle ) {
+		this.rolle = rolle;
 	}
 	
 	/**
