@@ -35,7 +35,7 @@ public class Test {
 		
 		// Collections Test
 		System.out.println("\nCollections Test: \n");
-		HashSet<AbsCollection> col = new HashSet<AbsCollection>();
+		HashSet col = new HashSet();
 		
 		col.insert("b1", bHof);
 		col.insert("t1", dieselT);

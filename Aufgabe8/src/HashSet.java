@@ -2,12 +2,12 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @Programmierer(autoren="Alexander Tornoreanu")
-public class HashSet<AbsCollection> implements java.lang.Iterable<AbsCollection> {
-	protected LinkedList<AbsCollection> list;
+public class HashSet implements java.lang.Iterable {
+	protected LinkedList list;
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public HashSet() {
-		this.list = new LinkedList<AbsCollection>();
+		this.list = new LinkedList();
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -17,7 +17,7 @@ public class HashSet<AbsCollection> implements java.lang.Iterable<AbsCollection>
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean hasKey(String key) {
-		Item<AbsCollection> help = list.getRoot();
+		Item help = list.getRoot();
 		
 		while (help != null) {
 			if (help.getKey().equals(key)) {
@@ -31,7 +31,7 @@ public class HashSet<AbsCollection> implements java.lang.Iterable<AbsCollection>
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public String toString() {
-		Item<AbsCollection> c = this.list.getRoot();
+		Item c = this.list.getRoot();
 		String output = "";
 		
 		while( c != null ) {
@@ -44,18 +44,18 @@ public class HashSet<AbsCollection> implements java.lang.Iterable<AbsCollection>
 	
 	@Override
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public Iterator<AbsCollection> iterator() {
+	public Iterator iterator() {
 		return new SetIterator( this.list );
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
 	private class SetIterator implements Iterator<AbsCollection> {
-		private Item<AbsCollection> current;
-		private Item<AbsCollection> lastValue;
-		private LinkedList<AbsCollection> list;
+		private Item current;
+		private Item lastValue;
+		private LinkedList list;
 		
 		@Programmierer(autoren="Alexander Tornoreanu")
-		public SetIterator( LinkedList<AbsCollection> list ) {
+		public SetIterator( LinkedList list ) {
 			this.list    = list;
 			this.current = this.list.getRoot();
 			this.lastValue = null;
@@ -88,8 +88,8 @@ public class HashSet<AbsCollection> implements java.lang.Iterable<AbsCollection>
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public void remove() {
-			Item<AbsCollection> help = this.list.getRoot();
-			Item<AbsCollection> before = help;
+			Item help = this.list.getRoot();
+			Item before = help;
 			
 			while (help != null) {
 				if (help == this.lastValue) {

@@ -1,6 +1,6 @@
 @Programmierer(autoren="Alexander Tornoreanu")
-class LinkedList<AbsCollection> {
-	protected Item<AbsCollection> root;
+class LinkedList {
+	protected Item root;
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public LinkedList() {
@@ -10,11 +10,11 @@ class LinkedList<AbsCollection> {
 	// Fuegt ein neues Element hinzu
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean add( String key, AbsCollection element ) {
-		Item<AbsCollection> current = this.root;
+		Item current = this.root;
 		
 		// noch keine Element in der Liste, initialisiere root Element
 		if ( this.root == null ) {
-			this.root = new Item<AbsCollection>( key, element );
+			this.root = new Item( key, element );
 		}
 		// mehrere Elemente in der Liste vorhanden
 		else {
@@ -31,19 +31,19 @@ class LinkedList<AbsCollection> {
 			}
 			
 			// Zeiger auf nächstes Element setzen
-			current.setNext( new Item<AbsCollection>( key, element ) );
+			current.setNext( new Item( key, element ) );
 		}
 		
 		return true;
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public Item<AbsCollection> getRoot() {
+	public Item getRoot() {
 		return this.root;
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public void setRoot( Item<AbsCollection> root ) {
+	public void setRoot( Item root ) {
 		this.root = root;
 	}
 }
