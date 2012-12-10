@@ -6,15 +6,19 @@ import java.util.Iterator;
 @Programmierer(autoren="Bernd Artmueller")
 public class Bauernhof implements CollectionItem {
 	private String name;
+	private HashSet traktoren;
 	
 	/**
 	 * Konstruktor von Bauernhof setzt den unveraenderlichen Namen des Bauernhofes
+	 * 
+	 * Vorb.: name != null && name != ""
 	 * 
 	 * @param name Name des Bauernhofes, kann nachtraeglich nicht mehr veraendert werden
 	 */
 	@Programmierer(autoren="Bernd Artmueller")
 	public Bauernhof( String name ) {
 		this.name = name;
+		this.traktoren = new HashSet();
 	}
 	
 	/**
@@ -25,6 +29,43 @@ public class Bauernhof implements CollectionItem {
 	@Programmierer(autoren="Bernd Artmueller")
 	public String getName() {
 		return this.name;
+	}
+	
+	/**
+	 * Fuegt einen Traktor zu dem Bauernhof hinzu
+	 * 
+	 * Vorb.: traktor != null
+	 * 
+	 * @param traktor Traktor, der hinzugefuegt werden soll
+	 */
+	@Programmierer(autoren="Bernd Artmueller")
+	public void addTraktor( AbstractTraktor traktor ) {
+		this.traktoren.insert( traktor.getNummer() + "", traktor );
+	}
+	
+	/**
+	 * Liefert einen Traktor anhand der uebergebenen Nummer
+	 * 
+	 * Vorb.: nummer != null
+	 * 
+	 * @param nummer Die Nummer des gewuenschten Traktors
+	 * @return der gesuchte Traktor
+	 */
+	@Programmierer(autoren="Bernd Artmueller")
+	public AbstractTraktor getTraktor( int nummer ) {
+		return ( AbstractTraktor ) this.traktoren.getValue( nummer );
+	}
+	
+	/**
+	 * Entfernt einen Traktor anhand der uebergebenen Nummer aus dem Bauernhof
+	 * 
+	 * Vorb.: nummer != null
+	 * 
+	 * @param nummer Die Nummer des zu loeschenden Traktors
+	 */
+	@Programmierer(autoren="Bernd Artmueller")
+	public void entferneTraktor( int nummer ) {
+		this.traktoren.removeValue( nummer );
 	}
 	
 	/**
@@ -115,7 +156,7 @@ public class Bauernhof implements CollectionItem {
 	public double durchschnittlicherGasverbrauch() {
         return berechneDurchschnitt( new DurchschnittlicherGasverbrauchRechner() {
             public boolean bedingung( AbstractTraktor traktor ) {
-            	return traktor instanceof DieselTraktor;
+            	return traktor instanceof BiogasTraktor;
             }
         });
     }
@@ -146,7 +187,7 @@ public class Bauernhof implements CollectionItem {
 	public double maxAnzahlSaescharen() {
         return this.berechneMax( new RollenRechner() {
             public boolean bedingung( AbstractTraktor traktor ) {
-            	return traktor.getRolle().equals( Einsatzzweck.DRILLMASCHINE );
+            	return traktor.getRolle().getEinsatzzweck().equals( Einsatzzweck.DRILLMASCHINE );
             }
         });
     }
@@ -164,7 +205,7 @@ public class Bauernhof implements CollectionItem {
         return this.berechneMax( 
         	new RollenRechner() {
         		public boolean bedingung( AbstractTraktor traktor ) {
-        			return traktor.getRolle().equals( Einsatzzweck.DRILLMASCHINE ) && art.equals( traktor.getMotor() );
+        			return traktor.getRolle().getEinsatzzweck().equals( Einsatzzweck.DRILLMASCHINE ) && art.equals( traktor.getMotor() );
         		}
         	}
         );
@@ -179,7 +220,7 @@ public class Bauernhof implements CollectionItem {
 	public double minAnzahlSaescharen() {
         return this.berechneMin( new RollenRechner() {
             public boolean bedingung( AbstractTraktor traktor ) {
-            	return traktor.getRolle().equals( Einsatzzweck.DRILLMASCHINE );
+            	return traktor.getRolle().getEinsatzzweck().equals( Einsatzzweck.DRILLMASCHINE );
             }
         });
     }
@@ -197,7 +238,7 @@ public class Bauernhof implements CollectionItem {
         return this.berechneMin( 
         	new RollenRechner() {
         		public boolean bedingung( AbstractTraktor traktor ) {
-        			return traktor.getRolle().equals( Einsatzzweck.DRILLMASCHINE ) && art.equals( traktor.getMotor() );
+        			return traktor.getRolle().getEinsatzzweck().equals( Einsatzzweck.DRILLMASCHINE ) && art.equals( traktor.getMotor() );
         		}
         	}
         );
@@ -213,7 +254,7 @@ public class Bauernhof implements CollectionItem {
         return berechneDurchschnitt( 
         	new RollenRechner() {
         		public boolean bedingung( AbstractTraktor traktor ) {
-        			return traktor.getRolle().equals( Einsatzzweck.DUENGERSTREUER );
+        			return traktor.getRolle().getEinsatzzweck().equals( Einsatzzweck.DUENGERSTREUER );
             	}
         	}
         );
@@ -232,7 +273,7 @@ public class Bauernhof implements CollectionItem {
         return berechneDurchschnitt( 
         	new RollenRechner() {
         		public boolean bedingung( AbstractTraktor traktor ) {
-            		return traktor.getRolle().equals( Einsatzzweck.DUENGERSTREUER ) && art.equals( traktor.getMotor() );
+            		return traktor.getRolle().getEinsatzzweck().equals( Einsatzzweck.DUENGERSTREUER ) && art.equals( traktor.getMotor() );
             	}
         	}
         );
@@ -247,12 +288,13 @@ public class Bauernhof implements CollectionItem {
      */
 	@Programmierer(autoren="Bernd Artmueller")
     private double berechneDurchschnitt( IRechner rechner ) {
-        //Iterator<AbstractTraktor> iter = roboters.iterator();
+		Iterator it = this.traktoren.iterator();
+        
         double summe = 0.0;
         int anzahl = 0;
 
-       /* while (iter.hasNext()) {
-            AbstractTraktor traktor = iter.next();
+        while ( it.hasNext() ) {
+        	AbstractTraktor traktor = ( AbstractTraktor ) it.next();
             
             // wenn der Traktor die Bedingung erfüllt, beziehe diesen in die Berechnung mitein
             if ( rechner.bedingung( traktor ) ) {
@@ -260,7 +302,7 @@ public class Bauernhof implements CollectionItem {
                 anzahl++;
             }
         }
-        */
+        
         if ( anzahl == 0 ) {
         	return 0.0;
         }
@@ -275,11 +317,11 @@ public class Bauernhof implements CollectionItem {
      */
 	@Programmierer(autoren="Bernd Artmueller")
 	private double berechneMax( IRechner rechner ) {
-		//Iterator<AbstractTraktor> iter = roboters.iterator();
+		Iterator it = this.traktoren.iterator();
         double max = 0;
 
-       /* while (iter.hasNext()) {
-            AbstractTraktor traktor = iter.next();
+        while ( it.hasNext() ) {
+            AbstractTraktor traktor = ( AbstractTraktor ) it.next();
             
             // wenn der Traktor die Bedingung erfüllt, beziehe diesen in die Berechnung ein
             if ( rechner.bedingung( traktor ) ) {
@@ -288,7 +330,6 @@ public class Bauernhof implements CollectionItem {
             	}
             }
         }
-        */
         
         return max;
 	}
@@ -300,11 +341,11 @@ public class Bauernhof implements CollectionItem {
      */
 	@Programmierer(autoren="Bernd Artmueller")
 	private double berechneMin( IRechner rechner ) {
-		//Iterator<AbstractTraktor> iter = roboters.iterator();
+		Iterator it = this.traktoren.iterator();
         double min = Double.MAX_VALUE;
 
-       /* while (iter.hasNext()) {
-            AbstractTraktor traktor = iter.next();
+        while ( it.hasNext() ) {
+            AbstractTraktor traktor = ( AbstractTraktor ) it.next();
             
             // wenn der Traktor die Bedingung erfüllt, beziehe diesen in die Berechnung ein
             if ( rechner.bedingung( traktor ) ) {
@@ -313,7 +354,6 @@ public class Bauernhof implements CollectionItem {
             	}
             }
         }
-        */
         
         return min;
 	}
