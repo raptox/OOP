@@ -9,6 +9,8 @@ public class HashSet {
 	protected LinkedList list;
 	
 	/*
+	 * Konstruktor
+	 * 
 	 * NB: liefert neues HashSet Objekt zurück
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -17,6 +19,8 @@ public class HashSet {
 	}
 	
 	/*
+	 * Fuegt neues Element ein mit beliebigem Objekt als Key
+	 * 
 	 * VB: key != null, element != null
 	 * NB: liefert true bei Erfolg, false bei nicht Erfolg
 	 */
@@ -26,6 +30,8 @@ public class HashSet {
 	}
 	
 	/*
+	 * Loescht Objekt aus dem Set mithilfe eines Keys
+	 * 
 	 * VB: key != null
 	 * NB: liefert true bei Erfolg, false bei nicht Erfolg
 	 */
@@ -51,6 +57,8 @@ public class HashSet {
 	}
 	
 	/*
+	 * Sucht ein Item anhand des Keys und liefert es zurueck
+	 * 
 	 * VB: key != null
 	 * NB: liefert CollectionItem bei Erfolg, leifert null bei nicht Erfolg
 	 */
@@ -69,6 +77,8 @@ public class HashSet {
 	}
 	
 	/*
+	 * Schaut nach ob dieser Key schon vorhanden ist
+	 * 
 	 * VB: key != null
 	 * NB: liefert true bei Erfolg, false bei nicht Erfolg
 	 */
@@ -90,6 +100,8 @@ public class HashSet {
 	}
 	
 	/*
+	 * Gibt das Objekt als String aus
+	 * 
 	 * NB: liefert Objekt als String zurueck
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -106,6 +118,8 @@ public class HashSet {
 	}
 	
 	/*
+	 * erzeugt einen Iterator fuer das Set
+	 * 
 	 * NB: liefert Iterator des HashSets zurueck
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -123,6 +137,8 @@ public class HashSet {
 		private LinkedList list;
 		
 		/*
+		 * Konstruktor
+		 * 
 		 * VB: list != null
 		 * NB: liefert neues SetIterator Objekt zurueck
 		 */
@@ -134,6 +150,8 @@ public class HashSet {
 		}
 		
 		/*
+		 * schaut ob es noch Elemente gibt in der Liste zum durchiterieren
+		 * 
 		 * NB: liefert true bei Erfolg, false bei Misserfolg 
 		 */
 		@Override
@@ -147,6 +165,8 @@ public class HashSet {
 		}
 
 		/*
+		 * Liefert das naechste Element aus der Liste
+		 * 
 		 * NB: liefert naechstes Element in der Liste
 		 */
 		@Override
@@ -164,6 +184,8 @@ public class HashSet {
 		}
 
 		/*
+		 * Entfernt das aktuelle Element welches durchiteriert wird
+		 * 
 		 * NB: Entfernt ein Element
 		 */
 		@Override

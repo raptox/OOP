@@ -6,6 +6,8 @@ class LinkedList {
 	protected Item root;
 	
 	/*
+	 * Konstruktor
+	 * 
 	 * NB: liefert neues LinkedList Objekt
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -14,6 +16,8 @@ class LinkedList {
 	}
 	
 	/*
+	 * Fuegt neues Item in die Liste ein, mit einem beliebigen Key
+	 * 
 	 * VB: key != null, element != null
 	 * NB: true falls erfolgreich, false wenn nicht erfolgreich
 	 */
@@ -47,6 +51,8 @@ class LinkedList {
 	}
 	
 	/*
+	 * Getter fuer die Wurzel der Liste
+	 * 
 	 * NB: liefert Wurzel der Verketetten Liste
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -55,6 +61,8 @@ class LinkedList {
 	}
 	
 	/*
+	 * Setter fuer die Wurzel der Liste
+	 * 
 	 * VB: root != null
 	 * NB: setzt die Wurzel des Items
 	 */

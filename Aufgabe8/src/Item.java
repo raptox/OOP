@@ -6,6 +6,8 @@ class Item {
 	private Item next;
 	
 	/*
+	 * Konstruktor
+	 * 
 	 * NB: liefert neues Item Object
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -16,6 +18,8 @@ class Item {
 	}
 	
 	/*
+	 * Setter fuer key
+	 * 
 	 * VB: key != null
 	 * NB: setzt den Key des Items
 	 */
@@ -25,6 +29,8 @@ class Item {
 	}
 	
 	/*
+	 * Getter fuer key
+	 * 
 	 * NB: liefert key
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -33,6 +39,8 @@ class Item {
 	}
 	
 	/*
+	 * Setter fuer value
+	 * 
 	 * VB: value != null
 	 * NB: setzt den Wert des Items
 	 */
@@ -42,6 +50,8 @@ class Item {
 	}
 	
 	/*
+	 * Getter fuer value
+	 * 
 	 * NB: liefert value
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -50,6 +60,8 @@ class Item {
 	}
 	
 	/*
+	 * Setter fuer Zeiger auf naechstem Element
+	 * 
 	 * VB: next != null
 	 * NB: setzt das naechste Element des Items
 	 */
@@ -59,6 +71,8 @@ class Item {
 	}
 	
 	/*
+	 * Getter fuer Zeiger auf naechstes Element
+	 * 
 	 * NB: liefert naechstes Element der Liste
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
