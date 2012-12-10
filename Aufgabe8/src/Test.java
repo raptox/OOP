@@ -38,20 +38,21 @@ public class Test {
 		HashSet col = new HashSet();
 		
 		col.insert("b1", bHof);
-		col.insert("t1", dieselT);
+		col.insert(10, dieselT);
 		
 		System.out.println("Iterator Test:");
 		// ITerator Test
 		Iterator<CollectionItem> it = col.iterator(); 
 		while (it.hasNext()) {
 			System.out.println(it.next());
-			
 		}
 		
 		System.out.println("hasKey Test:");
 		System.out.println("hasKey(b1) = "+col.hasKey("b1"));
-		System.out.println("hasKey(xxxyyy) = "+col.hasKey("xxxyyy"));
-		
+		System.out.println("hasKey(10) = "+col.hasKey(10));
+		System.out.println("Delete item with key 10 (traktor)");
+		col.removeValue(10);
+		System.out.println("hasKey(10) = "+col.hasKey(10));
 		
 		/*Annotation[] as = Bauernhof.class.getAnnotations(); // all
 		System.out.println( as.length );
