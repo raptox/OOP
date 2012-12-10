@@ -20,6 +20,9 @@ public class HashSet {
 		Item help = list.getRoot();
 		Item before = help;
 		
+		if (help == null)
+			return false;
+		
 		while (help != null) {
 			if (help.getKey().toString().equals(key.toString())) {
 				// remove object
