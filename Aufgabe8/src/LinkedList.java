@@ -1,13 +1,22 @@
+/*
+ * Die Klasse LinkedList stellt eine einfach verketette Liste von Item Objekten dar
+ */
 @Programmierer(autoren="Alexander Tornoreanu")
 class LinkedList {
 	protected Item root;
 	
+	/*
+	 * NB: liefert neues LinkedList Objekt
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public LinkedList() {
 		this.root = null;
 	}
 	
-	// Fuegt ein neues Element hinzu
+	/*
+	 * VB: key != null, element != null
+	 * NB: true falls erfolgreich, false wenn nicht erfolgreich
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean add( Object key, CollectionItem element ) {
 		Item current = this.root;
@@ -37,11 +46,17 @@ class LinkedList {
 		return true;
 	}
 	
+	/*
+	 * NB: liefert Wurzel der Verketetten Liste
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public Item getRoot() {
 		return this.root;
 	}
 	
+	/*
+	 * VB: root != null
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setRoot( Item root ) {
 		this.root = root;

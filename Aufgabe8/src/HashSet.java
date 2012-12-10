@@ -1,24 +1,41 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/*
+ * Diese Klasse bildet ein HashSet ab. Als Datenspeicherung wird eine LinkedList verwendet
+ */
 @Programmierer(autoren="Alexander Tornoreanu")
 public class HashSet {
 	protected LinkedList list;
 	
+	/*
+	 * NB: liefert neues HashSet Objekt zurück
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public HashSet() {
 		this.list = new LinkedList();
 	}
 	
+	/*
+	 * VB: key != null, element != null
+	 * NB: liefert true bei Erfolg, false bei nicht Erfolg
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean insert( Object key, CollectionItem element ) {
 		return this.list.add( key, element );
 	}
 	
-	// liefert false wenn Element nicht gefunden
+	/*
+	 * VB: key != null
+	 * NB: liefert true bei Erfolg, false bei nicht Erfolg
+	 */
+	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean removeValue( Object key ) {
 		Item help = list.getRoot();
 		Item before = help;
+		
+		if (key == null)
+			return false;
 		
 		while (help != null) {
 			if (help.getKey().toString().equals(key.toString())) {
@@ -33,7 +50,11 @@ public class HashSet {
 		return false;		
 	}
 	
-	// liefert null wenn Element nicht gefunden
+	/*
+	 * VB: key != null
+	 * NB: liefert CollectionItem bei Erfolg, leifert null bei nicht Erfolg
+	 */
+	@Programmierer(autoren="Alexander Tornoreanu")
 	public CollectionItem getValue( Object key ) {
 		Item help = list.getRoot();
 		
@@ -47,9 +68,16 @@ public class HashSet {
 		return null;	
 	}
 	
+	/*
+	 * VB: key != null
+	 * NB: liefert true bei Erfolg, false bei nicht Erfolg
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean hasKey(Object key) {
 		Item help = list.getRoot();
+		
+		if (key == null)
+			return false;
 		
 		while (help != null) {
 			if (help.getKey().toString().equals(key.toString())) {
@@ -61,6 +89,9 @@ public class HashSet {
 		return false;
 	}
 	
+	/*
+	 * NB: liefert Objekt als String zurueck
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public String toString() {
 		Item c = this.list.getRoot();
@@ -74,17 +105,27 @@ public class HashSet {
 		return output;
 	}
 	
+	/*
+	 * NB: liefert Iterator des HashSets zurueck
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public Iterator iterator() {
 		return new SetIterator( this.list );
 	}
 	
+	/*
+	 * Diese Klasse soll einen Iterator simulieren
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	private class SetIterator implements Iterator {
 		private Item current;
 		private Item lastValue;
 		private LinkedList list;
 		
+		/*
+		 * VB: list != null
+		 * NB: liefert neues SetIterator Objekt zurueck
+		 */
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public SetIterator( LinkedList list ) {
 			this.list    = list;
@@ -92,6 +133,9 @@ public class HashSet {
 			this.lastValue = null;
 		}
 		
+		/*
+		 * NB: liefert true bei Erfolg, false bei Misserfolg 
+		 */
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public boolean hasNext() {
@@ -102,6 +146,9 @@ public class HashSet {
 			return false;
 		}
 
+		/*
+		 * NB: liefert naechstes Element in der Liste
+		 */
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public CollectionItem next() {
@@ -116,6 +163,9 @@ public class HashSet {
 			return value;
 		}
 
+		/*
+		 * Entfernt ein Element
+		 */
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public void remove() {

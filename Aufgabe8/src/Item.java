@@ -1,13 +1,12 @@
-// Die Klasse Item<P> stellt einen einzelnen "Knoten" in der LinkedList dar
+// Die Klasse Item stellt einen einzelnen "Knoten" in der LinkedList dar
 @Programmierer(autoren="Alexander Tornoreanu")
 class Item {
 	private Object key;
 	private CollectionItem value;
 	private Item next;
 	
-	/**
-	 * liefert neues Object
-	 * @param value 
+	/*
+	 * NB: liefert neues Item Object
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public Item( Object key, CollectionItem value ) {
@@ -16,46 +15,48 @@ class Item {
 		this.next  = null;
 	}
 	
+	/*
+	 * VB: key != null
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setKey(Object key) {
 		this.key = key;
 	}
 	
+	/*
+	 * NB: liefert key
+	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public Object getKey() {
 		return key;
 	}
 	
-	/**
-	 * setzt Wert
-	 * @param value 
+	/*
+	 * VB: value != null
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setValue( CollectionItem value ) {
 		this.value = value;
 	}
 	
-	/**
-	 * liefert neues Object
-	 * @param value 
+	/*
+	 * NB: liefert value
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public CollectionItem getValue() {
 		return this.value;
 	}
 	
-	/**
-	 * liefert neues Object
-	 * @param value 
+	/*
+	 * VB: next != null
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setNext( Item next ) {
 		this.next = next;
 	}
 	
-	/**
-	 * liefert neues Object
-	 * @param value 
+	/*
+	 * NB: liefert naechstes Element der Liste
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public Item getNext() {
