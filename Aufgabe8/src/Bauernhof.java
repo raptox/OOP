@@ -4,7 +4,7 @@ import java.util.Iterator;
  * @author Bernd
  */
 @Programmierer(autoren="Bernd Artmueller")
-public class Bauernhof {
+public class Bauernhof implements CollectionItem {
 	private String name;
 	
 	/**

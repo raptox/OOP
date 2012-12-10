@@ -1,4 +1,4 @@
-public abstract class AbstractTraktor {
+public abstract class AbstractTraktor implements CollectionItem {
 	private int nummer;
 	private double betriebsstunden;
 	
