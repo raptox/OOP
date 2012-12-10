@@ -164,7 +164,7 @@ public class HashSet {
 		}
 
 		/*
-		 * Entfernt ein Element
+		 * NB: Entfernt ein Element
 		 */
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")

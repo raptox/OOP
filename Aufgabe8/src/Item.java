@@ -17,6 +17,7 @@ class Item {
 	
 	/*
 	 * VB: key != null
+	 * NB: setzt den Key des Items
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setKey(Object key) {
@@ -33,6 +34,7 @@ class Item {
 	
 	/*
 	 * VB: value != null
+	 * NB: setzt den Wert des Items
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setValue( CollectionItem value ) {
@@ -49,6 +51,7 @@ class Item {
 	
 	/*
 	 * VB: next != null
+	 * NB: setzt das naechste Element des Items
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setNext( Item next ) {

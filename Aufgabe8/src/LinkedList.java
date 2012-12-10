@@ -56,6 +56,7 @@ class LinkedList {
 	
 	/*
 	 * VB: root != null
+	 * NB: setzt die Wurzel des Items
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public void setRoot( Item root ) {
