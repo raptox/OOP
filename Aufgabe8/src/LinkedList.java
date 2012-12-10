@@ -9,7 +9,7 @@ class LinkedList {
 	
 	// Fuegt ein neues Element hinzu
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public boolean add( String key, CollectionItem element ) {
+	public boolean add( Object key, CollectionItem element ) {
 		Item current = this.root;
 		
 		// noch keine Element in der Liste, initialisiere root Element

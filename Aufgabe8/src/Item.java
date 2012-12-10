@@ -1,7 +1,7 @@
 // Die Klasse Item<P> stellt einen einzelnen "Knoten" in der LinkedList dar
 @Programmierer(autoren="Alexander Tornoreanu")
 class Item {
-	private String key;
+	private Object key;
 	private CollectionItem value;
 	private Item next;
 	
@@ -10,19 +10,19 @@ class Item {
 	 * @param value 
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public Item( String key, CollectionItem value ) {
+	public Item( Object key, CollectionItem value ) {
 		this.key = key;
 		this.value = value;
 		this.next  = null;
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public void setKey(String key) {
+	public void setKey(Object key) {
 		this.key = key;
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public String getKey() {
+	public Object getKey() {
 		return key;
 	}
 	

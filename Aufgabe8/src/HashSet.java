@@ -2,7 +2,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @Programmierer(autoren="Alexander Tornoreanu")
-public class HashSet implements java.lang.Iterable {
+public class HashSet {
 	protected LinkedList list;
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
@@ -11,16 +11,48 @@ public class HashSet implements java.lang.Iterable {
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	public boolean insert( String key, CollectionItem element ) {
+	public boolean insert( Object key, CollectionItem element ) {
 		return this.list.add( key, element );
 	}
 	
-	@Programmierer(autoren="Alexander Tornoreanu")
-	public boolean hasKey(String key) {
+	// liefert false wenn Element nicht gefunden
+	public boolean removeValue( Object key ) {
+		Item help = list.getRoot();
+		Item before = help;
+		
+		while (help != null) {
+			if (help.getKey().toString().equals(key.toString())) {
+				// remove object
+				before.setNext(help.getNext());
+				return true;
+			}
+			before = help;
+			help = help.getNext();
+		}
+		
+		return false;		
+	}
+	
+	// liefert null wenn Element nicht gefunden
+	public CollectionItem getValue( Object key ) {
 		Item help = list.getRoot();
 		
 		while (help != null) {
-			if (help.getKey().equals(key)) {
+			if (help.getKey().toString().equals(key.toString())) {
+				return help.getValue();
+			}
+			help = help.getNext();
+		}
+		
+		return null;	
+	}
+	
+	@Programmierer(autoren="Alexander Tornoreanu")
+	public boolean hasKey(Object key) {
+		Item help = list.getRoot();
+		
+		while (help != null) {
+			if (help.getKey().toString().equals(key.toString())) {
 				return true;
 			}
 			help = help.getNext();
@@ -42,7 +74,6 @@ public class HashSet implements java.lang.Iterable {
 		return output;
 	}
 	
-	@Override
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public Iterator iterator() {
 		return new SetIterator( this.list );
