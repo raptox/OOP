@@ -80,7 +80,7 @@ public class HashSet {
 	}
 	
 	@Programmierer(autoren="Alexander Tornoreanu")
-	private class SetIterator implements Iterator<CollectionItem> {
+	private class SetIterator implements Iterator {
 		private Item current;
 		private Item lastValue;
 		private LinkedList list;
