@@ -304,7 +304,7 @@ public class Bauernhof implements CollectionItem {
         }
         
         if ( anzahl == 0 ) {
-        	throw new java.lang.ArithmeticException("/ by zero");
+        	throw new java.lang.ArithmeticException("Division by Zero!");
         }
         
         return summe / anzahl;

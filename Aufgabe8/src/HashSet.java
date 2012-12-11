@@ -11,7 +11,7 @@ public class HashSet {
 	/*
 	 * Konstruktor
 	 * 
-	 * NB: liefert neues HashSet Objekt zurück
+	 * NB: liefert neues HashSet Objekt zurueck
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public HashSet() {
@@ -45,15 +45,25 @@ public class HashSet {
 		
 		while (help != null) {
 			if (help.getKey().toString().equals(key.toString())) {
-				// remove object
-				before.setNext(help.getNext());
+				// remove root objekt
+				if (help == before) {
+					this.list.setRoot(help.getNext());
+					help = null;
+				}
+				else {
+					// remove object
+					before.setNext(help.getNext());
+				}
 				return true;
 			}
-			before = help;
-			help = help.getNext();
+			
+			if (help != null) {
+				before = help;
+				help = help.getNext();
+			}
 		}
 		
-		return false;		
+		return false;
 	}
 	
 	/*

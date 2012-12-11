@@ -45,4 +45,14 @@ public class BiogasTraktor extends AbstractTraktor {
 	public Motor getMotor() {
 		return Motor.BIOGASTRAKTOR;
 	}
+	
+	/*
+	 * Gibt das Objekt als String aus
+	 * 
+	 * NB: liefert Objekt als String zurueck
+	 */
+	@Programmierer(autoren="Jakob Kremsner")
+	public String toString(){
+		return super.toString() + ", Motor: Biogastraktor";
+	}
 }
