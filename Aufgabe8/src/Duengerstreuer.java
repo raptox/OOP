@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Duengerstreuer implements Rolle {
 	private double kapazitaet;
 	
@@ -26,5 +28,15 @@ public class Duengerstreuer implements Rolle {
 	 */
 	public Einsatzzweck getEinsatzzweck() {
 		return Einsatzzweck.DUENGERSTREUER;
+	}
+	
+	/*
+	 * Gibt das Objekt als String aus
+	 * 
+	 * NB: liefert Objekt als String zurueck
+	 */
+	@Programmierer(autoren="Jakob Kremsner")
+	public String toString(){
+		return "Duengerstreuer" + " Kapazität = "+this.getValue() ;
 	}
 }

@@ -9,4 +9,5 @@ public interface Rolle {
 	 */
 	public Einsatzzweck getEinsatzzweck();
 	public double getValue();
+	public String toString();
 }

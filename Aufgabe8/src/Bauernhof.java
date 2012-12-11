@@ -287,7 +287,7 @@ public class Bauernhof implements CollectionItem {
      * Vorb.: rechner != null
      */
 	@Programmierer(autoren="Bernd Artmueller")
-    private double berechneDurchschnitt( IRechner rechner ) {
+    private double berechneDurchschnitt( IRechner rechner ) throws java.lang.ArithmeticException {
 		Iterator it = this.traktoren.iterator();
         
         double summe = 0.0;
@@ -304,7 +304,7 @@ public class Bauernhof implements CollectionItem {
         }
         
         if ( anzahl == 0 ) {
-        	return 0.0;
+        	throw new java.lang.ArithmeticException("/ by zero");
         }
         
         return summe / anzahl;
@@ -420,4 +420,24 @@ public class Bauernhof implements CollectionItem {
             return traktor.getRolle().getValue();
         }
     }
+	
+	/*
+	 * Gibt das Objekt als String aus
+	 * 
+	 * NB: liefert Objekt als String zurueck
+	 */
+	@Programmierer(autoren="Jakob Kremsner")
+	public String toString(){
+		String ret = "";
+		Iterator it = this.traktoren.iterator();
+		
+		ret+="Name des Hofes = "+this.getName()+"\n"+"Traktoren";
+		
+		while(it.hasNext()){
+			ret+= "\n  "+it.next().toString();
+		}
+		  
+		
+		return ret;
+	}
 }

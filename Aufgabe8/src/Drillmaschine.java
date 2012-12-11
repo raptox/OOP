@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Drillmaschine implements Rolle {
 	private int saeschare;
 	
@@ -26,5 +28,15 @@ public class Drillmaschine implements Rolle {
 	 */
 	public Einsatzzweck getEinsatzzweck() {
 		return Einsatzzweck.DRILLMASCHINE;
+	}
+	
+	/*
+	 * Gibt das Objekt als String aus
+	 * 
+	 * NB: liefert Objekt als String zurueck
+	 */
+	@Programmierer(autoren="Jakob Kremsner")
+	public String toString(){
+		return "Drillmaschiene" + " Saeschare = "+this.getValue();
 	}
 }

@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public abstract class AbstractTraktor implements CollectionItem {
 	private int nummer;
 	private double betriebsstunden;
@@ -70,5 +72,15 @@ public abstract class AbstractTraktor implements CollectionItem {
 	 * @return Motor Enum Wert
 	 */
 	public abstract Motor getMotor();
+	
+	/*
+	 * Gibt das Objekt als String aus
+	 * 
+	 * NB: liefert Objekt als String zurueck
+	 */
+	@Programmierer(autoren="Jakob Kremsner")
+	public String toString(){
+		return "ID = "+this.nummer+", Betriebsstunden = "+this.betriebsstunden+", Rolle = "+this.rolle;
+	}
 }
 
