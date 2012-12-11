@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class Test {
 
 	/**
-	 * @param args
+	 * @author Jakob Kremsner
 	 */
 	public static void main(String[] args) {
 		try{
@@ -110,11 +110,45 @@ public class Test {
 				System.out.println("Error Message = " + e.getMessage());
 			}
 		}
-
-		Annotation[] as = Bauernhof.class.getAnnotations(); // all
-		System.out.println( as.length );
-		for ( int i = 0; i < as.length; i++ ) {
-			System.out.println( as[ i ] );
+		
+		System.out.println(getAnnotationsForClass("AbstractTraktor"));
+		System.out.println(getAnnotationsForClass("Bauernhof"));
+		System.out.println(getAnnotationsForClass("BiogasTraktor"));
+		System.out.println(getAnnotationsForClass("CollectionItem"));
+		System.out.println(getAnnotationsForClass("DieselTraktor"));
+		System.out.println(getAnnotationsForClass("Drillmaschine"));
+		System.out.println(getAnnotationsForClass("Duengerstreuer"));
+		System.out.println(getAnnotationsForClass("Einsatzzweck"));
+		System.out.println(getAnnotationsForClass("HashSet"));
+		System.out.println(getAnnotationsForClass("Item"));
+		System.out.println(getAnnotationsForClass("LinkedList"));
+		System.out.println(getAnnotationsForClass("Motor"));
+		System.out.println(getAnnotationsForClass("Programmierer"));
+		System.out.println(getAnnotationsForClass("Rolle"));
+		System.out.println(getAnnotationsForClass("Test"));
+		
+	}
+	private static String getAnnotationsForClass(String name){
+		Method[] m = null;
+		String r = "";
+		try {
+			m = Class.forName(name).getMethods();
+		} 
+		catch (ClassNotFoundException e) {
+			r+=e.toString()+"\n"; 
+		}  
+		
+		r+= "Annotationen fuer Methoden der Klasse "+name+"\n";
+		for (int i = 0; i < m.length; i++) {
+			Annotation[] anno = m[i].getAnnotations();
+			if (anno.length != 0) {
+				r+=m[i].getName() + ": ";
+				for (int j = 0; j < anno.length; j++) {
+					r+=anno[j].toString() + " ";
+				}
+				r+="\n";
+			}  
 		}
+		return r;
 	}
 }
