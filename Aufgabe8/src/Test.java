@@ -63,7 +63,7 @@ public class Test {
 
 			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).entferneTraktor(6);
 			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).getTraktor(7).erhoeheBetriebsstunden(10);
-
+			
 			((Bauernhof) hoefe.getValue( "Bauernhof 3" )).entferneTraktor(13);
 			((Bauernhof) hoefe.getValue( "Bauernhof 3" )).getTraktor(14).setRolle(new Duengerstreuer(499.3));
 
