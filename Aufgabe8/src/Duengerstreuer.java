@@ -43,6 +43,6 @@ public class Duengerstreuer implements Rolle {
 	 */
 	@Programmierer(autoren="Jakob Kremsner")
 	public String toString(){
-		return "Duengerstreuer" + " Kapazität = "+this.getValue() ;
+		return "Duengerstreuer" + " Kapazitaet = "+this.getValue() ;
 	}
 }

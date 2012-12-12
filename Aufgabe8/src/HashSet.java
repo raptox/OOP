@@ -75,7 +75,7 @@ public class HashSet {
 					return false;
 				}
 				
-				// Zeiger auf nächstes Element setzen
+				// Zeiger auf naechstes Element setzen
 				current.next = new Item( key, element );
 			}
 			
