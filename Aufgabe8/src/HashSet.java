@@ -1,14 +1,89 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/*
- * Diese Klasse bildet ein HashSet ab. Als Datenspeicherung wird eine LinkedList verwendet
+/**
+ * Diese Klasse bildet ein HashSet ab. Als Datenspeicherung wird eine einfach verlinkte Liste verwendet
  */
 @Programmierer(autoren="Alexander Tornoreanu")
 public class HashSet {
 	protected LinkedList list;
 	
-	/*
+	/**
+	 *  Die Innere Klasse Item stellt einen einzelnen "Knoten" in der LinkedList dar
+	 */
+	@Programmierer(autoren="Alexander Tornoreanu")
+	class Item {
+		Object key;
+		CollectionItem value;
+		Item next;
+		
+		/**
+		 * Konstruktor
+		 * 
+		 * NB: liefert neues Item Object
+		 */
+		@Programmierer(autoren="Alexander Tornoreanu")
+		public Item( Object key, CollectionItem value ) {
+			this.key = key;
+			this.value = value;
+			this.next  = null;
+		}
+	}
+	
+	/**
+	 * Die Innere Klasse LinkedList stellt eine einfach verketette Liste von Item Objekten dar
+	 */
+	@Programmierer(autoren="Alexander Tornoreanu")
+	class LinkedList {
+		Item root;
+		
+		/**
+		 * Konstruktor
+		 * 
+		 * NB: liefert neues LinkedList Objekt
+		 */
+		@Programmierer(autoren="Alexander Tornoreanu")
+		public LinkedList() {
+			this.root = null;
+		}
+		
+		/**
+		 * Fuegt neues Item in die Liste ein, mit einem beliebigen Key
+		 * 
+		 * VB: key != null, element != null
+		 * NB: true falls erfolgreich, false wenn nicht erfolgreich
+		 */
+		@Programmierer(autoren="Alexander Tornoreanu")
+		public boolean add( Object key, CollectionItem element ) {
+			Item current = this.root;
+			
+			// noch keine Element in der Liste, initialisiere root Element
+			if ( this.root == null ) {
+				this.root = new Item( key, element );
+			}
+			// mehrere Elemente in der Liste vorhanden
+			else {
+				while ( current.next != null ) {
+					// wenn identisches Objekt bereits in Liste vorhanden ist, nichts einfuegen
+					if ( current.value == element ) {
+						return false;
+					}
+					current = current.next;
+				}
+				// nochmal ueberpruefen ob ein identisches Objekt bereits in Liste vorhanden ist, dann nichts einfuegen
+				if ( current.value == element ) {
+					return false;
+				}
+				
+				// Zeiger auf nächstes Element setzen
+				current.next = new Item( key, element );
+			}
+			
+			return true;
+		}
+	}
+	
+	/**
 	 * Konstruktor
 	 * 
 	 * NB: liefert neues HashSet Objekt zurueck
@@ -18,7 +93,7 @@ public class HashSet {
 		this.list = new LinkedList();
 	}
 	
-	/*
+	/**
 	 * Fuegt neues Element ein mit beliebigem Objekt als Key
 	 * 
 	 * VB: key != null, element != null
@@ -29,7 +104,7 @@ public class HashSet {
 		return this.list.add( key, element );
 	}
 	
-	/*
+	/**
 	 * Loescht Objekt aus dem Set mithilfe eines Keys
 	 * 
 	 * VB: key != null
@@ -37,36 +112,36 @@ public class HashSet {
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean removeValue( Object key ) {
-		Item help = list.getRoot();
+		Item help = list.root;
 		Item before = help;
 		
 		if (key == null)
 			return false;
 		
 		while (help != null) {
-			if (help.getKey().toString().equals(key.toString())) {
+			if (help.key.toString().equals(key.toString())) {
 				// remove root objekt
 				if (help == before) {
-					this.list.setRoot(help.getNext());
+					this.list.root = help.next;
 					help = null;
 				}
 				else {
 					// remove object
-					before.setNext(help.getNext());
+					before.next = help.next;
 				}
 				return true;
 			}
 			
 			if (help != null) {
 				before = help;
-				help = help.getNext();
+				help = help.next;
 			}
 		}
 		
 		return false;
 	}
 	
-	/*
+	/**
 	 * Sucht ein Item anhand des Keys und liefert es zurueck
 	 * 
 	 * VB: key != null
@@ -74,19 +149,19 @@ public class HashSet {
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public CollectionItem getValue( Object key ) {
-		Item help = list.getRoot();
+		Item help = list.root;
 		
 		while (help != null) {
-			if (help.getKey().toString().equals(key.toString())) {
-				return help.getValue();
+			if (help.key.toString().equals(key.toString())) {
+				return help.value;
 			}
-			help = help.getNext();
+			help = help.next;
 		}
 		
 		return null;	
 	}
 	
-	/*
+	/**
 	 * Schaut nach ob dieser Key schon vorhanden ist
 	 * 
 	 * VB: key != null
@@ -94,40 +169,40 @@ public class HashSet {
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public boolean hasKey(Object key) {
-		Item help = list.getRoot();
+		Item help = list.root;
 		
 		if (key == null)
 			return false;
 		
 		while (help != null) {
-			if (help.getKey().toString().equals(key.toString())) {
+			if (help.key.toString().equals(key.toString())) {
 				return true;
 			}
-			help = help.getNext();
+			help = help.next;
 		}
 		
 		return false;
 	}
 	
-	/*
+	/**
 	 * Gibt das Objekt als String aus
 	 * 
 	 * NB: liefert Objekt als String zurueck
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	public String toString() {
-		Item c = this.list.getRoot();
+		Item c = this.list.root;
 		String output = "";
 		
 		while( c != null ) {
-			output += c.getValue() + "\n";
-			c = c.getNext();
+			output += c.value + "\n";
+			c = c.next;
 		}
 		
 		return output;
 	}
 	
-	/*
+	/**
 	 * erzeugt einen Iterator fuer das Set
 	 * 
 	 * NB: liefert Iterator des HashSets zurueck
@@ -137,8 +212,8 @@ public class HashSet {
 		return new SetIterator( this.list );
 	}
 	
-	/*
-	 * Diese Klasse soll einen Iterator simulieren
+	/**
+	 * Diese Innere Klasse soll einen Iterator simulieren
 	 */
 	@Programmierer(autoren="Alexander Tornoreanu")
 	private class SetIterator implements Iterator {
@@ -146,7 +221,7 @@ public class HashSet {
 		private Item lastValue;
 		private LinkedList list;
 		
-		/*
+		/**
 		 * Konstruktor
 		 * 
 		 * VB: list != null
@@ -155,11 +230,11 @@ public class HashSet {
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public SetIterator( LinkedList list ) {
 			this.list    = list;
-			this.current = this.list.getRoot();
+			this.current = this.list.root;
 			this.lastValue = null;
 		}
 		
-		/*
+		/**
 		 * schaut ob es noch Elemente gibt in der Liste zum durchiterieren
 		 * 
 		 * NB: liefert true bei Erfolg, false bei Misserfolg 
@@ -174,7 +249,7 @@ public class HashSet {
 			return false;
 		}
 
-		/*
+		/**
 		 * Liefert das naechste Element aus der Liste
 		 * 
 		 * NB: liefert naechstes Element in der Liste
@@ -182,18 +257,18 @@ public class HashSet {
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public CollectionItem next() {
-			CollectionItem value = this.current.getValue();
+			CollectionItem value = this.current.value;
 			
 			if ( this.current == null ) { 
 				throw new NoSuchElementException();
 			}
 			this.lastValue = this.current;
-			this.current = this.current.getNext();
+			this.current = this.current.next;
 			
 			return value;
 		}
 
-		/*
+		/**
 		 * Entfernt das aktuelle Element welches durchiteriert wird
 		 * 
 		 * NB: Entfernt ein Element
@@ -201,24 +276,24 @@ public class HashSet {
 		@Override
 		@Programmierer(autoren="Alexander Tornoreanu")
 		public void remove() {
-			Item help = this.list.getRoot();
+			Item help = this.list.root;
 			Item before = help;
 			
 			while (help != null) {
 				if (help == this.lastValue) {
 					if (help == before) {
 						// Element am Listenanfang
-						this.list.setRoot(help.getNext());
+						this.list.root = help.next;
 						help = null; // aus Schleife raus
 					} else {
-						before.setNext(help.getNext());
+						before.next = help.next;
 						help = null; // aus Schleife raus
 					}
 				}
 				
 				if (help != null) {
 					before = help;
-					help = help.getNext();
+					help = help.next;
 				}
 			}
 		}

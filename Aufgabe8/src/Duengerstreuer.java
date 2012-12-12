@@ -1,10 +1,14 @@
-import java.util.Iterator;
-
+/**
+ * Duengerstreuer stellt einen konkreten Einsatzzweck eines Traktors dar mit einer uebergebenen Fassungskapazitaet an Duengemittel. Also eine Rolle. 
+ */
+@Programmierer(autoren="Bernd Artmueller")
 public class Duengerstreuer implements Rolle {
 	private double kapazitaet;
 	
 	/**
 	 * Setzt die Fassungskapazitaet des Behaelters in Liter
+	 * 
+	 * kapazitaet > 0
 	 * 
 	 * @param kapazitaet Fassungskapazitaet des Behaelters in Liter
 	 */
@@ -17,6 +21,7 @@ public class Duengerstreuer implements Rolle {
 	 * 
 	 * @return saeschare
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public double getValue() {
 		return this.kapazitaet;
 	}
@@ -26,11 +31,12 @@ public class Duengerstreuer implements Rolle {
 	 * 
 	 * @return Einsatzzweck des Traktors
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public Einsatzzweck getEinsatzzweck() {
 		return Einsatzzweck.DUENGERSTREUER;
 	}
 	
-	/*
+	/**
 	 * Gibt das Objekt als String aus
 	 * 
 	 * NB: liefert Objekt als String zurueck

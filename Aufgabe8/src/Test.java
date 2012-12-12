@@ -1,12 +1,13 @@
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 
+@Programmierer(autoren="Jakob Kremsner")
 public class Test {
 
 	/**
 	 * @author Jakob Kremsner
 	 */
+	@Programmierer(autoren="Jakob Kremsner")
 	public static void main(String[] args) {
 		try{
 			HashSet hoefe = new HashSet();
@@ -104,10 +105,8 @@ public class Test {
 				System.out.println( "\nDurchschnittliche Fassungskapazität des Düngerbehälters aller Traktoren von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet() );
 				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.DIESELTRAKTOR ) );
 				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.BIOGASTRAKTOR ) );
-				
-				
 			}
-			//loesche Traktor 3 aus Bauernhof 1 um einen Fehler zu produzieren, der geworfen wird weil es keine Duengerstreuer mehr gibt
+			//loesche Traktor 4 aus Bauernhof 1 um einen Fehler zu produzieren, der geworfen wird weil es keine Duengerstreuer mehr gibt
 			//und dann durch 0 dividiert wird
 			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(4);
 			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).durchschnittlicherGasverbrauch( Einsatzzweck.DUENGERSTREUER );
@@ -127,34 +126,42 @@ public class Test {
 		System.out.println(getAnnotationsForClass("Duengerstreuer"));
 		System.out.println(getAnnotationsForClass("Einsatzzweck"));
 		System.out.println(getAnnotationsForClass("HashSet"));
-		System.out.println(getAnnotationsForClass("Item"));
-		System.out.println(getAnnotationsForClass("LinkedList"));
 		System.out.println(getAnnotationsForClass("Motor"));
-		System.out.println(getAnnotationsForClass("Programmierer"));
 		System.out.println(getAnnotationsForClass("Rolle"));
 		System.out.println(getAnnotationsForClass("Test"));
 		
 	}
+	
+	/**
+	 * Gibt alle Annotations der gewuenschten Klasse zurueck
+	 * 
+	 * name != null && name != ""
+	 * 
+	 * @param name Name der Klasse
+	 * @return Ausgabe aller Annotations einer Klasse
+	 */
+	@Programmierer(autoren="Jakob Kremsner")
 	private static String getAnnotationsForClass(String name){
 		Method[] m = null;
+		Programmierer anno;
 		String r = "";
+		
 		try {
 			m = Class.forName(name).getMethods();
+			
+			anno = Class.forName(name).getAnnotation(Programmierer.class);
+			if (anno != null) r+= "\nZustaendige Person(en) der Klasse " + name + ": " + anno.autoren() + "\n";
 		} 
 		catch (ClassNotFoundException e) {
 			r+=e.toString()+"\n"; 
 		}  
 		
-		r+= "Annotationen fuer Methoden der Klasse "+name+"\n";
 		for (int i = 0; i < m.length; i++) {
-			Annotation[] anno = m[i].getAnnotations();
-			if (anno.length != 0) {
-				r+=m[i].getName() + ": ";
-				for (int j = 0; j < anno.length; j++) {
-					r+=anno[j].toString() + " ";
-				}
-				r+="\n";
-			}  
+			anno = m[i].getAnnotation(Programmierer.class);
+			
+			r+= "\n    " + m[i] +"\n";
+			
+			if ( anno != null ) r+= "      Zustaendige Person(en): " + anno.autoren() + "\n";
 		}
 		return r;
 	}

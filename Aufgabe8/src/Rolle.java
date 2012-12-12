@@ -1,6 +1,7 @@
-/*
+/**
  * Verwaltet alle Rollen eines Traktors
  */
+@Programmierer(autoren="Bernd Artmueller")
 public interface Rolle {
 	/**
 	 * Liefert den Einsatzzweck des Traktors

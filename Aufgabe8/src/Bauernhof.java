@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
-/*
- * @author Bernd
+/**
+ * Bauernhof besitzt einen eindeutigen Namen und mehrere verschiedene Traktoren.
  */
 @Programmierer(autoren="Bernd Artmueller")
 public class Bauernhof implements CollectionItem {
@@ -279,8 +279,6 @@ public class Bauernhof implements CollectionItem {
         );
     }
 	
-	
-
 	/**
      * Berechnet und Liefert den Durchschnittswert
      * 
@@ -421,7 +419,7 @@ public class Bauernhof implements CollectionItem {
         }
     }
 	
-	/*
+	/**
 	 * Gibt das Objekt als String aus
 	 * 
 	 * NB: liefert Objekt als String zurueck
@@ -437,7 +435,6 @@ public class Bauernhof implements CollectionItem {
 			ret+= "\n  "+it.next().toString();
 		}
 		  
-		
 		return ret;
 	}
 }

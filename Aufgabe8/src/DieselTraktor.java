@@ -1,3 +1,7 @@
+/**
+ * DieselTraktor erbt von AbstractTraktor und stellt einen konkreten Dieseltraktor dar.
+ */
+@Programmierer(autoren="Bernd Artmueller")
 public class DieselTraktor extends AbstractTraktor {
 	private int verbrauchteLiterDiesel;
 	
@@ -7,9 +11,10 @@ public class DieselTraktor extends AbstractTraktor {
 	 * 
 	 * @param nummer Eindeutige nummer
 	 * @param betriebsstunden Anfaengliche Betriebsstunden des Traktors >= 0
-	 * @param einsatzzweck Einsatzzweck des Traktors
+	 * @param einsatzzweck Einsatzzweck/Rolle des Traktors
 	 * @param verbrauchteLiterDiesel Anfaengliche verbrauchte Liter Diesel des Traktors >= 0
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public DieselTraktor( int nummer, double betriebsstunden, Rolle einsatzzweck, int verbrauchteLiterDiesel ) {
 		super( nummer, betriebsstunden, einsatzzweck );
 		
@@ -21,6 +26,7 @@ public class DieselTraktor extends AbstractTraktor {
 	 * 
 	 * @return verbrauchteLiter
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public double getVerbrauchteLiterDiesel() {
 		return this.verbrauchteLiterDiesel;
 	}
@@ -32,6 +38,7 @@ public class DieselTraktor extends AbstractTraktor {
 	 * 
 	 * @param liter - Anzahl der Liter Diesel die zu den verbrauchten Litern Diesel hinzugerechnet werden sollen
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public void erhoeheverbrauchteLiterDiesel( int liter ) {
 		this.verbrauchteLiterDiesel += liter;
 	}
@@ -41,12 +48,13 @@ public class DieselTraktor extends AbstractTraktor {
 	 * 
 	 * @return Motor Enum Wert
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	@Override
 	public Motor getMotor() {
 		return Motor.DIESELTRAKTOR;
 	}
 	
-	/*
+	/**
 	 * Gibt das Objekt als String aus
 	 * 
 	 * NB: liefert Objekt als String zurueck

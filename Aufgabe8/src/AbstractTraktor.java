@@ -1,5 +1,9 @@
 import java.util.Iterator;
 
+/**
+ * AbstractTraktor stellt die Oberklasse eines Traktors da mit einer eindeutigen Nummer, start Betriebsstunden und einem Einsatzzweck/Rolle
+ */
+@Programmierer(autoren="Bernd Artmueller")
 public abstract class AbstractTraktor implements CollectionItem {
 	private int nummer;
 	private double betriebsstunden;
@@ -11,8 +15,9 @@ public abstract class AbstractTraktor implements CollectionItem {
 	 * 
 	 * @param nummer Eindeutige nummer
 	 * @param betriebsstunden Anfaengliche Betriebsstunden des Traktors >= 0
-	 * @param einsatzzweck Einsatzzweck des Traktors
+	 * @param rolle Rolle des Traktors != null
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public AbstractTraktor( int nummer, double betriebsstunden, Rolle rolle ) {
 		this.nummer = nummer;
 		this.betriebsstunden = betriebsstunden;
@@ -24,6 +29,7 @@ public abstract class AbstractTraktor implements CollectionItem {
 	 * 
 	 * @return nummer
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public int getNummer() {
 		return this.nummer;
 	}
@@ -33,6 +39,7 @@ public abstract class AbstractTraktor implements CollectionItem {
 	 * 
 	 * @return betriebsstunden
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public double getBetriebsstunden() {
 		return this.betriebsstunden;
 	}
@@ -42,17 +49,21 @@ public abstract class AbstractTraktor implements CollectionItem {
 	 * 
 	 * Erhoeht die Anzahl der Betriebsstunden um die uebergebene Anzahl von Stunden
 	 * 
+	 * stunden > 0
+	 * 
 	 * @param stunden - Anzahl der Stunden die zu den Betriebsstunden hinzugerechnet werden sollen
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public void erhoeheBetriebsstunden( double stunden ) {
 		this.betriebsstunden += stunden;
 	}
 	
 	/**
-	 * Liefert den Einsatzzweck des Traktors
+	 * Liefert den Einsatzzweck/Rolle des Traktors
 	 * 
-	 * @return einsatzzweck
+	 * @return rolle
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public Rolle getRolle() {
 		return this.rolle;
 	}
@@ -60,8 +71,11 @@ public abstract class AbstractTraktor implements CollectionItem {
 	/**
 	 * Aendert den Einsatzzweck des Traktors
 	 * 
-	 * @param einsatzzweck Neuer Einsatzzweck des Traktors
+	 * rolle != null
+	 * 
+	 * @param rolle Neuer Einsatzzweck des Traktors
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public void setRolle( Rolle rolle ) {
 		this.rolle = rolle;
 	}
@@ -71,9 +85,10 @@ public abstract class AbstractTraktor implements CollectionItem {
 	 * 
 	 * @return Motor Enum Wert
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public abstract Motor getMotor();
 	
-	/*
+	/**
 	 * Gibt das Objekt als String aus
 	 * 
 	 * NB: liefert Objekt als String zurueck

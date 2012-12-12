@@ -1,3 +1,7 @@
+/**
+ * BiogasTraktor erbt von AbstractTraktor und stellt einen konkreten Biogastraktor dar.
+ */
+@Programmierer(autoren="Bernd Artmueller")
 public class BiogasTraktor extends AbstractTraktor {
 	private double verbrauchtesGas;
 	
@@ -10,6 +14,7 @@ public class BiogasTraktor extends AbstractTraktor {
 	 * @param einsatzzweck Einsatzzweck des Traktors
 	 * @param verbrauchtesGas Anfaengliche verbrauchte Kubikmeter Gas des Traktors >= 0
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public BiogasTraktor( int nummer, double betriebsstunden, Rolle einsatzzweck, double verbrauchtesGas ) {
 		super( nummer, betriebsstunden, einsatzzweck );
 		
@@ -21,6 +26,7 @@ public class BiogasTraktor extends AbstractTraktor {
 	 * 
 	 * @return verbrauchtesGas
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public double getVerbrauchtesGas() {
 		return this.verbrauchtesGas;
 	}
@@ -32,6 +38,7 @@ public class BiogasTraktor extends AbstractTraktor {
 	 * 
 	 * @param kubikmeterGas - Anzahl der Kubikmeter an Gas die zu den bereits verbrauchen Kubikmetern Gas hinzugerechnet werden
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	public void erhoeheVerbrauchtesGas( int kubikmeterGas ) {
 		this.verbrauchtesGas += kubikmeterGas;
 	}
@@ -41,12 +48,13 @@ public class BiogasTraktor extends AbstractTraktor {
 	 * 
 	 * @return Motor Enum Wert
 	 */
+	@Programmierer(autoren="Bernd Artmueller")
 	@Override
 	public Motor getMotor() {
 		return Motor.BIOGASTRAKTOR;
 	}
 	
-	/*
+	/**
 	 * Gibt das Objekt als String aus
 	 * 
 	 * NB: liefert Objekt als String zurueck
