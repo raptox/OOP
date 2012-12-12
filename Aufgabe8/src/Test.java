@@ -95,7 +95,7 @@ public class Test {
 				System.out.println( "Minimale Anzahl an Saescharen (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.minAnzahlSaescharen( Motor.DIESELTRAKTOR ) );
 				System.out.println( "Minimale Anzahl an Saescharen (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.minAnzahlSaescharen( Motor.BIOGASTRAKTOR ) );
 
-				System.out.println( "\nMaximale Anzahl an Saescharen insgesamt von " + bHof.getName()+ ": " + bHof5.maxAnzahlSaescharen() );
+				System.out.println( "\nMaximale Anzahl an Saescharen insgesamt von " + bHof.getName()+ ": " + bHof.maxAnzahlSaescharen() );
 				System.out.println( "Maximale Anzahl an Saescharen (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.maxAnzahlSaescharen( Motor.DIESELTRAKTOR ) );
 				System.out.println( "Maximale Anzahl an Saescharen (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.maxAnzahlSaescharen( Motor.BIOGASTRAKTOR ) );
 
@@ -103,12 +103,12 @@ public class Test {
 				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.DIESELTRAKTOR ) );
 				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.BIOGASTRAKTOR ) );
 				
-				//loesche Traktor 3 aus Bauernhof 1 um einen Fehler zu produzieren, der geworfen wird weil es keine Duengerstreuer mehr gibt
-				//und dann durch 0 dividiert wird
-				((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(3);
-				System.out.println( "Durchschnittliche Gasverbrauch aller Biogastraktoren mit Einsatzart als Duengerstreuer von " + bHof.getName()+ ": " + bHof.durchschnittlicherGasverbrauch( Einsatzzweck.DUENGERSTREUER ) );
+				
 			}
-
+			//loesche Traktor 3 aus Bauernhof 1 um einen Fehler zu produzieren, der geworfen wird weil es keine Duengerstreuer mehr gibt
+			//und dann durch 0 dividiert wird
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(3);
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).durchschnittlicherGasverbrauch( Einsatzzweck.DUENGERSTREUER );
 		}
 		catch(java.lang.ArithmeticException e){
 			if(e != null){
