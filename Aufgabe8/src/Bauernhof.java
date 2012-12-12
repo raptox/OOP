@@ -294,7 +294,7 @@ public class Bauernhof implements CollectionItem {
         while ( it.hasNext() ) {
         	AbstractTraktor traktor = ( AbstractTraktor ) it.next();
             
-            // wenn der Traktor die Bedingung erfüllt, beziehe diesen in die Berechnung mitein
+            // wenn der Traktor die Bedingung erfuellt, beziehe diesen in die Berechnung mitein
             if ( rechner.bedingung( traktor ) ) {
             	summe += rechner.wert( traktor );
                 anzahl++;
@@ -321,7 +321,7 @@ public class Bauernhof implements CollectionItem {
         while ( it.hasNext() ) {
             AbstractTraktor traktor = ( AbstractTraktor ) it.next();
             
-            // wenn der Traktor die Bedingung erfüllt, beziehe diesen in die Berechnung ein
+            // wenn der Traktor die Bedingung erfuellt, beziehe diesen in die Berechnung ein
             if ( rechner.bedingung( traktor ) ) {
             	if ( rechner.wert( traktor ) > max ) {
             		max = rechner.wert( traktor );
@@ -345,7 +345,7 @@ public class Bauernhof implements CollectionItem {
         while ( it.hasNext() ) {
             AbstractTraktor traktor = ( AbstractTraktor ) it.next();
             
-            // wenn der Traktor die Bedingung erfüllt, beziehe diesen in die Berechnung ein
+            // wenn der Traktor die Bedingung erfuellt, beziehe diesen in die Berechnung ein
             if ( rechner.bedingung( traktor ) ) {
             	if ( rechner.wert( traktor ) < min ) {
             		min = rechner.wert( traktor );
@@ -357,12 +357,12 @@ public class Bauernhof implements CollectionItem {
 	}
     
 	/**
-     * Interface für die Berechnung der Durchschnittswerte anhand einer Bedingung
+     * Interface fuer die Berechnung der Durchschnittswerte anhand einer Bedingung
      */
 	@Programmierer(autoren="Bernd Artmueller")
     private interface IRechner {
 		/**
-	     * Diese Methode stellt eine Bedinung dar, die bei der Berechnung erfüllt werden muss um einen Traktor in die Berechnung
+	     * Diese Methode stellt eine Bedinung dar, die bei der Berechnung erfuellt werden muss um einen Traktor in die Berechnung
 	     * einzubeziehen.
 	     * 
 	     * @param traktor Traktor, welcher ueberprueft werden soll
@@ -380,7 +380,7 @@ public class Bauernhof implements CollectionItem {
     }
 	
     /**
-     * Klasse die für die Berechnung der durchschnittlichen Anzahl der Betriebsstunden von Traktoren verwendet wird
+     * Klasse die fuer die Berechnung der durchschnittlichen Anzahl der Betriebsstunden von Traktoren verwendet wird
      */
 	@Programmierer(autoren="Bernd Artmueller")
     private abstract class DurchschnittlicheBetriebsstundenRechner implements IRechner {
@@ -390,7 +390,7 @@ public class Bauernhof implements CollectionItem {
     }
 	
 	/**
-     * Klasse die für die Berechnung des Durchschnitts Dieselverbrauch von Dieseltraktoren verwendet wird
+     * Klasse die fuer die Berechnung des Durchschnitts Dieselverbrauch von Dieseltraktoren verwendet wird
      */
 	@Programmierer(autoren="Bernd Artmueller")
     private abstract class DurchschnittlicherDieselverbrauchRechner implements IRechner {
@@ -400,7 +400,7 @@ public class Bauernhof implements CollectionItem {
     }
 	
 	/**
-     * Klasse die für die Berechnung des Durchschnitts Gasverbrauch von Biogastraktoren verwendet wird
+     * Klasse die fuer die Berechnung des Durchschnitts Gasverbrauch von Biogastraktoren verwendet wird
      */
 	@Programmierer(autoren="Bernd Artmueller")
     private abstract class DurchschnittlicherGasverbrauchRechner implements IRechner {
@@ -410,7 +410,7 @@ public class Bauernhof implements CollectionItem {
     }
 	
 	/**
-     * Klasse die für die Min, Max und Durchschnitts Berechnungen der Rollen Werte (Anzahl Saescharen und Kapazitaet) verwendet wird
+     * Klasse die fuer die Min, Max und Durchschnitts Berechnungen der Rollen Werte (Anzahl Saescharen und Kapazitaet) verwendet wird
      */
 	@Programmierer(autoren="Bernd Artmueller")
     private abstract class RollenRechner implements IRechner {

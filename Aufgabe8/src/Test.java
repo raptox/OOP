@@ -102,9 +102,9 @@ public class Test {
 				System.out.println( "Maximale Anzahl an Saescharen (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.maxAnzahlSaescharen( Motor.DIESELTRAKTOR ) );
 				System.out.println( "Maximale Anzahl an Saescharen (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.maxAnzahlSaescharen( Motor.BIOGASTRAKTOR ) );
 
-				System.out.println( "\nDurchschnittliche Fassungskapazität des Düngerbehälters aller Traktoren von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet() );
-				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.DIESELTRAKTOR ) );
-				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.BIOGASTRAKTOR ) );
+				System.out.println( "\nDurchschnittliche Fassungskapazitaet des Duengerbehaelters aller Traktoren von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet() );
+				System.out.println( "Durchschnittliche Fassungskapazitaet des Duengerbehaelters (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.DIESELTRAKTOR ) );
+				System.out.println( "Durchschnittliche Fassungskapazitaet des Duengerbehaelters (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.BIOGASTRAKTOR ) );
 			}
 			//loesche Traktor 4 aus Bauernhof 1 um einen Fehler zu produzieren, der geworfen wird weil es keine Duengerstreuer mehr gibt
 			//und dann durch 0 dividiert wird
