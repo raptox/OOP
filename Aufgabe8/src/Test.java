@@ -102,6 +102,8 @@ public class Test {
 				System.out.println( "\nDurchschnittliche Fassungskapazität des Düngerbehälters aller Traktoren von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet() );
 				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Dieseltraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.DIESELTRAKTOR ) );
 				System.out.println( "Durchschnittliche Fassungskapazität des Düngerbehälters (Biogastraktoren) von " + bHof.getName()+ ": " + bHof.durchschnittlicherDuengerstreuerFassungskapazitaet( Motor.BIOGASTRAKTOR ) );
+				
+				
 			}
 			//loesche Traktor 3 aus Bauernhof 1 um einen Fehler zu produzieren, der geworfen wird weil es keine Duengerstreuer mehr gibt
 			//und dann durch 0 dividiert wird
