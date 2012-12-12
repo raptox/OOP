@@ -24,19 +24,21 @@ public class Test {
 			hoefe.insert(bHof4.getName(), bHof4);
 			hoefe.insert(bHof5.getName(), bHof5);
 
-			//Jedem Hof werden 5 Traktoren hinzugefuegt
+			//Jedem Hof werden Traktoren hinzugefuegt
 
 			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new DieselTraktor( 1, 10.0, new Duengerstreuer(500.5), 5 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new DieselTraktor( 2, 20.0, new Drillmaschine(20), 5 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new BiogasTraktor( 3, 30.0, new Duengerstreuer(600.9), 3 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new BiogasTraktor( 4, 40.0, new Drillmaschine(60), 4 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new BiogasTraktor( 5, 10.0, new Drillmaschine(30), 2 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new DieselTraktor( 2, 15.0, new Duengerstreuer(300.5), 4 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new DieselTraktor( 3, 20.0, new Drillmaschine(20), 5 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new BiogasTraktor( 4, 30.0, new Duengerstreuer(600.9), 3 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new BiogasTraktor( 5, 40.0, new Drillmaschine(60), 4 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).addTraktor( new BiogasTraktor( 6, 10.0, new Drillmaschine(30), 2 ) );
 
 			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new DieselTraktor( 6, 10.0, new Duengerstreuer(500.5), 5 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new DieselTraktor( 7, 20.0, new Drillmaschine(20), 5 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new BiogasTraktor( 8, 30.0, new Duengerstreuer(600.9), 3 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new BiogasTraktor( 9, 40.0, new Drillmaschine(60), 4 ) );
-			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new BiogasTraktor( 10, 10.0, new Drillmaschine(30), 2 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new DieselTraktor( 7, 15.0, new Duengerstreuer(300.5), 5 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new DieselTraktor( 8, 20.0, new Drillmaschine(20), 5 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new BiogasTraktor( 9, 30.0, new Duengerstreuer(600.9), 3 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new BiogasTraktor( 10, 40.0, new Drillmaschine(60), 4 ) );
+			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).addTraktor( new BiogasTraktor( 11, 10.0, new Drillmaschine(30), 2 ) );
 
 			((Bauernhof) hoefe.getValue( "Bauernhof 3" )).addTraktor( new DieselTraktor( 11, 10.0, new Duengerstreuer(500.5), 5 ) );
 			((Bauernhof) hoefe.getValue( "Bauernhof 3" )).addTraktor( new DieselTraktor( 12, 20.0, new Drillmaschine(20), 5 ) );
@@ -59,7 +61,7 @@ public class Test {
 			//Traktoren von Hoefen Aendern/Loeschen
 
 			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(1);
-			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(4);
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(5);
 
 			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).entferneTraktor(6);
 			((Bauernhof) hoefe.getValue( "Bauernhof 2" )).getTraktor(7).erhoeheBetriebsstunden(10);
@@ -107,7 +109,7 @@ public class Test {
 			}
 			//loesche Traktor 3 aus Bauernhof 1 um einen Fehler zu produzieren, der geworfen wird weil es keine Duengerstreuer mehr gibt
 			//und dann durch 0 dividiert wird
-			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(3);
+			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).entferneTraktor(4);
 			((Bauernhof) hoefe.getValue( "Bauernhof 1" )).durchschnittlicherGasverbrauch( Einsatzzweck.DUENGERSTREUER );
 		}
 		catch(java.lang.ArithmeticException e){
