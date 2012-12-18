@@ -28,4 +28,8 @@ public class Bestellung {
 	public ArrayList<Position> getPositionen() {
 		return positionen;
 	}
+	
+	public String toString(){
+		return drucke();
+	}
 }

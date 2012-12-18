@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 /*
  * In dieser Klasse werden verschiedene Kekse gespeichert
+ * Klasse kann auch oeffentlich verwendet werden, addKeks ist oeffentlich, weil jeder
+ * einen Keks hinzufuegen kann, nicht nur die Baekerei
  */
 public class Kecksdose {
 	private ArrayList<Keks> kekse;
@@ -13,6 +15,7 @@ public class Kecksdose {
 	 */
 	public Kecksdose(String beschriftung) {
 		this.beschriftung = beschriftung;
+		this.kekse = new ArrayList<Keks>();
 	}
 	
 	/*
