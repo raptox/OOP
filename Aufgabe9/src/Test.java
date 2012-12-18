@@ -13,9 +13,8 @@ public class Test {
 		
 		System.out.println( b.backe() );
 		
-		DoppelKeksBackmaschine doppelBackmaschine = new DoppelKeksBackmaschine( k, Fuellung.MARMELADE );
+		//DoppelKeksBackmaschine doppelBackmaschine = new DoppelKeksBackmaschine( k, Fuellung.MARMELADE );
 		
 		System.out.println( doppelBackmaschine.backe() );
 	}
-
 }
