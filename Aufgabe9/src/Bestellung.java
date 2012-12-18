@@ -4,6 +4,10 @@ import java.util.ArrayList;
 public class Bestellung {
 	private ArrayList<Position> positionen;
 	
+	/*
+	 * Konstruktor
+	 * VB: positionen != null
+	 */
 	public Bestellung(ArrayList<Position> positionen){
 		this.positionen = positionen;
 	}
@@ -18,7 +22,9 @@ public class Bestellung {
 		}
 		return s;
 	}
-	
+	/*
+	 * liefert eine ArrayList von Positionen zurueck
+	 */
 	public ArrayList<Position> getPositionen() {
 		return positionen;
 	}
