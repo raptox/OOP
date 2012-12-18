@@ -28,4 +28,12 @@ public class Kecksdose {
 		
 		return inh;
 	}
+	
+	/*
+	 * Fuegt neuen Keks hinzu
+	 * VB: keks != null
+	 */
+	public void addKeks(Keks keks) {
+		kekse.add(keks);
+	}
 }
