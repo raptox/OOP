@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Klasse kann auch oeffentlich verwendet werden, addKeks ist oeffentlich, weil jeder
  * einen Keks hinzufuegen kann, nicht nur die Baekerei
  */
-public class Kecksdose {
+public class Keksdose {
 	private ArrayList<Keks> kekse;
 	private String beschriftung;
 	
@@ -13,7 +13,7 @@ public class Kecksdose {
 	 * Konstruktor
 	 * VB: beschriftung != null
 	 */
-	public Kecksdose(String beschriftung) {
+	public Keksdose(String beschriftung) {
 		this.beschriftung = beschriftung;
 		this.kekse = new ArrayList<Keks>();
 	}
@@ -22,7 +22,7 @@ public class Kecksdose {
 	 * gibt den Inhalt der Dose zurueck
 	 * NB: liefert String mit allen Keksen
 	 */
-	public String listeInhalt() {
+	public String inhalt() {
 		String inh = beschriftung + "\n";
 		
 		for (int i=0; i<kekse.size(); i++) {
